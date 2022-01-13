@@ -4,30 +4,24 @@ unsigned int ft_strlcpy(char *dest, char *src, unsigned int size);
 unsigned int ft_strlcpy(char *dest, char *src, unsigned int size)
 {
 	unsigned int	i;
-	
+
 	i = 0;
-	while (src[i] != 0)
+	while (i < size)
 	{
-		while (i < size - 1)
+		if (src[i] == 0)
 		{
-			if (src[i] != 0)
-			{
-				dest[i] = src[i];
-			}
-			else
-			{
-				dest[i] = 0;
-			}
-			i++;
+			dest[i] = src[i];
+			break ;
 		}
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < size)
+	{
 		dest[i] = 0;
 		i++;
 	}
-
-	i = 0;
-	while (src[i])
-
-	return (i);
+	return ();
 }
 
 int	main(void)
