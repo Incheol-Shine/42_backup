@@ -35,7 +35,7 @@ int main()
 	int **bord = NULL;
 	bord = (int**)malloc(sizeof(int*)*n);
 	for(int i=0; i<n; i++)
-		bord[i] = (int*)malloc(sizeof(int)*5);
+		bord[i] = (int*)malloc(sizeof(int)*n);
 	g_flg = 0;
 	DFS_bord(bord, n, 0, 0);
 	if (g_flg == 0)

@@ -24,10 +24,11 @@ void DFS_bord(int **bord, int n, int r, int c)
 	int	j;
 	int k;
 
-	if (r == n - 1 && c == n - 1)
+	if (r == n && c == 0)
 	{
 		print_bord(bord, n);
 		g_flg = 1;
+		printf("flag : %d\n",g_flg);
 	}
 	else
 	{

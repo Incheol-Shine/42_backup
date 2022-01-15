@@ -1,12 +1,13 @@
 int check(int **bord,int n,int r,int c);
 
-int test_arr[4][4] ={{1,1,1,1},{1,1,1,1},{1,1,1,1},{1,1,1,1}};
+// int test_arr[4][4] ={{1,1,1,1},{1,1,1,1},{1,1,1,1},{1,1,1,1}};
+int test_arr[4][4] ={{1,2,3,4},{2,3,4,1},{3,4,1,2},{4,1,2,3}};
 
 int check(int **bord,int n,int r,int c)
 {
-    for(int i=0; i<r; i++)
+    for(int i=0; i<=r; i++)
     {
-        for(int j=0; j<c; j++)
+        for(int j=0; j<=c; j++)
         {
             if(bord[i][j] != test_arr[i][j])
                 return 0;
