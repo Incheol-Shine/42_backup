@@ -6,7 +6,8 @@ void DFS_bord(int **bord, int n, int r, int c);
 int g_flg;
 int main()
 {
-	char	str[] = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2";
+	// char	str[] = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2";
+	char	str[] = "1 2 2 1 1 2 2 1";
 	int		n;
 	int		i;
 	int 	j;
@@ -20,10 +21,10 @@ int main()
 	printf("n : %d\n", n);
 
 	i = 0;
-	while (i < 4)
+	while (i < n)
 	{
 		j = 0;
-		while (j < 4)
+		while (j < n)
 		{
 			printf("%d ", g_edge[i][j]);
 			j++;

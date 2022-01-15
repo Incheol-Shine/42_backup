@@ -1,7 +1,7 @@
 int check(int **bord,int n,int r,int c);
 
 // int test_arr[4][4] ={{1,1,1,1},{1,1,1,1},{1,1,1,1},{1,1,1,1}};
-int test_arr[4][4] ={{1,2,3,4},{2,3,4,1},{3,4,1,2},{4,1,2,3}};
+int test_arr[4][4] ={{2,1},{1,2}};
 
 int check(int **bord,int n,int r,int c)
 {

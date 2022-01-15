@@ -35,12 +35,12 @@ int	is_right_input(char *str)
 		{
 			if (j % 2 == 0)
 			{
-				if (str[8 * i + j] < '1' || n + '0' < str[8 * i + j])
+				if (str[2 * n * i + j] < '1' || n + '0' < str[2 * n * i + j])
 					return (1);
 				else
-					g_edge[i][j / 2] = str[(8 * i) + j] - '0';
+					g_edge[i][j / 2] = str[(2 * n * i) + j] - '0';
 			}
-			else if (i < 3 && str[8 * i + j] != ' ')
+			else if (i < 3 && str[2 * n * i + j] != ' ')
 				return (2);
 			j++;
 		}
