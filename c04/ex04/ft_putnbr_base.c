@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/19 11:44:28 by incshin           #+#    #+#             */
+/*   Updated: 2022/01/19 11:44:33 by incshin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
-#include <stdio.h>
 void	ft_putnbr_base(int nbr, char *base);
 int		is_right_input(char *base);
 int		is_exist_same_char(char *base, int size);
@@ -55,7 +66,7 @@ void	recursive(int nbr, int plsmns, int n, char *base)
 	else
 	{
 		recursive(nbr / n, plsmns, n, base);
-		c = base[plsmns * (nbr / n)];
+		c = base[plsmns * (nbr % n)];
 		write(1, &c, 1);
 	}
 }
@@ -65,20 +76,15 @@ void	ft_putnbr_base(int nbr, char *base)
 	int	n;
 
 	n = is_right_input(base);
-	write(1, &n, 1);
 	if (!n)
 		return ;
 	if (nbr >= 0)
+	{
 		recursive(nbr, 1, n, base);
+	}
 	else
 	{
 		write(1, "-", 1);
 		recursive(nbr, -1, n, base);
 	}
-}
-
-int	main(void)
-{
-	ft_putnbr_base(42, "asdfg");
-	return (0);
 }

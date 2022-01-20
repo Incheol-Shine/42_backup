@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/19 11:44:04 by incshin           #+#    #+#             */
+/*   Updated: 2022/01/19 11:44:17 by incshin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
-#include <stdio.h>
 
 int		ft_atoi_base(char *str, char *base);
 int		is_right_input(char *base);
 int		is_exist_same_char(char *base, int size);
-int		base2int(char *str, char *base, int n);
+int		base2int(char *str, char *base, int n, int number);
 
 int	is_exist_same_char(char *base, int size)
 {
@@ -64,18 +75,17 @@ int	ft_atoi_base(char *str, char *base)
 			plsmns *= -1;
 		i++;
 	}
-	number = base2int(&str[i], base, base_number);
+	number = 0;
+	number = base2int(&str[i], base, base_number, number);
 	return (plsmns * number);
 }
 
-int	base2int(char *str, char *base, int n)
+int	base2int(char *str, char *base, int n, int number)
 {
 	int	i;
 	int	j;
-	int	number;
 	int	is_in_base;
 
-	number = 0;
 	i = 0;
 	while (str[i] != '\0')
 	{
@@ -96,10 +106,4 @@ int	base2int(char *str, char *base, int n)
 		i++;
 	}
 	return (number);
-}
-
-int	main(void)
-{
-	printf("answer: %d\n", ft_atoi_base(" --++fffg42fg", "abcdefg"));
-	return (0);
 }
