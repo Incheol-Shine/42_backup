@@ -1,7 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_memory.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/20 09:09:14 by incshin           #+#    #+#             */
+/*   Updated: 2022/01/20 16:59:43 by incshin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <unistd.h>
 
-void    *ft_print_memory(void *addr, unsigned int size);
+void	*ft_print_memory(void *addr, unsigned int size);
+void	print_hex(unsigned char c, unsigned int j);
+void	print_str(char *str);
+void	put_address(unsigned long long addr, int length);
+void	print_spc(unsigned int i);
 
 void	put_address(unsigned long long addr, int length)
 {
@@ -19,74 +35,70 @@ void	put_address(unsigned long long addr, int length)
 		put_address(addr / 16, length + 1);
 		c = base[addr % 16];
 		write(1, &c, 1);
+		if (length == 0)
+			write(1, ": ", 2);
 	}
 }
 
-void	print_hex(unsigned char c)
+void	print_hex(unsigned char c, unsigned int j)
 {
 	char	*base;
 
 	base = "0123456789abcedf";
 	write(1, base + (c / 16), 1);
 	write(1, base + (c % 16), 1);
+	if (j % 2 == 1)
+		write(1, " ", 1);
 }
 
 void	print_str(char *str)
 {
-	int i;
+	int	i;
 
-	while (i < 16 && str[i] != '\0')
+	i = 0;
+	while (i < 16)
 	{
 		if (32 <= str[i] && str[i] <= 126)
 			write(1, str + i, 1);
 		else
 			write(1, ".", 1);
+		if (str[i] == '\0')
+			break ;
 		i++;
 	}
 	write(1, "\n", 1);
 }
 
-int	print_spc(int i)
+void	print_spc(unsigned int j)
 {
-	while (i % 16 != 0)
-	{
-		if (i % 2 == 0)
-			write(1, "  ", 2);
-		else
-			write(1, "   ", 3);
-		i++;
-	}
-	return (i);
+	if (j % 2 == 0)
+		write(1, "  ", 2);
+	else
+		write(1, "   ", 3);
 }
 
-void    *ft_print_memory(void *addr, unsigned int size)
+void	*ft_print_memory(void *addr, unsigned int size)
 {
-	int i;
+	unsigned int	i;
+	unsigned int	j;
 
+	if (!size)
+		return (addr);
 	i = 0;
-	while (i < size)
+	while (i <= (size - 1) / 16)
 	{
-		if (i % 16 == 0)
+		j = 0;
+		put_address((unsigned long long)addr + (i * 16), 0);
+		while (j < 16)
 		{
-			put_address((unsigned long long)addr + i, 0);
-			write(1, ": ", 2);
+			if ((i * 16) + j < size)
+				print_hex(*((unsigned char *)addr + i * 16 + j), j);
+			else
+				print_spc(j);
+			j++;
 		}
-		print_hex(*((unsigned char *)addr + i));
-		if (i % 2 == 1)
-			write(1, " ", 1);
-		if (i % 16 == 15)
-			print_str((char *)addr + (i - 15));
+		print_str((char *)addr + i * 16);
 		i++;
 	}
-	i = print_spc(i);
-	print_str((char *)addr + (i - 15));
-}
-
-int	main(void)
-{
-	char	str[] = "Bonjour les aminches...c est fo u.tout.ce qu on peut faire avec...print_memory.....lol.lol. .";
-	int		size = sizeof(str) / sizeof(str[0]);
-
-	ft_print_memory(str, size);
-	return (0);
+	return (addr);
 }
