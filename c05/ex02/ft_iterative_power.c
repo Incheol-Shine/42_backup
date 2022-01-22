@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:57:45 by incshin           #+#    #+#             */
-/*   Updated: 2022/01/20 15:47:30 by incshin          ###   ########.fr       */
+/*   Updated: 2022/01/22 10:45:06 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	ft_iterative_power(int nb, int power)
 {
 	int	answer;
 
-	if (nb < 0)
-		return (0);
 	if (power < 0)
 		return (0);
 	if (power == 0)

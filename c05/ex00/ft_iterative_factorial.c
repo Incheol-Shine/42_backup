@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:37:10 by incshin           #+#    #+#             */
-/*   Updated: 2022/01/20 14:59:07 by incshin          ###   ########.fr       */
+/*   Updated: 2022/01/22 10:34:25 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_iterative_factorial(int nb)
 	while (nb > 0)
 	{
 		answer *= nb;
-		nb -= 1;
+		nb--;
 	}
 	return (answer);
 }
