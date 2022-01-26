@@ -3,7 +3,7 @@
 
 int main(void)
 {
-	int a = -25;
+	int a = -0;
 
 	printf("%d", ABS(a));
 	return (0);

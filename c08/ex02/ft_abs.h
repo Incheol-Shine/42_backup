@@ -1,5 +1,18 @@
-#ifndef FT_ABS_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_abs.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/26 15:16:45 by incshin           #+#    #+#             */
+/*   Updated: 2022/01/26 15:16:58 by incshin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#define	ABS(value) value < 0 ? -value : value
+#ifndef FT_ABS_H
+# define	FT_ABS_H
+
+# define	ABS(value) ((value) < 0 ? -(value) : (value))
 
 #endif
