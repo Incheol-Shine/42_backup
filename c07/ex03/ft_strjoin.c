@@ -45,14 +45,16 @@ int ft_dest_len(int size, char **strs, char *sep)
 {
 	int len;
 	int i;
+	int sep_len;
 	
 	len = 0;
 	i = 0;
+	sep_len = ft_strlen(sep);
 	while (i < size)
 	{
 		len += ft_strlen(strs[i]);
 		if (i != size - 1)
-			len += ft_strlen(sep);
+			len += sep_len;
 		i++;
 	}
 	return (len);
@@ -67,7 +69,6 @@ int	ft_strlen(char *str)
 		i++;
 	return (i);
 }
-
 
 int	ft_strcpy(char *s1, char *s2)
 {
