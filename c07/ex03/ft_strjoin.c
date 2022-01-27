@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:30:46 by incshin           #+#    #+#             */
-/*   Updated: 2022/01/26 15:40:28 by incshin          ###   ########.fr       */
+/*   Updated: 2022/01/27 13:12:36 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strjoin(int size, char **strs, char *sep);
 int		ft_strlen(char *str);
-int 	ft_dest_len(int size, char **strs, char *sep);
+int		ft_dest_len(int size, char **strs, char *sep);
 int		ft_strcpy(char *s1, char *s2);
 
 char	*ft_strjoin(int size, char **strs, char *sep)
@@ -41,20 +41,18 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	return (dest);
 }
 
-int ft_dest_len(int size, char **strs, char *sep)
+int	ft_dest_len(int size, char **strs, char *sep)
 {
-	int len;
-	int i;
-	int sep_len;
-	
+	int	len;
+	int	i;
+
 	len = 0;
 	i = 0;
-	sep_len = ft_strlen(sep);
 	while (i < size)
 	{
 		len += ft_strlen(strs[i]);
 		if (i != size - 1)
-			len += sep_len;
+			len += ft_strlen(sep);
 		i++;
 	}
 	return (len);
@@ -62,7 +60,7 @@ int ft_dest_len(int size, char **strs, char *sep)
 
 int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -72,7 +70,7 @@ int	ft_strlen(char *str)
 
 int	ft_strcpy(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s2[i])
