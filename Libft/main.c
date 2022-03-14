@@ -2,18 +2,14 @@
 #include "libft.h"
 #include <string.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+int	ft_memcmp(const void *s1, const void *s2, size_t n);
 
 int	main(void)
 {
-	char	dst[16] = "Hello, world!";
-	char	src[] = "Ah Ha!";
+	const char s1[] = "";
+	const char s2[] = "";
 
-	printf("dst = :%s\n",dst);
-	printf("dst_len: %zu, src_len: %zu\n", ft_strlen(dst), ft_strlen(src));
-	printf("%zu\n", ft_strlcat(dst, src, 20));
-	printf("%s\n", dst);
-	printf("%zu\n", strlcat(dst, src, 20));
-	printf("%s", dst);
+	printf("%d\n", ft_memcmp(s1, s2, 6));
+	printf("%d\n", memcmp(s1, s2, 6));
 	return (0);
 }
