@@ -1,15 +1,18 @@
-#include <stdio.h>
-#include "libft.h"
+#include <stdio.h> 
+#include <stdlib.h>
 #include <string.h>
+#include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+int 	main() 
+{ 
+	char const	str[] = "012345678901234";
+	char		*sub_str;
 
-int	main(void)
-{
-	const char s1[] = "";
-	const char s2[] = "";
-
-	printf("%d\n", ft_memcmp(s1, s2, 6));
-	printf("%d\n", memcmp(s1, s2, 6));
-	return (0);
+	sub_str = ft_substr(str, 3, 6);
+	// for(int i = 0; i < 6; i++)
+	// 	printf("%c", sub_str[i]);
+	printf("%s", sub_str);
+	printf("\n");
+	free(sub_str);
 }
