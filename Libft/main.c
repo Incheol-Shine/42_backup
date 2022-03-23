@@ -1,15 +1,30 @@
 #include <stdio.h>
 #include "libft.h"
-#include <string.h>
+#include <stdlib.h>
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n);
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
-int	main(void)
+void	switch_chr(unsigned int i, char *c)
 {
-	const char s1[] = "";
-	const char s2[] = "";
+	printf("fn start - i: %d, c: %c\n", i, *c);
+	if (*c >= 'a' && *c <= 'z')
+	{
+		printf("low\n");
+		*c -= 32;
+	}
+	else if (*c >= 'A' && *c <= 'Z')
+	{
+		printf("HIGH\n");
+		*c += 32;
+	}
+	printf("fn end - i: %d, c: %c\n", i, *c);
+}
 
-	printf("%d\n", ft_memcmp(s1, s2, 6));
-	printf("%d\n", memcmp(s1, s2, 6));
-	return (0);
+int main(void)
+{
+	char	*str = "hello world";
+
+	ft_striteri(str, &switch_chr);
+	printf("after: %s", str);
+    return (0);
 }
