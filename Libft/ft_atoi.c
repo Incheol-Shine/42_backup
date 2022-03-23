@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: incshin <incshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 12:11:57 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/16 15:41:23 by incshin          ###   ########.fr       */
+/*   Created: 2022/03/16 12:49:09 by incshin           #+#    #+#             */
+/*   Updated: 2022/03/16 14:14:16 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-void	*ft_bzero(void *s, size_t n)
+#include "libft.h"
+#include <stdio.h>
+int	ft_atoi(const char *str)
 {
-	unsigned char	*temp;
+	int	i;
+	int	sign;
+	int answer;
 
-	temp = s;
-	if (!temp)
-		return (0);
-	while (n)
-		temp[--n] = 0;
-	return (s);
+	i = 0;
+	sign = (str[i] != '-') * 2 - 1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	answer = 0;
+	while (ft_isdigit(str[i]))
+	{
+		answer = answer * 10 + (str[i] - '0');
+		i++;
+	}
+	return (sign * answer);
 }
