@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:49:09 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/16 14:14:16 by incshin          ###   ########.fr       */
+/*   Updated: 2022/03/24 16:41:11 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_atoi(const char *str)
 {
 	int	i;
 	int	sign;
-	int answer;
+	int	answer;
 
 	i = 0;
 	sign = (str[i] != '-') * 2 - 1;

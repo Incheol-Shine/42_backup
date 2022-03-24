@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:12:46 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/21 18:31:46 by incshin          ###   ########.fr       */
+/*   Updated: 2022/03/24 16:44:01 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	arrsize(int n);
 
 char	*ft_itoa(int n)
 {
-	int 	sign;
+	int		sign;
 	int		size;
 	char	*temp;
 

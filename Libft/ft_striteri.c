@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 11:23:46 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/24 11:51:51 by incshin          ###   ########.fr       */
+/*   Updated: 2022/03/24 16:45:25 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	unsigned int	i;
 
 	i = 0;
-	while (s[i]) 
+	while (s[i])
 	{
 		f(i, s + i);
 		i++;

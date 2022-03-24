@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: incshin <incshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 12:28:03 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/24 16:34:28 by incshin          ###   ########.fr       */
+/*   Created: 2022/03/24 14:40:05 by incshin           #+#    #+#             */
+/*   Updated: 2022/03/24 16:49:08 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include <unistd.h>
+
+void	ft_putendl_fd(char *s, int fd)
 {
-	if (32 <= c && c <= 126)
-		return (1);
-	else
-		return (0);
+	while (*s)
+	{
+		write(fd, s, 1);
+		s++;
+	}
+	write(fd, "\n", 1);
 }

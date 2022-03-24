@@ -1,19 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: incshin <incshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 12:28:03 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/24 16:34:28 by incshin          ###   ########.fr       */
+/*   Created: 2022/03/24 14:43:01 by incshin           #+#    #+#             */
+/*   Updated: 2022/03/24 15:16:33 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include <unistd.h>
+
+static void	recursive(int n, int sign, int fd)
 {
-	if (32 <= c && c <= 126)
-		return (1);
-	else
-		return (0);
+	char	c;
+
+	if (n)
+	{
+		recursive(n / 10, sign, fd);
+		c = (n % 10) * sign + '0';
+		write(fd, &c, 1);
+	}
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	int	sign;
+
+	sign = 1;
+	if (n < 0)
+	{
+		sign = -1;
+		write(fd, "-", 1);
+	}
+	recursive(n, sign, fd);
+	if (n == 0)
+		write(fd, "0", 1);
 }

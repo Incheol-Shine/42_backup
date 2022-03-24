@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:08:59 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/21 12:21:58 by incshin          ###   ########.fr       */
+/*   Updated: 2022/03/24 16:42:50 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-
 	temp = (char *)malloc(len_s1 + len_s2 + 1);
 	if (!temp)
 		return (0);
