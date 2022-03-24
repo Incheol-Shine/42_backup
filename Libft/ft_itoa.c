@@ -1,30 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: incshin <incshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 20:08:59 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/21 12:21:58 by incshin          ###   ########.fr       */
+/*   Created: 2022/03/21 17:12:46 by incshin           #+#    #+#             */
+/*   Updated: 2022/03/21 18:31:46 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static int	arrsize(int n);
+
+char	*ft_itoa(int n)
 {
-	size_t	len_s1;
-	size_t	len_s2;
+	int 	sign;
+	int		size;
 	char	*temp;
 
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-
-	temp = (char *)malloc(len_s1 + len_s2 + 1);
+	sign = 1;
+	if (n < 0)
+		sign = -1;
+	size = arrsize(n) + (-1 * (sign - 1) / 2);
+	temp = (char *)malloc(size + 1);
 	if (!temp)
 		return (0);
-	ft_strlcat(temp, s1, len_s1 + 1);
-	ft_strlcat(temp, s2, len_s1 + len_s2 + 1);
+	temp[size] = '\0';
+	while (size)
+	{
+		temp[size - 1] = (n % 10) * sign + '0';
+		n /= 10;
+		size--;
+	}
+	if (sign < 0)
+		temp[0] = '-';
 	return (temp);
+}
+
+static int	arrsize(int n)
+{
+	int	i;
+
+	if (-10 < n && n < 10)
+		return (1);
+	i = 0;
+	while (n)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
 }

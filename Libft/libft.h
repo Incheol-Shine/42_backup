@@ -6,11 +6,12 @@
 /*   By: incshin <incshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 17:06:41 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/16 16:27:56 by incshin          ###   ########.fr       */
+/*   Updated: 2022/03/24 11:27:50 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+
 #ifndef LIBFT_H
 
 # define LIBFT_H
@@ -42,5 +43,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
 
 #endif

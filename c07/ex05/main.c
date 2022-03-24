@@ -5,7 +5,7 @@ char    **ft_split(char *str, char *charset);
 
 int main(int argc, char **argv)
 {
-    char *charset = "12345";
+    char *charset = "012345";
     char **dest;
 
     int i;

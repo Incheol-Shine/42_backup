@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: incshin <incshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 20:08:59 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/21 12:21:58 by incshin          ###   ########.fr       */
+/*   Created: 2022/03/21 18:32:50 by incshin           #+#    #+#             */
+/*   Updated: 2022/03/21 20:25:18 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	len_s1;
-	size_t	len_s2;
+	int		s_len;
+	int		i;
 	char	*temp;
 
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-
-	temp = (char *)malloc(len_s1 + len_s2 + 1);
+	i = 0;
+	s_len = ft_strlen(s);
+	temp = (char *)malloc(s_len + 1);
 	if (!temp)
 		return (0);
-	ft_strlcat(temp, s1, len_s1 + 1);
-	ft_strlcat(temp, s2, len_s1 + len_s2 + 1);
+	while (i < s_len) 
+	{
+		temp[i] = f(i, s[i]);
+		i++;
+	}
 	return (temp);
 }
