@@ -37,6 +37,7 @@ int main(void)
 		*head = ((*head)->next);
 	}
 
+	printf("count %d\n", ft_lstsize(node3));
 	free(node1);
 	free(node2);
 	free(node3);
