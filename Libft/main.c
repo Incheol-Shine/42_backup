@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/27 15:31:04 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/27 15:31:04 by incshin          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdio.h>
 #include "libft.h"
 #include <stdlib.h>
@@ -59,7 +47,7 @@ int main(void)
 		*head = ((*head)->next);
 	}
 
-	ft_lstdelone(node2, &del);
+	ft_lstdelone(node2, del(node2));
 
 	free(node1);
 	free(node2);
