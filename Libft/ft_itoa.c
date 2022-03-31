@@ -6,12 +6,12 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:12:46 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/28 11:03:07 by incshin          ###   ########.fr       */
+/*   Updated: 2022/03/31 11:16:12 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 static int	arrsize(int n);
 

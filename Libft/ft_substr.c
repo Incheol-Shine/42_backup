@@ -6,11 +6,12 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 16:38:07 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/28 11:04:59 by incshin          ###   ########.fr       */
+/*   Updated: 2022/03/31 11:17:51 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

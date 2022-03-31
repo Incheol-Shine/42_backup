@@ -6,12 +6,12 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 14:13:16 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/28 11:04:08 by incshin          ###   ########.fr       */
+/*   Updated: 2022/03/31 11:16:32 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 static int	ft_arrsize(char const *s, char c);
 static char	**ft_free(char **arr, int n);

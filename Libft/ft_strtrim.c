@@ -6,12 +6,12 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:25:32 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/28 11:04:56 by incshin          ###   ########.fr       */
+/*   Updated: 2022/03/31 11:17:39 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 static int	ft_isinset(char c, char const *set);
 
