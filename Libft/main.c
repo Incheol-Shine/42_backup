@@ -2,11 +2,15 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void	f(void *content)
+void	*f(void *content)
 {
-	char 	*temp;
+	char	*temp;
+	char	*rtn;
+
 	temp = content;
-	temp[0] = '0';
+	rtn = ft_strdup(" ");
+	rtn[0] = temp[0] + 2;
+	return (rtn);
 }
 
 int main(void)
@@ -44,26 +48,12 @@ int main(void)
 	ft_lstadd_back(head, node4);
 	printf("value : %s\n", node4 -> content);
 	printf("next : %p\n", node4 -> next);
-	// while (*head)
-	// {
-	// 	printf("%s\n", (*head)->content);
-	// 	*head = ((*head)->next);
-	// }
-	ft_lstiter(node3, f);
-	printf("*head: %p\n", *head);
-	printf("*head->content: %s\n", (*head)->content);
-	printf("node3: %s\n", node3->content);
-	printf("node3->next: %s\n", node3->next->content);
-	printf("node2: %s\n", node2->content);
-	printf("node2->next: %s\n", node2->next->content);
-	printf("node1: %s\n", node1->content);
-	printf("node1->next: %s\n", node1->next->content);
-	printf("node4: %s\n", node4->content);
-	printf("node4->next: %s\n", node4->next->content);
-	// free(node1);
-	// free(node2);
-	// free(node3);
-	// free(node4);
-	
+
+	*head = ft_lstmap(node3, f, free);
+	while (*head)
+	{
+		printf("%s\n", (*head)->content);
+		*head = ((*head)->next);
+	}
     return (0);
 }

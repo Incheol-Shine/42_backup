@@ -6,12 +6,12 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:49:09 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/28 11:02:30 by incshin          ###   ########.fr       */
+/*   Updated: 2022/03/31 17:58:57 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 int	ft_atoi(const char *str)
 {
 	int	i;
