@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <stdio.h>
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
@@ -19,7 +20,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	temp = s;
 	while (n)
 	{
-		if (*temp == c)
+		if (*temp == (unsigned char)c)
 			return ((void *)temp);
 		temp++;
 		n--;
