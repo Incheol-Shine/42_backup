@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:08:59 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/31 11:17:12 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/22 16:47:55 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-	temp = (char *)malloc(len_s1 + len_s2 + 1);
+	temp = (char *)ft_calloc(len_s1 + len_s2 + 1, sizeof(char));
 	if (!temp)
 		return (0);
 	ft_strlcat(temp, s1, len_s1 + 1);

@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:12:52 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/28 11:04:12 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/22 13:51:39 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s);
 		s++;
 	}
+	if (!c)
+		return ((char *)s);
 	return (0);
 }

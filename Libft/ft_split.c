@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 14:13:16 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/31 11:16:32 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/22 16:20:26 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**ft_split(char const *s, char c)
 	int		cnt;
 	char	**temp;
 
-	temp = (char **)calloc((ft_arrsize(s, c) + 1), sizeof(char *));
+	temp = (char **)ft_calloc((ft_arrsize(s, c) + 1), sizeof(char *));
 	if (!temp)
 		return (0);
 	i = 0;

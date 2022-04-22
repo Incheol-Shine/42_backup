@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 12:50:38 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/28 11:03:33 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/22 18:56:36 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	temp_dst = dst;
 	temp_src = src;
+	if ((!temp_dst) || (!temp_src))
+		return (0);
 	while (n--)
 		temp_dst[n] = temp_src[n];
 	return (dst);
