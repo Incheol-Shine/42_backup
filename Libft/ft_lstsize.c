@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:08:18 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/28 11:08:26 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/27 16:03:41 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_lstsize(t_list *lst)
 	temp = lst;
 	while (temp)
 	{
-		temp = temp -> next;
+		temp = temp->next;
 		count++;
 	}
 	return (count);

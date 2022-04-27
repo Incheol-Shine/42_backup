@@ -2,29 +2,65 @@
 #include "libft.h"
 #include <string.h>
 #include <unistd.h>
+#include <stdlib.h>
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
-void	ft_print_result(char const *s)
+t_list	*ft_lstlast(t_list *lst);
+
+t_list	*ft_lstnewone(void *content)
 {
-	int		len;
+	t_list	*elem;
 
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
+	elem = (t_list *)malloc(sizeof(t_list));
+	if (!elem)
+		return (NULL);
+	if (!content)
+		elem->content = NULL;
+	else
+		elem->content = content;
+	elem->next = NULL;
+	return (elem);
 }
 
-int	main(void)
+int main(int argc, const char *argv[])
 {
-	const char *str;
+	int			i;
+	char		*content;
+	t_list		*val;
+	t_list		*elem;
+	t_list		*elem2;
+	t_list		*elem3;
+	t_list		*elem4;
+	char		*str = strdup("lorem");
+	char		*str2 = strdup("ipsum");
+	char		*str3 = strdup("dolor");
+	char		*str4 = strdup("sit");
 
-	char	*s1 = "A";
+	elem = ft_lstnewone(str);
+	elem2 = ft_lstnewone(str2);
+	elem3 = ft_lstnewone(str3);
+	elem4 = ft_lstnewone(str4);
 
-	char	*i1 = strnstr(s1, s1, 2);
-	char	*i2 = ft_strnstr(s1, s1, 2);
-	if (i1 == i2)
-		printf("success\n");
-	else
-		printf("fail\n");
+	elem->next = elem2;
+	elem2->next = elem3;
+	elem3->next = elem4;
+	val = ft_lstlast(elem);
+	i = 0;
+	content = val->content;
+	while (content[i])
+		write(1, &(content[i++]), 1);
+	write(1, "\n", 1);
+	elem->next = NULL;
+	val = ft_lstlast(elem);
+	content = val->content;
+	i = 0;
+	while (content[i])
+		write(1, &(content[i++]), 1);
+	write(1, "\n", 1);
+	elem = NULL;
+	val = ft_lstlast(elem);
+	if (val == NULL)
+		write(1, "NULL", 4);
+	write(1, "\n", 1);
+	return (0);
 }
