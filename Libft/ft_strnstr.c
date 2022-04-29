@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 17:51:52 by incshin           #+#    #+#             */
-/*   Updated: 2022/04/27 11:37:41 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/29 15:34:57 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	j = 0;
 	if (needle_len == 0)
 		return ((char *)haystack);
-	while (0 <= i && i + needle_len <= hay_len && i + needle_len <= len)
+	while (i + needle_len <= hay_len && i + needle_len <= len)
 	{
 		while (haystack[i] == needle[j])
 		{

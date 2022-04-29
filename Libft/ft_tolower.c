@@ -6,11 +6,9 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:09:35 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/28 11:05:02 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/29 15:14:34 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stddef.h>
 
 int	ft_tolower(int c)
 {

@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:58:43 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/31 17:45:02 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/29 20:59:11 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	**temp;
 
 	new = ft_lstnew(f(lst->content));
-	if(!new)
+	if (!new)
 		return (0);
 	if (lst->next)
 	{
 		temp = (t_list **)malloc(sizeof(t_list *));
+		if (!temp)
+			return (0);
 		*temp = ft_lstmap(lst->next, f, del);
 		if (!*temp)
 		{
@@ -32,6 +34,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			return (0);
 		}
 		ft_lstadd_front(temp, new);
+		free(temp);
 	}
 	return (new);
 }

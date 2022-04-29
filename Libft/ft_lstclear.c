@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:26:06 by incshin           #+#    #+#             */
-/*   Updated: 2022/04/27 16:15:24 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/29 16:42:49 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*cur;
 
-	if ((!lst) || (!del))
+	if (!lst)
 		return ;
 	while (*lst)
 	{

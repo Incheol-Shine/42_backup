@@ -6,11 +6,13 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 12:50:38 by incshin           #+#    #+#             */
-/*   Updated: 2022/04/22 19:29:25 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/29 19:38:16 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
@@ -24,4 +26,12 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	while (n--)
 		temp_dst[n] = temp_src[n];
 	return (dst);
+}
+
+int	main(void)
+{
+	char *dst = "     ";
+	const char *src = NULL;
+
+	printf("%s", (char *)ft_memcpy(dst, src, 3));
 }
