@@ -6,19 +6,16 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:12:52 by incshin           #+#    #+#             */
-/*   Updated: 2022/04/27 11:58:49 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/30 12:47:59 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != '\0')
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
 	if (!c)
 		return ((char *)s);
+	while (*s != '\0')
+		if (*(s++) == (char)c)
+			return ((char *)s);
 	return (0);
 }

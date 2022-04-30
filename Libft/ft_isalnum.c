@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:43:32 by incshin           #+#    #+#             */
-/*   Updated: 2022/03/28 11:02:49 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/30 11:14:34 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@ int	ft_isalnum(int c)
 	if (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z')
 		|| ('0' <= c && c <= '9'))
 		return (1);
-	else
-		return (0);
+	return (0);
+}
+int main(void)
+{
+	ft_isalnum(5);
+	return(0);
 }

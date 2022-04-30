@@ -6,14 +6,13 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:25:32 by incshin           #+#    #+#             */
-/*   Updated: 2022/04/29 16:05:51 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/30 15:41:36 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int	ft_isinset(char c, char const *set);
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	left;

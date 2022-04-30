@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 12:11:57 by incshin           #+#    #+#             */
-/*   Updated: 2022/04/29 19:30:33 by incshin          ###   ########.fr       */
+/*   Updated: 2022/04/30 15:41:34 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,3 @@ void	*ft_bzero(void *s, size_t n)
 		temp[--n] = 0;
 	return (s);
 }
-
