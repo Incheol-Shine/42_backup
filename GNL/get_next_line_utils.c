@@ -6,23 +6,31 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:03:51 by incshin           #+#    #+#             */
-/*   Updated: 2022/05/11 15:07:42 by incshin          ###   ########.fr       */
+/*   Updated: 2022/05/12 17:49:22 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "get_next_line.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+t_list	*ft_lstlast(t_list *lst)
 {
-	char		*temp_dst;
-	const char	*temp_src;
-
-	temp_dst = dst;
-	temp_src = src;
-	if ((!temp_dst) && (!temp_src))
+	if (!lst)
 		return (0);
-	while (n--)
-		temp_dst[n] = temp_src[n];
-	return (dst);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+void	ft_lstadd_back(t_list **head, t_list *new)
+{
+	if (!*head)
+		*head = new;
+	else
+		ft_lstlast(*head)->next = new;
+}
+
+void	ft_lstadd_front(t_list **head, t_list *new)
+{
+	new->next = *head;
+	*head = new;
 }
