@@ -1,4 +1,5 @@
 #include <fcntl.h>
+#include <stdio.h>
 #include "get_next_line.h"
 
 // int main(void)
@@ -29,7 +30,7 @@ int main(void)
 	ssize_t	fd;
 
 	if (0 <= (fd = open( "./baudelaire.txt", O_RDONLY)))
-		for (int i=0; i<3; i++)
+		for (int i=0; i<1; i++)
 			get_next_line(fd);
 	return (0);
 }
