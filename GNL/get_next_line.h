@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:03:54 by incshin           #+#    #+#             */
-/*   Updated: 2022/05/13 12:21:11 by incshin          ###   ########.fr       */
+/*   Updated: 2022/05/16 16:54:42 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# define BUFF_SIZE 5
+# define BUFF_SIZE 30
 typedef struct	s_param
 {
 	struct s_list	**head;
