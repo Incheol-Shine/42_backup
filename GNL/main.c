@@ -30,7 +30,43 @@ int main(void)
 	ssize_t	fd;
 
 	if (0 <= (fd = open( "./baudelaire.txt", O_RDONLY)))
-		for (int i=0; i<3; i++)
-			get_next_line(fd);
+		for (int i=0; i<60; i++)
+			printf("%s||", get_next_line(fd));
 	return (0);
 }
+
+// int main(void)
+// {
+// 	t_list	**head;
+// 	t_list	*new;
+// 	ssize_t	fd;
+
+// 	if (0 <= (fd = open( "./baudelaire.txt", O_RDONLY)))
+// 	{
+// 		head = (t_list **)malloc(sizeof(t_list *));
+// 		if (!head)
+// 			return (0);
+// 		new = ft_lstnew(fd);
+// 		if (!new)
+// 			return (0);
+// 		ft_lstadd_back(head, new);
+
+// 		new = ft_lstnew(fd);
+// 		if (!new)
+// 			return (0);
+// 		ft_lstadd_back(head, new);
+
+// 		new = ft_lstnew(fd);
+// 		if (!new)
+// 			return (0);
+// 		ft_lstadd_back(head, new);
+// 		view(*head);
+
+// 		// lstdel((*head)->next);
+// 		lstdel(*head);
+// 		view(*head);
+
+// 		cpydel(line, head, size)
+// 	}
+// 	return (0);
+// }

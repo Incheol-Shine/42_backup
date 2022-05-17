@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:03:54 by incshin           #+#    #+#             */
-/*   Updated: 2022/05/16 16:54:42 by incshin          ###   ########.fr       */
+/*   Updated: 2022/05/17 17:37:29 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# define BUFF_SIZE 30
+# define BUFF_SIZE 10
 typedef struct	s_param
 {
 	struct s_list	**head;
@@ -34,5 +34,9 @@ t_list	*ft_lstnew(ssize_t fd);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **head, t_list *new);
+void	*ft_memmove(void *dst, const void *src, size_t n);
+void	view(t_list *head);
+void	lstdel(t_list *node);
+void	cpydel(char *line, t_list **head, size_t size);
 
 #endif
