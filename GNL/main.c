@@ -28,10 +28,15 @@
 int main(void)
 {
 	ssize_t	fd;
+	char 	*line;
 
 	if (0 <= (fd = open( "./baudelaire.txt", O_RDONLY)))
 		for (int i=0; i<60; i++)
-			printf("%s||", get_next_line(fd));
+		{
+			line = get_next_line(fd);
+			printf("%s|\n", line);
+			free(line);
+		}
 	return (0);
 }
 
