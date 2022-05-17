@@ -31,10 +31,10 @@ int main(void)
 	char 	*line;
 
 	if (0 <= (fd = open( "./baudelaire.txt", O_RDONLY)))
-		for (int i=0; i<60; i++)
+		for (int i=0; i<62; i++)
 		{
 			line = get_next_line(fd);
-			printf("%s|\n", line);
+			printf("%s\n", line);
 			free(line);
 		}
 	return (0);

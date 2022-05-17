@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:03:30 by incshin           #+#    #+#             */
-/*   Updated: 2022/05/17 18:31:13 by incshin          ###   ########.fr       */
+/*   Updated: 2022/05/17 19:12:32 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	*get_next_line(ssize_t fd)
 		i = temp->offset;
 		while (i < (temp->rd_size))
 		{
-			if ((temp->buff)[i++] == '\n')
+			if ((temp->buff)[i] == '\n' || (temp->buff)[i] == EOF)
 			{
 				line = (char *)malloc(size + 1);
 				line[size] = '\0';
@@ -111,12 +111,13 @@ char	*get_next_line(ssize_t fd)
 				free(head);
 				return (line);
 			}
+			i++;
 			size++;
 		}
 		if (!(temp->next))
 		{
 			new = ft_lstnew(fd);
-			if (!new)
+			if ((!new) || (!new->rd_size))
 				return (0);
 			ft_lstadd_back(head, new);
 			temp = new;
