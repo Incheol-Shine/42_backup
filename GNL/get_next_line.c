@@ -54,12 +54,9 @@ void	lstdel(t_list *node)
 
 void	cpydel(char *line, t_list **head, size_t size)
 {
-	char	*temp;
-	
-	temp = line;
 	while (*head)
 	{
-		while ((*head)->offset < (*head)->rd_size)
+		while ((*head)->offset < (size_t)(*head)->rd_size)
 		{
 			// printf("why segfault %zu, line: %s\n", size, temp);
 			if (!(size--))
