@@ -103,7 +103,7 @@ char	*get_next_line(ssize_t fd)
 		i = temp->offset;
 		while (i < (temp->rd_size))
 		{
-			if ((temp->buff)[i] == '\n' || (temp->buff)[i] == EOF)
+			if ((temp->buff)[i++] == '\n')
 			{
 				line = (char *)malloc(size + 1);
 				line[size] = '\0';
@@ -111,7 +111,6 @@ char	*get_next_line(ssize_t fd)
 				free(head);
 				return (line);
 			}
-			i++;
 			size++;
 		}
 		if (!(temp->next))
