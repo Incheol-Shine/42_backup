@@ -1,0 +1,390 @@
+2022-05-20 11:12:26,090 [main][INFO]: current_dir: GNL
+2022-05-20 11:12:26,091 [c selector][INFO]: Testing path: /Users/incshin/InShine/GNL/ex00
+2022-05-20 11:12:26,091 [utils][INFO]: Makefile path: /Users/incshin/InShine/GNL/Makefile
+2022-05-20 11:12:26,091 [gnl][INFO]: Testing: get_next_line.c
+2022-05-20 11:12:26,092 [main][INFO]: Test params: TestRunInfo(source_dir=PosixPath('/Users/incshin/InShine/GNL'), base_dir=PosixPath('/Users/incshin/francinette'), ex_to_execute=None, args=Namespace(bonus=False, clean=False, exercise=[], git_repo=None, ignore_norm=False, mandatory=False, strict=False, testers=None, timeout='10', update=False, verbose=False), has_bonus=False)
+2022-05-20 11:12:26,098 [base][INFO]: copying /Users/incshin/InShine/GNL to /Users/incshin/francinette/temp/get_next_line
+2022-05-20 11:12:26,100 [base][ERROR]: 
+Traceback (most recent call last):
+  File "/Users/incshin/francinette/testers/BaseTester.py", line 119, in prepare_ex_files
+    repo = git.Repo(self.temp_dir)
+  File "/Users/incshin/francinette/venv/lib/python3.8/site-packages/git/repo/base.py", line 224, in __init__
+    self.working_dir: Optional[PathLike] = self._working_tree_dir or self.common_dir
+  File "/Users/incshin/francinette/venv/lib/python3.8/site-packages/git/repo/base.py", line 307, in common_dir
+    raise InvalidGitRepositoryError()
+git.exc.InvalidGitRepositoryError
+2022-05-20 11:12:26,180 [base][INFO]: On directory /Users/incshin/francinette/temp/get_next_line
+2022-05-20 11:12:26,369 [base][INFO]: CompletedProcess(args=['norminette'], returncode=1, stdout='get_next_line.c: Error!\nError: NL_AFTER_VAR_DECL    (line:  20, col:   1):\tVariable declarations must be followed by a newline\nError: LINE_TOO_LONG        (line:  36, col:  82):\tline too long\nError: WRONG_SCOPE_COMMENT  (line:  61, col:  13):\tComment is invalid in this scope\nError: TOO_MANY_VARS_FUNC   (line:  80, col:   1):\tToo many variables declarations in a function\nError: TOO_MANY_VARS_FUNC   (line:  81, col:   1):\tToo many variables declarations in a function\nError: TOO_MANY_LINES       (line: 123, col:   1):\tFunction has more than 25 lines\nget_next_line.h: Error!\nError: NL_AFTER_PREPROC     (line:  20, col:   1):\tPreprocessor statement must be followed by a newline\nError: TAB_REPLACE_SPACE    (line:  20, col:   1):\tFound tab when expecting space\nError: TAB_REPLACE_SPACE    (line:  24, col:   1):\tFound tab when expecting space\nget_next_line_utils.c: Error!\nError: BRACE_SHOULD_EOL     (line:  55, col:   1):\tExpected newline after brace\n', stderr='')
+2022-05-20 11:12:26,428 [base][INFO]: copying /Users/incshin/InShine/GNL to /Users/incshin/francinette/temp/get_next_line/__my_srcs
+2022-05-20 11:12:26,431 [base][INFO]: bonus investigation: ['bonus :\n']
+2022-05-20 11:12:26,431 [base][INFO]: To execute: []
+2022-05-20 11:12:26,431 [base][INFO]: Missing: []
+2022-05-20 11:12:26,431 [base][INFO]: Calling 'make fclean bonus' on directory /Users/incshin/francinette/temp/get_next_line
+2022-05-20 11:12:28,250 [base][INFO]: CompletedProcess(args=['make', 'fclean', 'bonus'], returncode=2, stdout='rm -f -f get_next_line.o get_next_line_utils.o get_next_line_bonus.o get_next_line_utils_bonus.o\nrm -f get_next_line.a\nmake WITH_BONUS=1\ngcc -Wall -Wextra -Werror -c get_next_line.c\ngcc -Wall -Wextra -Werror -c get_next_line_utils.c\n', stderr="make[1]: *** No rule to make target `get_next_line_bonus.o', needed by `get_next_line.a'.  Stop.\nmake: *** [bonus] Error 2\n")
+2022-05-20 11:12:28,328 [main][ERROR]: Problem creating the library
+Traceback (most recent call last):
+  File "/Users/incshin/francinette/main.py", line 199, in main
+    project(info)
+  File "/Users/incshin/francinette/testers/get_next_line/GetNextLine.py", line 26, in __init__
+    self.execute_testers()
+  File "/Users/incshin/francinette/testers/BaseTester.py", line 76, in execute_testers
+    self.compile_source()
+  File "/Users/incshin/francinette/testers/BaseTester.py", line 174, in compile_source
+    run_command(command, spinner)
+  File "/Users/incshin/francinette/testers/BaseTester.py", line 28, in run_command
+    raise Exception("Problem creating the library")
+Exception: Problem creating the library
+2022-05-20 11:15:51,293 [main][INFO]: current_dir: GNL
+2022-05-20 11:15:51,293 [c selector][INFO]: Testing path: /Users/incshin/InShine/GNL/ex00
+2022-05-20 11:15:51,293 [utils][INFO]: Makefile path: /Users/incshin/InShine/GNL/Makefile
+2022-05-20 11:15:51,294 [gnl][INFO]: Testing: get_next_line.c
+2022-05-20 11:15:51,294 [main][INFO]: Test params: TestRunInfo(source_dir=PosixPath('/Users/incshin/InShine/GNL'), base_dir=PosixPath('/Users/incshin/francinette'), ex_to_execute=None, args=Namespace(bonus=False, clean=False, exercise=[], git_repo=None, ignore_norm=False, mandatory=False, strict=False, testers=None, timeout='10', update=False, verbose=False), has_bonus=False)
+2022-05-20 11:15:51,294 [gnl][INFO]: Has bonus
+2022-05-20 11:15:51,299 [base][INFO]: Removing already present directory /Users/incshin/francinette/temp/get_next_line
+2022-05-20 11:15:51,300 [base][INFO]: copying /Users/incshin/InShine/GNL to /Users/incshin/francinette/temp/get_next_line
+2022-05-20 11:15:51,302 [base][ERROR]: 
+Traceback (most recent call last):
+  File "/Users/incshin/francinette/testers/BaseTester.py", line 119, in prepare_ex_files
+    repo = git.Repo(self.temp_dir)
+  File "/Users/incshin/francinette/venv/lib/python3.8/site-packages/git/repo/base.py", line 224, in __init__
+    self.working_dir: Optional[PathLike] = self._working_tree_dir or self.common_dir
+  File "/Users/incshin/francinette/venv/lib/python3.8/site-packages/git/repo/base.py", line 307, in common_dir
+    raise InvalidGitRepositoryError()
+git.exc.InvalidGitRepositoryError
+2022-05-20 11:15:51,385 [base][INFO]: On directory /Users/incshin/francinette/temp/get_next_line
+2022-05-20 11:15:51,573 [base][INFO]: CompletedProcess(args=['norminette'], returncode=1, stdout='get_next_line.c: Error!\nError: NL_AFTER_VAR_DECL    (line:  20, col:   1):\tVariable declarations must be followed by a newline\nError: LINE_TOO_LONG        (line:  36, col:  82):\tline too long\nError: WRONG_SCOPE_COMMENT  (line:  61, col:  13):\tComment is invalid in this scope\nError: TOO_MANY_VARS_FUNC   (line:  80, col:   1):\tToo many variables declarations in a function\nError: TOO_MANY_VARS_FUNC   (line:  81, col:   1):\tToo many variables declarations in a function\nError: TOO_MANY_LINES       (line: 123, col:   1):\tFunction has more than 25 lines\nget_next_line.h: Error!\nError: NL_AFTER_PREPROC     (line:  20, col:   1):\tPreprocessor statement must be followed by a newline\nError: TAB_REPLACE_SPACE    (line:  20, col:   1):\tFound tab when expecting space\nError: TAB_REPLACE_SPACE    (line:  24, col:   1):\tFound tab when expecting space\nget_next_line_bonus.c: Error!\nError: NL_AFTER_VAR_DECL    (line:  20, col:   1):\tVariable declarations must be followed by a newline\nError: LINE_TOO_LONG        (line:  36, col:  82):\tline too long\nError: WRONG_SCOPE_COMMENT  (line:  61, col:  13):\tComment is invalid in this scope\nError: TOO_MANY_VARS_FUNC   (line:  80, col:   1):\tToo many variables declarations in a function\nError: TOO_MANY_VARS_FUNC   (line:  81, col:   1):\tToo many variables declarations in a function\nError: TOO_MANY_LINES       (line: 123, col:   1):\tFunction has more than 25 lines\nget_next_line_bonus.h: OK!\nget_next_line_utils.c: Error!\nError: BRACE_SHOULD_EOL     (line:  55, col:   1):\tExpected newline after brace\nget_next_line_utils_bonus.c: Error!\nError: BRACE_SHOULD_EOL     (line:  55, col:   1):\tExpected newline after brace\n', stderr='')
+2022-05-20 11:15:51,632 [base][INFO]: copying /Users/incshin/InShine/GNL to /Users/incshin/francinette/temp/get_next_line/__my_srcs
+2022-05-20 11:15:51,636 [base][INFO]: bonus investigation: ['bonus :\n']
+2022-05-20 11:15:51,636 [base][INFO]: To execute: []
+2022-05-20 11:15:51,636 [base][INFO]: Missing: []
+2022-05-20 11:15:51,636 [base][INFO]: Calling 'make fclean bonus' on directory /Users/incshin/francinette/temp/get_next_line
+2022-05-20 11:15:52,325 [base][INFO]: CompletedProcess(args=['make', 'fclean', 'bonus'], returncode=0, stdout='rm -f -f get_next_line.o get_next_line_utils.o get_next_line_bonus.o get_next_line_utils_bonus.o\nrm -f get_next_line.a\nmake WITH_BONUS=1\ngcc -Wall -Wextra -Werror -c get_next_line.c\ngcc -Wall -Wextra -Werror -c get_next_line_utils.c\ngcc -Wall -Wextra -Werror -c get_next_line_bonus.c\ngcc -Wall -Wextra -Werror -c get_next_line_utils_bonus.c\nar -rcs get_next_line.a get_next_line.o get_next_line_utils.o get_next_line_bonus.o get_next_line_utils_bonus.o\n', stderr='')
+2022-05-20 11:15:52,368 [base][INFO]: Copying from /Users/incshin/francinette/tests/get_next_line/gnlTester to /Users/incshin/francinette/temp/get_next_line/gnlTester
+2022-05-20 11:15:52,377 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/gnlTester
+2022-05-20 11:15:52,378 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/gnlTester
+2022-05-20 11:16:02,957 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/gnlTester
+2022-05-20 11:16:19,455 [base][INFO]: Copying from /Users/incshin/francinette/tests/get_next_line/fsoares to /Users/incshin/francinette/temp/get_next_line/fsoares
+2022-05-20 11:16:19,462 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/fsoares
+2022-05-20 11:16:19,462 [base_exec][INFO]: executing: make TIMEOUT=10  mandatory
+2022-05-20 11:16:19,462 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/fsoares
+2022-05-20 11:16:23,287 [base_exec][INFO]: BUFFER_SIZE: 1
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+BUFFER_SIZE: 10
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+BUFFER_SIZE: 1000000
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+
+2022-05-20 11:16:23,287 [base_exec][INFO]: executing: make TIMEOUT=10  bonus
+2022-05-20 11:16:23,288 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/fsoares
+2022-05-20 11:16:27,782 [base_exec][INFO]: BONUS!
+BUFFER_SIZE: 1
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+BUFFER_SIZE: 10
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+BUFFER_SIZE: 1000000
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+bonus.c:49:11: error: implicit declaration of function 'get_next_line' is
+      invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                        temp = get_next_line(fd);
+                               ^
+bonus.c:49:9: error: incompatible integer to pointer conversion assigning to
+      'char *' from 'int' [-Werror,-Wint-conversion]
+                        temp = get_next_line(fd);
+                             ^ ~~~~~~~~~~~~~~~~~
+./file_utils.h:8:3: note: expanded from macro 'TEST'
+                code;                                \
+                ^~~~
+./utils/utils.h:138:3: note: expanded from macro 'BASE_TEST'
+                code;                                   \
+                ^~~~
+./utils/utils.h:96:4: note: expanded from macro 'TEST_WRAPPER'
+                        code;                                         \
+                        ^~~~
+2 errors generated.
+make: [bonus] Error 1 (ignored)
+bonus.c:49:11: error: implicit declaration of function 'get_next_line' is
+      invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                        temp = get_next_line(fd);
+                               ^
+bonus.c:49:9: error: incompatible integer to pointer conversion assigning to
+      'char *' from 'int' [-Werror,-Wint-conversion]
+                        temp = get_next_line(fd);
+                             ^ ~~~~~~~~~~~~~~~~~
+./file_utils.h:8:3: note: expanded from macro 'TEST'
+                code;                                \
+                ^~~~
+./utils/utils.h:138:3: note: expanded from macro 'BASE_TEST'
+                code;                                   \
+                ^~~~
+./utils/utils.h:96:4: note: expanded from macro 'TEST_WRAPPER'
+                        code;                                         \
+                        ^~~~
+2 errors generated.
+make: [bonus] Error 1 (ignored)
+bonus.c:49:11: error: implicit declaration of function 'get_next_line' is
+      invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                        temp = get_next_line(fd);
+                               ^
+bonus.c:49:9: error: incompatible integer to pointer conversion assigning to
+      'char *' from 'int' [-Werror,-Wint-conversion]
+                        temp = get_next_line(fd);
+                             ^ ~~~~~~~~~~~~~~~~~
+./file_utils.h:8:3: note: expanded from macro 'TEST'
+                code;                                \
+                ^~~~
+./utils/utils.h:138:3: note: expanded from macro 'BASE_TEST'
+                code;                                   \
+                ^~~~
+./utils/utils.h:96:4: note: expanded from macro 'TEST_WRAPPER'
+                        code;                                         \
+                        ^~~~
+2 errors generated.
+make: [bonus] Error 1 (ignored)
+
+2022-05-20 11:16:28,826 [lldb][INFO]: CompletedProcess(args='lldb test1.out -s test1_out_lldb_commands --batch | tee test1_out_lldb_commands.out', returncode=0, stdout='(lldb) target create "test1.out"\nCurrent executable set to \'/Users/incshin/francinette/temp/get_next_line/fsoares/test1.out\' (x86_64).\n(lldb) command source -s 0 \'test1_out_lldb_commands\'\nExecuting commands in \'/Users/incshin/francinette/temp/get_next_line/fsoares/test1_out_lldb_commands\'.\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address get_next_line+25\n      Address: test1.out[0x000000010000d289] (test1.out.__TEXT.__text + 45097)\n      Summary: test1.out`get_next_line + 25 at get_next_line.c:83:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1229\n      Address: test1.out[0x00000001000027dd] (test1.out.__TEXT.__text + 1405)\n      Summary: test1.out`main + 1229 at tester.c:17:2\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address ft_lstnew+22\n      Address: test1.out[0x000000010000c8d6] (test1.out.__TEXT.__text + 42614)\n      Summary: test1.out`ft_lstnew + 22 at get_next_line.c:20:7\n(lldb) image lookup --address get_next_line+158\n      Address: test1.out[0x000000010000d30e] (test1.out.__TEXT.__text + 45230)\n      Summary: test1.out`get_next_line + 158 at get_next_line.c:90:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1229\n      Address: test1.out[0x00000001000027dd] (test1.out.__TEXT.__text + 1405)\n      Summary: test1.out`main + 1229 at tester.c:17:2\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address get_next_line+25\n      Address: test1.out[0x000000010000d289] (test1.out.__TEXT.__text + 45097)\n      Summary: test1.out`get_next_line + 25 at get_next_line.c:83:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1301\n      Address: test1.out[0x0000000100002825] (test1.out.__TEXT.__text + 1477)\n      Summary: test1.out`main + 1301 at tester.c:17:2\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address ft_lstnew+22\n      Address: test1.out[0x000000010000c8d6] (test1.out.__TEXT.__text + 42614)\n      Summary: test1.out`ft_lstnew + 22 at get_next_line.c:20:7\n(lldb) image lookup --address get_next_line+158\n      Address: test1.out[0x000000010000d30e] (test1.out.__TEXT.__text + 45230)\n      Summary: test1.out`get_next_line + 158 at get_next_line.c:90:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1301\n      Address: test1.out[0x0000000100002825] (test1.out.__TEXT.__text + 1477)\n      Summary: test1.out`main + 1301 at tester.c:17:2\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address get_next_line+25\n      Address: test1.out[0x000000010000d289] (test1.out.__TEXT.__text + 45097)\n      Summary: test1.out`get_next_line + 25 at get_next_line.c:83:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1412\n      Address: test1.out[0x0000000100002894] (test1.out.__TEXT.__text + 1588)\n      Summary: test1.out`main + 1412 at tester.c:17:2\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address ft_lstnew+22\n      Address: test1.out[0x000000010000c8d6] (test1.out.__TEXT.__text + 42614)\n      Summary: test1.out`ft_lstnew + 22 at get_next_line.c:20:7\n(lldb) image lookup --address get_next_line+158\n      Address: test1.out[0x000000010000d30e] (test1.out.__TEXT.__text + 45230)\n      Summary: test1.out`get_next_line + 158 at get_next_line.c:90:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1412\n      Address: test1.out[0x0000000100002894] (test1.out.__TEXT.__text + 1588)\n      Summary: test1.out`main + 1412 at tester.c:17:2\n(lldb) image lookup --address sigsegv+33\n      Address: test1.out[0x00000001000096f1] (test1.out.__TEXT.__text + 29841)\n      Summary: test1.out`sigsegv + 33 at utils.c:53:1\n(lldb) image lookup --address ft_lstadd_back+218\n      Address: test1.out[0x000000010000d84a] (test1.out.__TEXT.__text + 46570)\n      Summary: test1.out`ft_lstadd_back + 218 at get_next_line_utils.c:29:27\n(lldb) image lookup --address get_next_line+206\n      Address: test1.out[0x000000010000d33e] (test1.out.__TEXT.__text + 45278)\n      Summary: test1.out`get_next_line + 206 at get_next_line.c:94:13\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+2713\n      Address: test1.out[0x0000000100002da9] (test1.out.__TEXT.__text + 2889)\n      Summary: test1.out`main + 2713 at tester.c:25:2\n(lldb) image lookup --address sigsegv+33\n      Address: test1.out[0x00000001000096f1] (test1.out.__TEXT.__text + 29841)\n      Summary: test1.out`sigsegv + 33 at utils.c:53:1\n(lldb) image lookup --address ft_lstadd_back+218\n      Address: test1.out[0x000000010000d84a] (test1.out.__TEXT.__text + 46570)\n      Summary: test1.out`ft_lstadd_back + 218 at get_next_line_utils.c:29:27\n(lldb) image lookup --address get_next_line+206\n      Address: test1.out[0x000000010000d33e] (test1.out.__TEXT.__text + 45278)\n      Summary: test1.out`get_next_line + 206 at get_next_line.c:94:13\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+4090\n      Address: test1.out[0x000000010000330a] (test1.out.__TEXT.__text + 4266)\n      Summary: test1.out`main + 4090 at tester.c:31:2\n(lldb) image lookup --address sigsegv+33\n      Address: test1.out[0x00000001000096f1] (test1.out.__TEXT.__text + 29841)\n      Summary: test1.out`sigsegv + 33 at utils.c:53:1\n(lldb) image lookup --address ft_lstadd_back+218\n      Address: test1.out[0x000000010000d84a] (test1.out.__TEXT.__text + 46570)\n      Summary: test1.out`ft_lstadd_back + 218 at get_next_line_utils.c:29:27\n(lldb) image lookup --address get_next_line+206\n      Address: test1.out[0x000000010000d33e] (test1.out.__TEXT.__text + 45278)\n      Summary: test1.out`get_next_line + 206 at get_next_line.c:94:13\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+5467\n      Address: test1.out[0x000000010000386b] (test1.out.__TEXT.__text + 5643)\n      Summary: test1.out`main + 5467 at tester.c:37:2\n(lldb) image lookup --address sigsegv+33\n      Address: test1.out[0x00000001000096f1] (test1.out.__TEXT.__text + 29841)\n      Summary: test1.out`sigsegv + 33 at utils.c:53:1\n(lldb) image lookup --address ft_lstadd_back+218\n      Address: test1.out[0x000000010000d84a] (test1.out.__TEXT.__text + 46570)\n      Summary: test1.out`ft_lstadd_back + 218 at get_next_line_utils.c:29:27\n(lldb) image lookup --address get_next_line+206\n      Address: test1.out[0x000000010000d33e] (test1.out.__TEXT.__text + 45278)\n      Summary: test1.out`get_next_line + 206 at get_next_line.c:94:13\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+6844\n      Address: test1.out[0x0000000100003dcc] (test1.out.__TEXT.__text + 7020)\n      Summary: test1.out`main + 6844 at tester.c:43:2\n', stderr='')
+2022-05-20 11:16:28,864 [base][WARNING]: norminette errors: ['get_next_line.c', 'get_next_line.h', 'get_next_line_bonus.c', 'get_next_line_utils.c', 'get_next_line_utils_bonus.c']
+2022-05-20 11:16:28,864 [base][WARNING]: missing functions: []
+2022-05-20 11:16:28,864 [base][WARNING]: errors in functions: [('gnlTester', ['gnlTester']), ('fsoares', ['fsoares'])]
+2022-05-20 11:18:37,855 [main][INFO]: current_dir: GNL
+2022-05-20 11:18:37,856 [c selector][INFO]: Testing path: /Users/incshin/InShine/GNL/ex00
+2022-05-20 11:18:37,856 [utils][INFO]: Makefile path: /Users/incshin/InShine/GNL/Makefile
+2022-05-20 11:18:37,856 [gnl][INFO]: Testing: get_next_line.c
+2022-05-20 11:18:37,856 [main][INFO]: Test params: TestRunInfo(source_dir=PosixPath('/Users/incshin/InShine/GNL'), base_dir=PosixPath('/Users/incshin/francinette'), ex_to_execute=None, args=Namespace(bonus=False, clean=False, exercise=[], git_repo=None, ignore_norm=False, mandatory=False, strict=False, testers=None, timeout='10', update=False, verbose=False), has_bonus=False)
+2022-05-20 11:18:37,856 [gnl][INFO]: Has bonus
+2022-05-20 11:18:37,862 [base][INFO]: Removing already present directory /Users/incshin/francinette/temp/get_next_line
+2022-05-20 11:18:37,866 [base][INFO]: copying /Users/incshin/InShine/GNL to /Users/incshin/francinette/temp/get_next_line
+2022-05-20 11:18:37,869 [base][ERROR]: 
+Traceback (most recent call last):
+  File "/Users/incshin/francinette/testers/BaseTester.py", line 119, in prepare_ex_files
+    repo = git.Repo(self.temp_dir)
+  File "/Users/incshin/francinette/venv/lib/python3.8/site-packages/git/repo/base.py", line 224, in __init__
+    self.working_dir: Optional[PathLike] = self._working_tree_dir or self.common_dir
+  File "/Users/incshin/francinette/venv/lib/python3.8/site-packages/git/repo/base.py", line 307, in common_dir
+    raise InvalidGitRepositoryError()
+git.exc.InvalidGitRepositoryError
+2022-05-20 11:18:37,945 [base][INFO]: On directory /Users/incshin/francinette/temp/get_next_line
+2022-05-20 11:18:38,131 [base][INFO]: CompletedProcess(args=['norminette'], returncode=1, stdout='get_next_line.c: Error!\nError: NL_AFTER_VAR_DECL    (line:  20, col:   1):\tVariable declarations must be followed by a newline\nError: LINE_TOO_LONG        (line:  36, col:  82):\tline too long\nError: WRONG_SCOPE_COMMENT  (line:  61, col:  13):\tComment is invalid in this scope\nError: TOO_MANY_VARS_FUNC   (line:  80, col:   1):\tToo many variables declarations in a function\nError: TOO_MANY_VARS_FUNC   (line:  81, col:   1):\tToo many variables declarations in a function\nError: TOO_MANY_LINES       (line: 123, col:   1):\tFunction has more than 25 lines\nget_next_line.h: Error!\nError: NL_AFTER_PREPROC     (line:  20, col:   1):\tPreprocessor statement must be followed by a newline\nError: TAB_REPLACE_SPACE    (line:  20, col:   1):\tFound tab when expecting space\nError: TAB_REPLACE_SPACE    (line:  24, col:   1):\tFound tab when expecting space\nget_next_line_bonus.c: Error!\nError: NL_AFTER_VAR_DECL    (line:  20, col:   1):\tVariable declarations must be followed by a newline\nError: LINE_TOO_LONG        (line:  36, col:  82):\tline too long\nError: WRONG_SCOPE_COMMENT  (line:  61, col:  13):\tComment is invalid in this scope\nError: TOO_MANY_VARS_FUNC   (line:  80, col:   1):\tToo many variables declarations in a function\nError: TOO_MANY_VARS_FUNC   (line:  81, col:   1):\tToo many variables declarations in a function\nError: TOO_MANY_LINES       (line: 123, col:   1):\tFunction has more than 25 lines\nget_next_line_bonus.h: OK!\nget_next_line_utils.c: Error!\nError: BRACE_SHOULD_EOL     (line:  55, col:   1):\tExpected newline after brace\nget_next_line_utils_bonus.c: Error!\nError: BRACE_SHOULD_EOL     (line:  55, col:   1):\tExpected newline after brace\n', stderr='')
+2022-05-20 11:18:38,195 [base][INFO]: copying /Users/incshin/InShine/GNL to /Users/incshin/francinette/temp/get_next_line/__my_srcs
+2022-05-20 11:18:38,198 [base][INFO]: bonus investigation: ['bonus :\n']
+2022-05-20 11:18:38,198 [base][INFO]: To execute: []
+2022-05-20 11:18:38,198 [base][INFO]: Missing: []
+2022-05-20 11:18:38,199 [base][INFO]: Calling 'make fclean bonus' on directory /Users/incshin/francinette/temp/get_next_line
+2022-05-20 11:18:38,386 [base][INFO]: CompletedProcess(args=['make', 'fclean', 'bonus'], returncode=0, stdout='rm -f -f get_next_line.o get_next_line_utils.o get_next_line_bonus.o get_next_line_utils_bonus.o\nrm -f get_next_line.a\nmake WITH_BONUS=1\ngcc -Wall -Wextra -Werror -c get_next_line.c\ngcc -Wall -Wextra -Werror -c get_next_line_utils.c\ngcc -Wall -Wextra -Werror -c get_next_line_bonus.c\ngcc -Wall -Wextra -Werror -c get_next_line_utils_bonus.c\nar -rcs get_next_line.a get_next_line.o get_next_line_utils.o get_next_line_bonus.o get_next_line_utils_bonus.o\n', stderr='')
+2022-05-20 11:18:38,446 [base][INFO]: Copying from /Users/incshin/francinette/tests/get_next_line/gnlTester to /Users/incshin/francinette/temp/get_next_line/gnlTester
+2022-05-20 11:18:38,457 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/gnlTester
+2022-05-20 11:18:38,458 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/gnlTester
+2022-05-20 11:18:48,266 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/gnlTester
+2022-05-20 11:19:05,126 [base][INFO]: Copying from /Users/incshin/francinette/tests/get_next_line/fsoares to /Users/incshin/francinette/temp/get_next_line/fsoares
+2022-05-20 11:19:05,131 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/fsoares
+2022-05-20 11:19:05,131 [base_exec][INFO]: executing: make TIMEOUT=10  mandatory
+2022-05-20 11:19:05,132 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/fsoares
+2022-05-20 11:19:08,932 [base_exec][INFO]: BUFFER_SIZE: 1
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+BUFFER_SIZE: 10
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+BUFFER_SIZE: 1000000
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+
+2022-05-20 11:19:08,933 [base_exec][INFO]: executing: make TIMEOUT=10  bonus
+2022-05-20 11:19:08,933 [base_exec][INFO]: on dir /Users/incshin/francinette/temp/get_next_line/fsoares
+2022-05-20 11:19:13,426 [base_exec][INFO]: BONUS!
+BUFFER_SIZE: 1
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+BUFFER_SIZE: 10
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+BUFFER_SIZE: 1000000
+Invalid fd          : 1.OK 2.OK 3.OK 4.KO_LEAKS 
+empty.txt           : 1.KO Segfault
+1char.txt           : 1.KO Segfault
+one_line_no_nl.txt  : 1.KO Segfault
+only_nl.txt         : 1.KO Segfault
+multiple_nl.txt     : 1.KO Segfault
+variable_nls.txt    : 1.KO Segfault
+lines_around_10.txt : 1.KO Segfault
+giant_line.txt      : 1.KO Segfault
+giant_line_nl.txt   : 1.KO Segfault
+stdin               : 1.KO Segfault
+
+bonus.c:49:11: error: implicit declaration of function 'get_next_line' is
+      invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                        temp = get_next_line(fd);
+                               ^
+bonus.c:49:9: error: incompatible integer to pointer conversion assigning to
+      'char *' from 'int' [-Werror,-Wint-conversion]
+                        temp = get_next_line(fd);
+                             ^ ~~~~~~~~~~~~~~~~~
+./file_utils.h:8:3: note: expanded from macro 'TEST'
+                code;                                \
+                ^~~~
+./utils/utils.h:138:3: note: expanded from macro 'BASE_TEST'
+                code;                                   \
+                ^~~~
+./utils/utils.h:96:4: note: expanded from macro 'TEST_WRAPPER'
+                        code;                                         \
+                        ^~~~
+2 errors generated.
+make: [bonus] Error 1 (ignored)
+bonus.c:49:11: error: implicit declaration of function 'get_next_line' is
+      invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                        temp = get_next_line(fd);
+                               ^
+bonus.c:49:9: error: incompatible integer to pointer conversion assigning to
+      'char *' from 'int' [-Werror,-Wint-conversion]
+                        temp = get_next_line(fd);
+                             ^ ~~~~~~~~~~~~~~~~~
+./file_utils.h:8:3: note: expanded from macro 'TEST'
+                code;                                \
+                ^~~~
+./utils/utils.h:138:3: note: expanded from macro 'BASE_TEST'
+                code;                                   \
+                ^~~~
+./utils/utils.h:96:4: note: expanded from macro 'TEST_WRAPPER'
+                        code;                                         \
+                        ^~~~
+2 errors generated.
+make: [bonus] Error 1 (ignored)
+bonus.c:49:11: error: implicit declaration of function 'get_next_line' is
+      invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                        temp = get_next_line(fd);
+                               ^
+bonus.c:49:9: error: incompatible integer to pointer conversion assigning to
+      'char *' from 'int' [-Werror,-Wint-conversion]
+                        temp = get_next_line(fd);
+                             ^ ~~~~~~~~~~~~~~~~~
+./file_utils.h:8:3: note: expanded from macro 'TEST'
+                code;                                \
+                ^~~~
+./utils/utils.h:138:3: note: expanded from macro 'BASE_TEST'
+                code;                                   \
+                ^~~~
+./utils/utils.h:96:4: note: expanded from macro 'TEST_WRAPPER'
+                        code;                                         \
+                        ^~~~
+2 errors generated.
+make: [bonus] Error 1 (ignored)
+
+2022-05-20 11:19:13,764 [lldb][INFO]: CompletedProcess(args='lldb test1.out -s test1_out_lldb_commands --batch | tee test1_out_lldb_commands.out', returncode=0, stdout='(lldb) target create "test1.out"\nCurrent executable set to \'/Users/incshin/francinette/temp/get_next_line/fsoares/test1.out\' (x86_64).\n(lldb) command source -s 0 \'test1_out_lldb_commands\'\nExecuting commands in \'/Users/incshin/francinette/temp/get_next_line/fsoares/test1_out_lldb_commands\'.\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address get_next_line+25\n      Address: test1.out[0x000000010000d289] (test1.out.__TEXT.__text + 45097)\n      Summary: test1.out`get_next_line + 25 at get_next_line.c:83:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1229\n      Address: test1.out[0x00000001000027dd] (test1.out.__TEXT.__text + 1405)\n      Summary: test1.out`main + 1229 at tester.c:17:2\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address ft_lstnew+22\n      Address: test1.out[0x000000010000c8d6] (test1.out.__TEXT.__text + 42614)\n      Summary: test1.out`ft_lstnew + 22 at get_next_line.c:20:7\n(lldb) image lookup --address get_next_line+158\n      Address: test1.out[0x000000010000d30e] (test1.out.__TEXT.__text + 45230)\n      Summary: test1.out`get_next_line + 158 at get_next_line.c:90:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1229\n      Address: test1.out[0x00000001000027dd] (test1.out.__TEXT.__text + 1405)\n      Summary: test1.out`main + 1229 at tester.c:17:2\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address get_next_line+25\n      Address: test1.out[0x000000010000d289] (test1.out.__TEXT.__text + 45097)\n      Summary: test1.out`get_next_line + 25 at get_next_line.c:83:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1301\n      Address: test1.out[0x0000000100002825] (test1.out.__TEXT.__text + 1477)\n      Summary: test1.out`main + 1301 at tester.c:17:2\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address ft_lstnew+22\n      Address: test1.out[0x000000010000c8d6] (test1.out.__TEXT.__text + 42614)\n      Summary: test1.out`ft_lstnew + 22 at get_next_line.c:20:7\n(lldb) image lookup --address get_next_line+158\n      Address: test1.out[0x000000010000d30e] (test1.out.__TEXT.__text + 45230)\n      Summary: test1.out`get_next_line + 158 at get_next_line.c:90:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1301\n      Address: test1.out[0x0000000100002825] (test1.out.__TEXT.__text + 1477)\n      Summary: test1.out`main + 1301 at tester.c:17:2\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address get_next_line+25\n      Address: test1.out[0x000000010000d289] (test1.out.__TEXT.__text + 45097)\n      Summary: test1.out`get_next_line + 25 at get_next_line.c:83:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1412\n      Address: test1.out[0x0000000100002894] (test1.out.__TEXT.__text + 1588)\n      Summary: test1.out`main + 1412 at tester.c:17:2\n(lldb) image lookup --address _add_malloc+757\n      Address: test1.out[0x0000000100006e25] (test1.out.__TEXT.__text + 19397)\n      Summary: test1.out`_add_malloc + 757 at malloc_mock.c:29:8\n(lldb) image lookup --address malloc+307\n      Address: test1.out[0x0000000100006b23] (test1.out.__TEXT.__text + 18627)\n      Summary: test1.out`malloc + 307 at malloc_mock.c:75:10\n(lldb) image lookup --address ft_lstnew+22\n      Address: test1.out[0x000000010000c8d6] (test1.out.__TEXT.__text + 42614)\n      Summary: test1.out`ft_lstnew + 22 at get_next_line.c:20:7\n(lldb) image lookup --address get_next_line+158\n      Address: test1.out[0x000000010000d30e] (test1.out.__TEXT.__text + 45230)\n      Summary: test1.out`get_next_line + 158 at get_next_line.c:90:7\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+1412\n      Address: test1.out[0x0000000100002894] (test1.out.__TEXT.__text + 1588)\n      Summary: test1.out`main + 1412 at tester.c:17:2\n(lldb) image lookup --address sigsegv+33\n      Address: test1.out[0x00000001000096f1] (test1.out.__TEXT.__text + 29841)\n      Summary: test1.out`sigsegv + 33 at utils.c:53:1\n(lldb) image lookup --address ft_lstadd_back+218\n      Address: test1.out[0x000000010000d84a] (test1.out.__TEXT.__text + 46570)\n      Summary: test1.out`ft_lstadd_back + 218 at get_next_line_utils.c:29:27\n(lldb) image lookup --address get_next_line+206\n      Address: test1.out[0x000000010000d33e] (test1.out.__TEXT.__text + 45278)\n      Summary: test1.out`get_next_line + 206 at get_next_line.c:94:13\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+2713\n      Address: test1.out[0x0000000100002da9] (test1.out.__TEXT.__text + 2889)\n      Summary: test1.out`main + 2713 at tester.c:25:2\n(lldb) image lookup --address sigsegv+33\n      Address: test1.out[0x00000001000096f1] (test1.out.__TEXT.__text + 29841)\n      Summary: test1.out`sigsegv + 33 at utils.c:53:1\n(lldb) image lookup --address ft_lstadd_back+218\n      Address: test1.out[0x000000010000d84a] (test1.out.__TEXT.__text + 46570)\n      Summary: test1.out`ft_lstadd_back + 218 at get_next_line_utils.c:29:27\n(lldb) image lookup --address get_next_line+206\n      Address: test1.out[0x000000010000d33e] (test1.out.__TEXT.__text + 45278)\n      Summary: test1.out`get_next_line + 206 at get_next_line.c:94:13\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+4090\n      Address: test1.out[0x000000010000330a] (test1.out.__TEXT.__text + 4266)\n      Summary: test1.out`main + 4090 at tester.c:31:2\n(lldb) image lookup --address sigsegv+33\n      Address: test1.out[0x00000001000096f1] (test1.out.__TEXT.__text + 29841)\n      Summary: test1.out`sigsegv + 33 at utils.c:53:1\n(lldb) image lookup --address ft_lstadd_back+218\n      Address: test1.out[0x000000010000d84a] (test1.out.__TEXT.__text + 46570)\n      Summary: test1.out`ft_lstadd_back + 218 at get_next_line_utils.c:29:27\n(lldb) image lookup --address get_next_line+206\n      Address: test1.out[0x000000010000d33e] (test1.out.__TEXT.__text + 45278)\n      Summary: test1.out`get_next_line + 206 at get_next_line.c:94:13\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+5467\n      Address: test1.out[0x000000010000386b] (test1.out.__TEXT.__text + 5643)\n      Summary: test1.out`main + 5467 at tester.c:37:2\n(lldb) image lookup --address sigsegv+33\n      Address: test1.out[0x00000001000096f1] (test1.out.__TEXT.__text + 29841)\n      Summary: test1.out`sigsegv + 33 at utils.c:53:1\n(lldb) image lookup --address ft_lstadd_back+218\n      Address: test1.out[0x000000010000d84a] (test1.out.__TEXT.__text + 46570)\n      Summary: test1.out`ft_lstadd_back + 218 at get_next_line_utils.c:29:27\n(lldb) image lookup --address get_next_line+206\n      Address: test1.out[0x000000010000d33e] (test1.out.__TEXT.__text + 45278)\n      Summary: test1.out`get_next_line + 206 at get_next_line.c:94:13\n(lldb) image lookup --address test_gnl_func+66\n      Address: test1.out[0x000000010000c6b2] (test1.out.__TEXT.__text + 42066)\n      Summary: test1.out`test_gnl_func + 66 at file_utils.c:16:8\n(lldb) image lookup --address main+6844\n      Address: test1.out[0x0000000100003dcc] (test1.out.__TEXT.__text + 7020)\n      Summary: test1.out`main + 6844 at tester.c:43:2\n', stderr='')
+2022-05-20 11:19:13,861 [base][WARNING]: norminette errors: ['get_next_line.c', 'get_next_line.h', 'get_next_line_bonus.c', 'get_next_line_utils.c', 'get_next_line_utils_bonus.c']
+2022-05-20 11:19:13,861 [base][WARNING]: missing functions: []
+2022-05-20 11:19:13,861 [base][WARNING]: errors in functions: [('gnlTester', ['gnlTester']), ('fsoares', ['fsoares'])]
