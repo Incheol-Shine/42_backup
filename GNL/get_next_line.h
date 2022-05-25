@@ -17,17 +17,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 # define BUFF_SIZE 10
-typedef struct	s_param
-{
-	struct s_list	**head;
-}				t_param;
 typedef	struct	s_list
 {
 	struct s_list	*next;
 	size_t			offset;
 	ssize_t			fd;
 	ssize_t			rd_size;
-	char			buff[BUFF_SIZE];
+	char			*buff;
 }				t_list;
 char	*get_next_line(ssize_t fd);
 t_list	*ft_lstnew(ssize_t fd);

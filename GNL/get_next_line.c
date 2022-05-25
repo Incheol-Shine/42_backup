@@ -23,6 +23,12 @@ t_list	*ft_lstnew(ssize_t fd)
 	temp->next = 0;
 	temp->offset = 0;
 	temp->fd = fd;
+	temp->buff = (char *)malloc(BUFF_SIZE);
+	if (!temp->buff)
+	{
+		free(temp);
+		return (0);
+	}
 	temp->rd_size = read(fd, temp->buff, BUFF_SIZE);
 	if (temp->rd_size < 0)
 	{
@@ -79,50 +85,39 @@ int	lstdel(t_list *node)
 {
 	t_list	*next_node;
 
-	if (node->next)
-	{
-		next_node = node->next;
-		node->fd = next_node->fd;
-		node->offset = next_node->offset;
-		node->rd_size = next_node->rd_size;
-		ft_memmove(node->buff, next_node->buff, BUFF_SIZE);
-		node->next = next_node->next;
-		free(next_node);
-		return (0);
-	}
-	else
-	{
-		// free(node);
-		return (1);
-	}
+	next_node = node->next;
+	node->fd = next_node->fd;
+	node->offset = next_node->offset;
+	node->rd_size = next_node->rd_size;
+	free(node->buff);
+	node->buff = next_node->buff;
+	node->next = next_node->next;
+	free(next_node);
 }
 
 char	*cpy_line(t_list **head, size_t size, ssize_t fd)
 {
 	char	*line;
 	size_t	i;
-	int		flag;
 
 	i = 0;
-	flag = 0;
 	line = (char *)malloc(size + 1);
 	if (!line)
 		return (0);
 	line[size] = '\0';
-	while ((!flag) && *head)
+	while (1)
 	{
 		while (fd != (*head)->fd)
 			*head = (*head)->next;
 		while ((*head)->offset < (size_t)(*head)->rd_size)
 		{
-			if (!(size--))
-				return (line);
 			line[i++] = (*head)->buff[(*head)->offset++];
+			if (!(--size))
+				return (line);
 		}
-		flag = lstdel(*head);
+		lstdel(*head);
 		// printf("%p, rd_size: %zd, offset: %zd, %s\n",(*head)->next, (*head)->rd_size, (*head)->offset, (*head)->buff);
 	}
-	return (line);
 }
 
 char	*get_next_line(ssize_t fd)
