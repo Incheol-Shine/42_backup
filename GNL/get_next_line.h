@@ -16,7 +16,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# define BUFF_SIZE 10
+# define BUFF_SIZE 10000000
 typedef	struct	s_list
 {
 	struct s_list	*next;
@@ -32,7 +32,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **head, t_list *new);
 void	*ft_memmove(void *dst, const void *src, size_t n);
 void	view(t_list *head);
-int		lstdel(t_list *node);
+void	lstdel(t_list *node);
 ssize_t	get_size(t_list **head, ssize_t fd);
 char	*cpy_line(t_list **head, size_t size, ssize_t fd);
 

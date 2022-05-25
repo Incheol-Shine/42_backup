@@ -32,6 +32,7 @@ t_list	*ft_lstnew(ssize_t fd)
 	temp->rd_size = read(fd, temp->buff, BUFF_SIZE);
 	if (temp->rd_size < 0)
 	{
+		free(temp->buff);
 		free(temp);
 		return (0);
 	}
@@ -81,7 +82,7 @@ ssize_t	get_size(t_list **head, ssize_t fd)
 	}
 }
 
-int	lstdel(t_list *node)
+void	lstdel(t_list *node)
 {
 	t_list	*next_node;
 
@@ -125,15 +126,13 @@ char	*get_next_line(ssize_t fd)
 	t_list			**head;
 	static t_list	*backup;
 	char			*line;
-	size_t			size;
+	ssize_t			size;
 
 	head = (t_list **)malloc(sizeof(t_list *));
 	if (!head)
 		return (0);
-	if (backup)
-		*head = backup;
+	*head = backup;
 	size = get_size(head, fd);
-	// printf("head_buff: %s\n", (*head)->buff);
 	if (size <= 0)
 		return (0);
 	// printf("size: %zd\n", size);
