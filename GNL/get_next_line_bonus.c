@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:03:30 by incshin           #+#    #+#             */
-/*   Updated: 2022/05/23 17:16:35 by incshin          ###   ########.fr       */
+/*   Updated: 2022/05/26 17:18:22 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,14 @@ ssize_t	get_size(t_list **head, ssize_t fd)
 			temp = ft_lstnew(fd);
 			if (!temp)
 				return (-1);
-			ft_lstadd_back(head, temp);
 			if (temp->rd_size == 0)
+			{
+				free(temp->buff);
+				free(temp);
+				temp = 0;
 				return (size);
+			}
+			ft_lstadd_back(head, temp);
 		}
 		i = temp->offset;
 		while (i < temp->rd_size)
@@ -96,7 +101,7 @@ void	lstdel(t_list *node)
 	free(next_node);
 }
 
-char	*cpy_line(t_list **head, size_t size, ssize_t fd)
+char	*cpy_line(t_list **head, ssize_t size, ssize_t fd)
 {
 	char	*line;
 	size_t	i;
@@ -134,12 +139,23 @@ char	*get_next_line(ssize_t fd)
 	*head = backup;
 	size = get_size(head, fd);
 	if (size <= 0)
+	{
+		ft_lstclear(head, fd);
+		free(head);
 		return (0);
+	}
 	// printf("size: %zd\n", size);
 	line = cpy_line(head, size, fd);
 	if (!line)
+	{
+		// ft_lstclear(head);
+		free(head);
 		return (0);
+	}
+	// printf("backup1: %p\n",backup);
 	if (!backup)
 		backup = *head;
+	// printf("backup2: %p\n",backup);
+	free(head);
 	return (line);
 }

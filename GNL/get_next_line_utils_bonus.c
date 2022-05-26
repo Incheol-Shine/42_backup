@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:03:51 by incshin           #+#    #+#             */
-/*   Updated: 2022/05/17 18:21:43 by incshin          ###   ########.fr       */
+/*   Updated: 2022/05/26 17:18:49 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,20 @@ void	ft_lstadd_back(t_list **head, t_list *new)
 		ft_lstlast(*head)->next = new;
 }
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
+void	ft_lstclear(t_list **lst, ssize_t fd)
 {
-	char		*temp_dst;
-	const char	*temp_src;
-	size_t		i;
+	t_list	*cur;
 
-	temp_dst = dst;
-	temp_src = src;
-	if (dst > src)
+	if (!lst)
+		return ;
+	while (*lst)
 	{
-		while (n--)
-			temp_dst[n] = temp_src[n];
-	}
-	else if (dst < src)
-	{
-		i = 0;
-		while (i < n)
+		cur = (*lst)->next;
+		if (fd == (*lst)->fd)
 		{
-			temp_dst[i] = temp_src[i];
-			i++;
+			free((*lst)->buff);
+			free(*lst);
 		}
+		*lst = cur;
 	}
-	return (dst);
 }

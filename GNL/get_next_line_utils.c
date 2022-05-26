@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:03:51 by incshin           #+#    #+#             */
-/*   Updated: 2022/05/17 18:21:43 by incshin          ###   ########.fr       */
+/*   Updated: 2022/05/26 19:08:57 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_lstadd_back(t_list **head, t_list *new)
 		ft_lstlast(*head)->next = new;
 }
 
-void	ft_lstclear(t_list **lst)
+void	ft_lstclear(t_list **lst, ssize_t fd)
 {
 	t_list	*cur;
 
@@ -38,9 +38,11 @@ void	ft_lstclear(t_list **lst)
 	while (*lst)
 	{
 		cur = (*lst)->next;
-		free((*lst)->buff);
-		free(*lst);
+		if (fd == (*lst)->fd)
+		{
+			free((*lst)->buff);
+			free(*lst);
+		}
 		*lst = cur;
 	}
 }
-
