@@ -29,27 +29,18 @@ void	ft_lstadd_back(t_list **head, t_list *new)
 		ft_lstlast(*head)->next = new;
 }
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
+void	ft_lstclear(t_list **lst)
 {
-	char		*temp_dst;
-	const char	*temp_src;
-	size_t		i;
+	t_list	*cur;
 
-	temp_dst = dst;
-	temp_src = src;
-	if (dst > src)
+	if (!lst)
+		return ;
+	while (*lst)
 	{
-		while (n--)
-			temp_dst[n] = temp_src[n];
+		cur = (*lst)->next;
+		free((*lst)->buff);
+		free(*lst);
+		*lst = cur;
 	}
-	else if (dst < src)
-	{
-		i = 0;
-		while (i < n)
-		{
-			temp_dst[i] = temp_src[i];
-			i++;
-		}
-	}
-	return (dst);
 }
+

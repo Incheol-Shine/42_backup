@@ -130,16 +130,27 @@ char	*get_next_line(ssize_t fd)
 
 	head = (t_list **)malloc(sizeof(t_list *));
 	if (!head)
+	{
+		if (backup)
+			ft_lstclear(&backup);
 		return (0);
+	}
 	*head = backup;
 	size = get_size(head, fd);
 	if (size <= 0)
+	{
+		ft_lstclear(head);
 		return (0);
+	}
 	// printf("size: %zd\n", size);
 	line = cpy_line(head, size, fd);
 	if (!line)
+	{
+		ft_lstclear(head);
 		return (0);
+	}
 	if (!backup)
 		backup = *head;
+	ft_lstclear(head);
 	return (line);
 }

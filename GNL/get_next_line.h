@@ -35,5 +35,6 @@ void	view(t_list *head);
 void	lstdel(t_list *node);
 ssize_t	get_size(t_list **head, ssize_t fd);
 char	*cpy_line(t_list **head, size_t size, ssize_t fd);
+void	ft_lstclear(t_list **lst);
 
 #endif

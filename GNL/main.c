@@ -32,19 +32,19 @@ int main(void)
 	char 	*line;
 
 	fd1 = open( "./baudelaire.txt", O_RDONLY);
-	fd2 = open( "./empty.txt", O_RDONLY);
+	fd2 = open( "./integer.txt", O_RDONLY);
 	if (0 <= fd1 && 0 <= fd2)
 		for (int i=0; i<6; i++)
 		{
+			line = get_next_line(fd1);
+			printf("--------------------------------------\n%s\n", line);
+			free(line);
 			line = get_next_line(fd2);
 			printf("--------------------------------------\n%s\n", line);
-			// free(line);
-			// line = get_next_line(fd2);
-			// printf("--------------------------------------\n%s\n", line);
-			// free(line);
-			// line = get_next_line(fd1);
-			// printf("--------------------------------------\n%s\n", line);
-			// free(line);
+			free(line);
+			line = get_next_line(fd1);
+			printf("--------------------------------------\n%s\n", line);
+			free(line);
 		}
 	return (0);
 }
