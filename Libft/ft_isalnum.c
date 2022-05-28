@@ -17,8 +17,3 @@ int	ft_isalnum(int c)
 		return (1);
 	return (0);
 }
-int main(void)
-{
-	ft_isalnum(5);
-	return(0);
-}

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 t_list	*ft_lstlast(t_list *lst)
 {
@@ -29,20 +30,21 @@ void	ft_lstadd_back(t_list **head, t_list *new)
 		ft_lstlast(*head)->next = new;
 }
 
-void	ft_lstclear(t_list **lst, ssize_t fd)
+void	ft_lstclear(t_list **lst, ssize_t fd, int depth)
 {
-	t_list	*cur;
-
 	if (!lst)
 		return ;
-	while (*lst)
-	{
-		cur = (*lst)->next;
-		if (fd == (*lst)->fd)
-		{
-			free((*lst)->buff);
-			free(*lst);
-		}
-		*lst = cur;
-	}
+    if (!*lst)
+        return ;
+    if ((*lst)->next)
+    {
+        ft_lstclear(&((*lst)->next), fd, depth + 1);
+        if (fd == (*lst)->fd)
+            lstdel(*lst);
+    }
+    if (fd == (*lst)->fd && depth == 0)
+    {
+        free(*lst);
+        *lst = 0;
+    }
 }

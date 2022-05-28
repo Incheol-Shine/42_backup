@@ -39,6 +39,16 @@ t_list	*ft_lstnew(ssize_t fd)
 	return (temp);
 }
 
+void	view(t_list *head)
+{
+	while (head)
+	{
+		printf("buff: %s/, offset: %zu, rd_size: %zd, fd: %zd\n", head->buff, head->offset, head->rd_size, head->fd);
+		head = head->next;
+	}
+	printf("view end\n");
+}
+
 ssize_t	get_size(t_list **head, ssize_t fd)
 {
 	t_list	*temp;
@@ -79,24 +89,20 @@ ssize_t	get_size(t_list **head, ssize_t fd)
 
 void	lstdel(t_list *node)
 {
-	t_list	*next_node;
+	t_list	*next_N;
+	
+	next_N = (node)->next;
+	(node)->fd = next_N->fd;
+	(node)->offset = next_N->offset;
+	(node)->rd_size = next_N->rd_size;
+	free((node)->buff);
+	(node)->buff = next_N->buff;
+	(node)->next = next_N->next;
+	free(next_N);
 
-	if (node->next)
-	{
-		next_node = node->next;
-		node->fd = next_node->fd;
-		node->offset = next_node->offset;
-		node->rd_size = next_node->rd_size;
-		free(node->buff);
-		node->buff = next_node->buff;
-		node->next = next_node->next;
-		free(next_node);
-	}
-	else
-		free(node);
 }
 
-char	*cpy_line(t_list **head, ssize_t size, ssize_t fd)
+char	*cpy_line(t_list *head, ssize_t size, ssize_t fd)
 {
 	char	*line;
 	size_t	i;
@@ -108,15 +114,15 @@ char	*cpy_line(t_list **head, ssize_t size, ssize_t fd)
 	line[size] = '\0';
 	while (1)
 	{
-		while (fd != (*head)->fd)
-			*head = (*head)->next;
-		while ((*head)->offset < (size_t)(*head)->rd_size)
+		while (fd != (head)->fd)
+			head = (head)->next;
+		while ((head)->offset < (size_t)(head)->rd_size)
 		{
-			line[i++] = (*head)->buff[(*head)->offset++];
+			line[i++] = (head)->buff[(head)->offset++];
 			if (!(--size))
 				return (line);
 		}
-		lstdel(*head);
+		lstdel(head);
 	}
 }
 
@@ -134,22 +140,22 @@ char	*get_next_line(ssize_t fd)
 	size = get_size(head, fd);
 	if (size <= 0)
 	{
-		ft_lstclear(head, fd);
+		ft_lstclear(head, fd, 0);
+		backup = *head;
 		free(head);
+		// printf("it's EOF EOF EOF EOF EOF EOF EOF\n");
 		return (0);
 	}
-	// printf("size: %zd\n", size);
-	line = cpy_line(head, size, fd);
+	line = cpy_line(*head, size, fd);
 	if (!line)
 	{
-		// ft_lstclear(head);
 		free(head);
+		// printf("it's error error error error error error\n");
 		return (0);
 	}
-	// printf("backup1: %p\n",backup);
 	if (!backup)
 		backup = *head;
-	// printf("backup2: %p\n",backup);
 	free(head);
+	// printf("it's normal normal normal normal normal normal normal\n");
 	return (line);
 }

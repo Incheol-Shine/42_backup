@@ -34,34 +34,38 @@ int	main(void)
 	ssize_t	fd[4];
 
 	fd[0] = open("./41_with_nl", O_RDWR);
-	/* 1 */ printf("-------------\n%s\n", get_next_line(1000));
-	/* 2 */ printf("-------------\n%s\n", get_next_line(fd[0]));
+	/* 1 */ printf("------1------\n%s\n", get_next_line(1000));
+	/* 2 */ printf("------2------\n%s\n", get_next_line(fd[0]));
 
 	fd[1] = open("./42_with_nl", O_RDWR);
-	/* 3 */ printf("-------------\n%s\n", get_next_line(1001));
-	/* 4 */ printf("-------------\n%s\n", get_next_line(fd[1]));
+	/* 3 */ printf("------3------\n%s\n", get_next_line(1001));
+	/* 4 */ printf("------4------\n%s\n", get_next_line(fd[1]));
 
 	fd[2] = open("./43_with_nl", O_RDWR);
-	/* 5 */ printf("-------------\n%s\n", get_next_line(1002));
-	/* 6 */ printf("-------------\n%s\n", get_next_line(fd[2]));
+	/* 5 */ printf("------5------\n%s\n", get_next_line(1002));
+	/* 6 */ printf("------6------\n%s\n", get_next_line(fd[2]));
 
-	/* 7 */ printf("-------------\n%s\n", get_next_line(1003));
-	/* 8 */ printf("-------------\n%s\n", get_next_line(fd[0]));
+	/* 7 */ printf("------7------\n%s\n", get_next_line(1003));
+	/* 8 */ printf("------8------\n%s\n", get_next_line(fd[0]));
 
-	/* 9 */ printf("-------------\n%s\n", get_next_line(1004));
-	/* 10 */ printf("-------------\n%s\n", get_next_line(fd[1]));
+	/* 9 */ printf("------9------\n%s\n", get_next_line(1004));
+	/* 10 */ printf("-----10------\n%s\n", get_next_line(fd[1]));
 
-	/* 11 */ printf("-------------\n%s\n", get_next_line(1005));
-	/* 12 */ printf("-------------\n%s\n", get_next_line(fd[2]));
+	/* 11 */ printf("-----11------\n%s\n", get_next_line(1005));
+	/* 12 */ printf("-----12------\n%s\n", get_next_line(fd[2]));
 
-	/* 13 */ printf("-------------\n%s\n", get_next_line(fd[0]));
-	/* 14 */ printf("-------------\n%s\n", get_next_line(fd[1]));
-	/* 15 */ printf("-------------\n%s\n", get_next_line(fd[2]));
+	/* 13 */ printf("-----13------\n%s\n", get_next_line(fd[0]));
+	/* 14 */ printf("-----14------\n%s\n", get_next_line(fd[1]));
+	/* 15 */ printf("-----15------\n%s\n", get_next_line(fd[2]));
 
 	fd[3] = open("./nl", O_RDWR);
-	/* 16 */ printf("-------------\n%s\n", get_next_line(1006));
-	/* 17 */ printf("-------------\n%s\n", get_next_line(fd[3]));
-	/* 18 */ printf("-------------\n%s\n", get_next_line(1007));
-	/* 19 */ printf("-------------\n%s\n", get_next_line(fd[3]));
+	/* 16 */ printf("-----16------\n%s\n", get_next_line(1006));
+	/* 17 */ printf("-----17------\n%s\n", get_next_line(fd[3]));
+	/* 18 */ printf("-----18------\n%s\n", get_next_line(1007));
+	/* 19 */ printf("-----19------\n%s\n", get_next_line(fd[3]));
+
+	system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
+
+
 	return (0);
 }
