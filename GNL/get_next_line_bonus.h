@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:03:54 by incshin           #+#    #+#             */
-/*   Updated: 2022/05/26 17:18:35 by incshin          ###   ########.fr       */
+/*   Updated: 2022/05/26 18:13:53 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# define BUFF_SIZE 42
+# define BUFF_SIZE 100
 typedef	struct	s_list
 {
 	struct s_list	*next;
@@ -25,6 +25,11 @@ typedef	struct	s_list
 	ssize_t			rd_size;
 	char			*buff;
 }				t_list;
+// typedef struct	s_backup
+// {
+// 	t_list	*head;
+// 	ssize_t	list_size;
+// }				t_backup;
 char	*get_next_line(ssize_t fd);
 t_list	*ft_lstnew(ssize_t fd);
 t_list	*ft_lstlast(t_list *lst);
@@ -33,7 +38,7 @@ void	ft_lstadd_front(t_list **head, t_list *new);
 void	view(t_list *head);
 void	lstdel(t_list *node);
 ssize_t	get_size(t_list **head, ssize_t fd);
-char	*cpy_line(t_list **head, ssize_t size, ssize_t fd);
-void	ft_lstclear(t_list **lst, ssize_t fd);
+char	*cpy_line(t_list *head, ssize_t size, ssize_t fd);
+void	ft_lstclear(t_list **lst, ssize_t fd, int depth);
 
 #endif
