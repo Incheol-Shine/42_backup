@@ -44,6 +44,7 @@ void	ft_lstclear(t_list **lst, ssize_t fd, int depth)
     }
     if (fd == (*lst)->fd && depth == 0)
     {
+		free((*lst)->buff);
         free(*lst);
         *lst = 0;
     }
