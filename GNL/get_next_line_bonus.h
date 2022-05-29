@@ -26,8 +26,12 @@ typedef struct s_list
 	ssize_t			rd_size;
 	char			*buff;
 }				t_list;
+typedef struct s_param
+{
+	int		flag;
+	char	*line;
+}				t_param;
 char	*get_next_line(ssize_t fd);
-int		get_one_line(t_list **head, ssize_t fd, char **line);
 ssize_t	get_size(t_list **head, ssize_t fd);
 ssize_t	get_size_part1(t_list **head, t_list *temp, ssize_t fd, ssize_t *size);
 ssize_t	get_size_part2(t_list **head, t_list *temp, ssize_t fd, ssize_t *size);

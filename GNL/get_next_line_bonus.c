@@ -78,42 +78,27 @@ char	*cpy_line(t_list *head, ssize_t size, ssize_t fd)
 	}
 }
 
-int	get_one_line(t_list **head, ssize_t fd, char **line)
-{
-	ssize_t	size;
-
-	size = get_size(head, fd);
-	if (size <= 0)
-		return (size);
-	*line = cpy_line(*head, size, fd);
-	if (!(*line))
-		return (0);
-	return (1);
-}
-
 char	*get_next_line(ssize_t fd)
 {
 	t_list			**head;
 	static t_list	*backup;
-	char			**line;
-	int				flag;
+	char			*line;
+	ssize_t			size;
 
 	head = (t_list **)malloc(sizeof(t_list *));
 	if (!head)
 		return (0);
 	*head = backup;
-	flag = get_one_line(head, fd, line);
-	if (flag <= 0)
+	size = get_size(head, fd);
+	line = 0;
+	if (size <= 0)
 	{
-		if (!flag)
-		{
+		if (!size)
 			ft_lstclear(head, fd, 0);
-			backup = *head;
-		}
-		free(head);
-		return (0);
 	}
+	else
+		line = cpy_line(*head, size, fd);
 	backup = *head;
 	free(head);
-	return (*line);
+	return (line);
 }
