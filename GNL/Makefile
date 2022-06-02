@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/02 17:10:46 by incshin           #+#    #+#              #
+#    Updated: 2022/06/02 17:10:48 by incshin          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = get_next_line.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -10,8 +22,8 @@ ARFLAGS = -rcs
 RM = rm
 RMFLAGS = -f
 
-ifdef WITH_BONUS
-	TOTAL_OBJS = $(OBJS) $(OBJS_B)
+ifdef BONUS
+	TOTAL_OBJS = $(OBJS_B)
 else
 	TOTAL_OBJS = $(OBJS)
 endif
@@ -27,7 +39,7 @@ fclean: clean
 re: fclean all
 
 bonus :
-	make WITH_BONUS=1
+	make BONUS=1
 
 $(NAME): $(TOTAL_OBJS)
 	$(AR) $(ARFLAGS) $@ $^

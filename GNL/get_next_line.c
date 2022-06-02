@@ -6,14 +6,14 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:03:30 by incshin           #+#    #+#             */
-/*   Updated: 2022/05/26 19:03:34 by incshin          ###   ########.fr       */
+/*   Updated: 2022/06/02 17:23:07 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "get_next_line.h"
 
-t_list	*ft_lstnew(ssize_t fd)
+t_list	*lstnew(ssize_t fd)
 {
 	t_list	*temp;
 
@@ -29,8 +29,8 @@ t_list	*ft_lstnew(ssize_t fd)
 		free(temp);
 		return (0);
 	}
-	temp->rd_size = read(fd, temp->buff, BUFF_SIZE);
-	if (temp->rd_size < 0)
+	temp->ret_read = read(fd, temp->buff, BUFF_SIZE);
+	if (temp->ret_read < 0)
 	{
 		free(temp->buff);
 		free(temp);
@@ -39,7 +39,7 @@ t_list	*ft_lstnew(ssize_t fd)
 	return (temp);
 }
 
-void	ft_lstadd_back(t_list **head, t_list *new)
+void	lstadd_back(t_list **head, t_list *new)
 {
 	t_list	*temp;
 
@@ -52,6 +52,20 @@ void	ft_lstadd_back(t_list **head, t_list *new)
 			temp = temp->next;
 		temp->next = new;
 	}
+}
+
+void	lstdel(t_list *node)
+{
+	t_list	*next_node;
+
+	next_node = (node)->next;
+	(node)->fd = next_node->fd;
+	(node)->offset = next_node->offset;
+	(node)->ret_read = next_node->ret_read;
+	free((node)->buff);
+	(node)->buff = next_node->buff;
+	(node)->next = next_node->next;
+	free(next_node);
 }
 
 char	*cpy_line(t_list *head, ssize_t size, ssize_t fd)
@@ -68,7 +82,7 @@ char	*cpy_line(t_list *head, ssize_t size, ssize_t fd)
 	{
 		while (fd != (head)->fd)
 			head = (head)->next;
-		while ((head)->offset < (size_t)(head)->rd_size)
+		while ((head)->offset < (size_t)(head)->ret_read)
 		{
 			line[i++] = (head)->buff[(head)->offset++];
 			if (!(--size))
@@ -92,12 +106,13 @@ char	*get_next_line(ssize_t fd)
 	size = get_size(head, fd);
 	line = 0;
 	if (size <= 0)
-	{
-		if (!size)
-			ft_lstclear(head, fd, 0);
-	}
+		lstclear(head, fd);
 	else
+	{
 		line = cpy_line(*head, size, fd);
+		if (!line)
+			lstclear(head, fd);
+	}
 	backup = *head;
 	free(head);
 	return (line);

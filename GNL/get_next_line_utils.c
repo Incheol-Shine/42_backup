@@ -6,43 +6,56 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:03:51 by incshin           #+#    #+#             */
-/*   Updated: 2022/05/26 19:08:57 by incshin          ###   ########.fr       */
+/*   Updated: 2022/06/02 15:39:34 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	lstdel(t_list *node)
+void	lstclear(t_list **lst, ssize_t fd)
 {
-	t_list	*next_node;
-
-	next_node = (node)->next;
-	(node)->fd = next_node->fd;
-	(node)->offset = next_node->offset;
-	(node)->rd_size = next_node->rd_size;
-	free((node)->buff);
-	(node)->buff = next_node->buff;
-	(node)->next = next_node->next;
-	free(next_node);
+	while (*lst)
+	{
+		if ((*lst)->fd == fd)
+		{
+			if ((*lst)->next)
+				lstdel(*lst);
+			else
+			{
+				free((*lst)->buff);
+				free(*lst);
+				*lst = 0;
+				return ;
+			}
+		}
+		else
+		{
+			lstclear2(*lst, fd);
+			return ;
+		}
+	}
 }
 
-void	ft_lstclear(t_list **lst, ssize_t fd, int depth)
+void	lstclear2(t_list *lst, ssize_t fd)
 {
-	if (!lst)
-		return ;
-	if (!*lst)
-		return ;
-	if ((*lst)->next)
+	t_list	*next;
+
+	while (lst)
 	{
-		ft_lstclear(&((*lst)->next), fd, depth + 1);
-		if (fd == (*lst)->fd)
-			lstdel(*lst);
-	}
-	if (fd == (*lst)->fd && depth == 0)
-	{
-		free((*lst)->buff);
-		free(*lst);
-		*lst = 0;
+		next = lst->next;
+		if (next)
+		{
+			if (next->fd == fd)
+			{
+				lst->next = next->next;
+				free(next->buff);
+				free(next);
+			}
+			else
+				lst = next;
+		}
+		else
+			return ;
 	}
 }
 
@@ -64,17 +77,16 @@ ssize_t	get_size_part1(t_list **head, t_list *temp, ssize_t fd, ssize_t *size)
 		temp = temp->next;
 	if (!temp)
 	{
-		temp = ft_lstnew(fd);
+		temp = lstnew(fd);
 		if (!temp)
 			return (-1);
-		if (temp->rd_size == 0)
+		if (temp->ret_read == 0)
 		{
 			free(temp->buff);
 			free(temp);
-			temp = 0;
 			return (*size);
 		}
-		ft_lstadd_back(head, temp);
+		lstadd_back(head, temp);
 	}
 	return (get_size_part2(head, temp, fd, size));
 }
@@ -84,7 +96,7 @@ ssize_t	get_size_part2(t_list **head, t_list *temp, ssize_t fd, ssize_t *size)
 	ssize_t	i;
 
 	i = temp->offset;
-	while (i < temp->rd_size)
+	while (i < temp->ret_read)
 	{
 		if (temp->buff[i] == '\n')
 			return (++(*size));
