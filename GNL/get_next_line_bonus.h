@@ -11,12 +11,14 @@
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
-
 # define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
-# define BUFF_SIZE 42
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_list
 {
@@ -41,5 +43,4 @@ void	lstclear2(t_list *lst, ssize_t fd);
 t_list	*lstnew(ssize_t fd);
 void	lstadd_back(t_list **lst, t_list *new);
 void	lstdel(t_list *node);
-
 #endif

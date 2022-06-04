@@ -13,6 +13,33 @@
 #include <fcntl.h>
 #include "get_next_line_bonus.h"
 
+char	*get_next_line(ssize_t fd)
+{
+	t_list			*head;
+	static t_list	*backup;
+	char			*line;
+	ssize_t			size;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		lstclear(&head, fd);
+		return (0);
+	}
+	head = backup;
+	size = get_size(&head, fd);
+	line = 0;
+	if (size <= 0)
+		lstclear(&head, fd);
+	else
+	{
+		line = cpy_line(head, size, fd);
+		if (!line)
+			lstclear(&head, fd);
+	}
+	backup = head;
+	return (line);
+}
+
 t_list	*lstnew(ssize_t fd)
 {
 	t_list	*temp;
@@ -23,13 +50,13 @@ t_list	*lstnew(ssize_t fd)
 	temp->next = 0;
 	temp->offset = 0;
 	temp->fd = fd;
-	temp->buff = (char *)malloc(BUFF_SIZE);
+	temp->buff = (char *)malloc(BUFFER_SIZE);
 	if (!temp->buff)
 	{
 		free(temp);
 		return (0);
 	}
-	temp->ret_read = read(fd, temp->buff, BUFF_SIZE);
+	temp->ret_read = read(fd, temp->buff, BUFFER_SIZE);
 	if (temp->ret_read < 0)
 	{
 		free(temp->buff);
@@ -90,30 +117,4 @@ char	*cpy_line(t_list *head, ssize_t size, ssize_t fd)
 		}
 		lstdel(head);
 	}
-}
-
-char	*get_next_line(ssize_t fd)
-{
-	t_list			**head;
-	static t_list	*backup;
-	char			*line;
-	ssize_t			size;
-
-	head = (t_list **)malloc(sizeof(t_list *));
-	if (!head)
-		return (0);
-	*head = backup;
-	size = get_size(head, fd);
-	line = 0;
-	if (size <= 0)
-		lstclear(head, fd);
-	else
-	{
-		line = cpy_line(*head, size, fd);
-		if (!line)
-			lstclear(head, fd);
-	}
-	backup = *head;
-	free(head);
-	return (line);
 }
