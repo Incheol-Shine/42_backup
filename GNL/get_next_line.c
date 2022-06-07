@@ -6,11 +6,10 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:03:30 by incshin           #+#    #+#             */
-/*   Updated: 2022/06/02 17:23:07 by incshin          ###   ########.fr       */
+/*   Updated: 2022/06/07 12:14:57 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include "get_next_line.h"
 
 char	*get_next_line(ssize_t fd)
@@ -20,12 +19,12 @@ char	*get_next_line(ssize_t fd)
 	char			*line;
 	ssize_t			size;
 
+	head = backup;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		lstclear(&head, fd);
 		return (0);
 	}
-	head = backup;
 	size = get_size(&head, fd);
 	line = 0;
 	if (size <= 0)
