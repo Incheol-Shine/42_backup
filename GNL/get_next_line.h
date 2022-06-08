@@ -23,24 +23,23 @@
 typedef struct s_list
 {
 	struct s_list	*next;
+	struct s_list	*prev;
 	size_t			offset;
 	ssize_t			fd;
 	ssize_t			ret_read;
 	char			*buff;
 }				t_list;
-typedef struct s_param
+typedef struct s_backup
 {
-	int		flag;
-	char	*line;
-}				t_param;
+	t_list	*head;
+	t_list	*tail;
+}				t_backup;
 char	*get_next_line(ssize_t fd);
-ssize_t	get_size(t_list **head, ssize_t fd);
-ssize_t	get_size_part1(t_list **head, t_list *temp, ssize_t fd, ssize_t *size);
-ssize_t	get_size_part2(t_list **head, t_list *temp, ssize_t fd, ssize_t *size);
-char	*cpy_line(t_list *head, ssize_t size, ssize_t fd);
-void	lstclear(t_list **lst, ssize_t fd);
-void	lstclear2(t_list *lst, ssize_t fd);
+ssize_t	get_size(t_list **head, t_list **tail, ssize_t fd);
+ssize_t	get_size_find_nl(t_list **temp, ssize_t *size);
+char	*cpy_line(t_list *head, t_list *tail, ssize_t size, ssize_t fd);
+void	lstclear(t_list **head, t_list **tail, ssize_t fd);
 t_list	*lstnew(ssize_t fd);
-void	lstadd_back(t_list **lst, t_list *new);
-void	lstdel(t_list *node);
+void	lstadd_back(t_list **head, t_list **tail, t_list *new);
+void	lstdel(t_list *node, t_list **phead, t_list **ptail);
 #endif

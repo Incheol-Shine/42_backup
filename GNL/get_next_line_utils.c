@@ -12,97 +12,67 @@
 
 #include "get_next_line.h"
 
-void	lstclear(t_list **lst, ssize_t fd)
+void	lstclear(t_list **head, t_list **tail, ssize_t fd)
 {
-	while (*lst)
+	t_list	*cur;
+	t_list	*temp;
+
+	if (!head)
+		return ;
+	if (!*head)
+		return ;
+	cur = *head;
+	while (cur && fd != cur->fd)
+		cur = cur->next;
+	while (cur)
 	{
-		if ((*lst)->fd == fd)
-		{
-			if ((*lst)->next)
-				lstdel(*lst);
-			else
-			{
-				free((*lst)->buff);
-				free(*lst);
-				*lst = 0;
-				return ;
-			}
-		}
-		else
-		{
-			lstclear2(*lst, fd);
-			return ;
-		}
+		temp = cur->next;
+		lstdel(cur, head, tail);
+		cur = temp;
 	}
 }
 
-void	lstclear2(t_list *lst, ssize_t fd)
-{
-	t_list	*next;
-
-	while (lst)
-	{
-		next = lst->next;
-		if (next)
-		{
-			if (next->fd == fd)
-			{
-				lst->next = next->next;
-				free(next->buff);
-				free(next);
-			}
-			else
-				lst = next;
-		}
-		else
-			return ;
-	}
-}
-
-ssize_t	get_size(t_list **head, ssize_t fd)
+ssize_t	get_size(t_list **head, t_list **tail, ssize_t fd)
 {
 	t_list	*temp;
-	ssize_t	i;
-	ssize_t	*size;
+	ssize_t	size;
 
-	i = 0;
 	temp = *head;
-	size = &i;
-	return (get_size_part1(head, temp, fd, size));
-}
-
-ssize_t	get_size_part1(t_list **head, t_list *temp, ssize_t fd, ssize_t *size)
-{
-	while (temp && (fd != temp->fd))
-		temp = temp->next;
-	if (!temp)
+	size = 0;
+	while (1)
 	{
-		temp = lstnew(fd);
+		while (temp && (fd != temp->fd))
+			temp = temp->next;
 		if (!temp)
-			return (-1);
-		if (temp->ret_read == 0)
 		{
-			free(temp->buff);
-			free(temp);
-			return (*size);
+			temp = lstnew(fd);
+			if (!temp)
+				return (-1);
+			if (temp->ret_read == 0)
+			{
+				free(temp->buff);
+				free(temp);
+				return (size);
+			}
+			lstadd_back(head, tail, temp);
 		}
-		lstadd_back(head, temp);
+		if (get_size_find_nl(&temp, &size))
+			return (size);
 	}
-	return (get_size_part2(head, temp, fd, size));
 }
 
-ssize_t	get_size_part2(t_list **head, t_list *temp, ssize_t fd, ssize_t *size)
+ssize_t	get_size_find_nl(t_list **temp, ssize_t *size)
 {
 	ssize_t	i;
 
-	i = temp->offset;
-	while (i < temp->ret_read)
+	i = (*temp)->offset;
+	while (i < (*temp)->ret_read)
 	{
-		if (temp->buff[i] == '\n')
+		if ((*temp)->buff[i] == '\n')
 			return (++(*size));
 		i++;
 		(*size)++;
 	}
-	temp = temp->next;
-	return (get_size_part1(head, temp, fd, size));
+	*temp = (*temp)->next;
+	return (0);
 }

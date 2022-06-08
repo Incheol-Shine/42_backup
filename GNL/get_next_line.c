@@ -15,27 +15,27 @@
 char	*get_next_line(ssize_t fd)
 {
 	t_list			*head;
-	static t_list	*backup;
+	t_list			*tail;
+	static t_backup	backup;
 	char			*line;
 	ssize_t			size;
 
-	head = backup;
+	head = backup.head;
+	tail = backup.tail;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-	{
-		lstclear(&head, fd);
 		return (0);
-	}
-	size = get_size(&head, fd);
+	size = get_size(&head, &tail, fd);
 	line = 0;
 	if (size <= 0)
-		lstclear(&head, fd);
+		lstclear(&head, &tail, fd);
 	else
 	{
-		line = cpy_line(head, size, fd);
+		line = cpy_line(head, tail, size, fd);
 		if (!line)
-			lstclear(&head, fd);
+			lstclear(&head, &tail, fd);
 	}
-	backup = head;
+	backup.head = head;
+	backup.tail = tail;
 	return (line);
 }
 
@@ -47,6 +47,7 @@ t_list	*lstnew(ssize_t fd)
 	if (!temp)
 		return (0);
 	temp->next = 0;
+	temp->prev = 0;
 	temp->offset = 0;
 	temp->fd = fd;
 	temp->buff = (char *)malloc(BUFFER_SIZE);
@@ -65,55 +66,64 @@ t_list	*lstnew(ssize_t fd)
 	return (temp);
 }
 
-void	lstadd_back(t_list **head, t_list *new)
+void	lstadd_back(t_list **head, t_list **tail, t_list *new)
 {
-	t_list	*temp;
-
 	if (!*head)
+	{
 		*head = new;
+		*tail = new;
+	}
 	else
 	{
-		temp = *head;
-		while (temp->next)
-			temp = temp->next;
-		temp->next = new;
+		(*tail)->next = new;
+		new->prev = *tail;
+		*tail = new;
 	}
 }
 
-void	lstdel(t_list *node)
+void	lstdel(t_list *cur, t_list **phead, t_list **ptail)
 {
-	t_list	*next_node;
-
-	next_node = (node)->next;
-	(node)->fd = next_node->fd;
-	(node)->offset = next_node->offset;
-	(node)->ret_read = next_node->ret_read;
-	free((node)->buff);
-	(node)->buff = next_node->buff;
-	(node)->next = next_node->next;
-	free(next_node);
+	if (!cur)
+		return ;
+	if (cur->prev)
+		cur->prev->next = cur->next;
+	else
+		*phead = cur->next;
+	if (cur->next)
+		cur->next->prev = cur->prev;
+	else
+		*ptail = cur->prev;
+	cur->prev = 0;
+	cur->next = 0;
+	free(cur->buff);
+	free(cur);
 }
 
-char	*cpy_line(t_list *head, ssize_t size, ssize_t fd)
+char	*cpy_line(t_list *head, t_list *tail, ssize_t size, ssize_t fd)
 {
 	char	*line;
 	size_t	i;
+	t_list	*cur;
+	t_list	*temp;
 
 	i = 0;
+	cur = head;
 	line = (char *)malloc(size + 1);
 	if (!line)
 		return (0);
 	line[size] = '\0';
 	while (1)
 	{
-		while (fd != (head)->fd)
-			head = (head)->next;
-		while ((head)->offset < (size_t)(head)->ret_read)
+		while (fd != (cur)->fd)
+			cur = (cur)->next;
+		while ((cur)->offset < (size_t)(cur)->ret_read)
 		{
-			line[i++] = (head)->buff[(head)->offset++];
+			line[i++] = (cur)->buff[(cur)->offset++];
 			if (!(--size))
 				return (line);
 		}
-		lstdel(head);
+		temp = cur->next;
+		lstdel(cur, &head, &tail);
+		cur = temp;
 	}
 }
