@@ -12,97 +12,82 @@
 
 #include "get_next_line_bonus.h"
 
-void	lstclear(t_list **lst, ssize_t fd)
-{
-	while (*lst)
-	{
-		if ((*lst)->fd == fd)
-		{
-			if ((*lst)->next)
-				lstdel(*lst);
-			else
-			{
-				free((*lst)->buff);
-				free(*lst);
-				*lst = 0;
-				return ;
-			}
-		}
-		else
-		{
-			lstclear2(*lst, fd);
-			return ;
-		}
-	}
-}
-
-void	lstclear2(t_list *lst, ssize_t fd)
-{
-	t_list	*next;
-
-	while (lst)
-	{
-		next = lst->next;
-		if (next)
-		{
-			if (next->fd == fd)
-			{
-				lst->next = next->next;
-				free(next->buff);
-				free(next);
-			}
-			else
-				lst = next;
-		}
-		else
-			return ;
-	}
-}
-
-ssize_t	get_size(t_list **head, ssize_t fd)
+t_list	*lstnew(ssize_t fd)
 {
 	t_list	*temp;
-	ssize_t	i;
-	ssize_t	*size;
 
-	i = 0;
-	temp = *head;
-	size = &i;
-	return (get_size_part1(head, temp, fd, size));
-}
-
-ssize_t	get_size_part1(t_list **head, t_list *temp, ssize_t fd, ssize_t *size)
-{
-	while (temp && (fd != temp->fd))
-		temp = temp->next;
+	temp = (t_list *)malloc(sizeof(t_list));
 	if (!temp)
+		return (0);
+	temp->next = 0;
+	temp->prev = 0;
+	temp->offset = 0;
+	temp->fd = fd;
+	temp->buff = (char *)malloc(BUFFER_SIZE);
+	if (!temp->buff)
 	{
-		temp = lstnew(fd);
-		if (!temp)
-			return (-1);
-		if (temp->ret_read == 0)
-		{
-			free(temp->buff);
-			free(temp);
-			return (*size);
-		}
-		lstadd_back(head, temp);
+		free(temp);
+		return (0);
 	}
-	return (get_size_part2(head, temp, fd, size));
+	temp->ret_read = read(fd, temp->buff, BUFFER_SIZE);
+	if (temp->ret_read < 0)
+	{
+		free(temp->buff);
+		free(temp);
+		return (0);
+	}
+	return (temp);
 }
 
-ssize_t	get_size_part2(t_list **head, t_list *temp, ssize_t fd, ssize_t *size)
+void	lstadd_back(t_list **head, t_list **tail, t_list *new)
 {
-	ssize_t	i;
-
-	i = temp->offset;
-	while (i < temp->ret_read)
+	if (!*head)
 	{
-		if (temp->buff[i] == '\n')
-			return (++(*size));
-		i++;
-		(*size)++;
+		*head = new;
+		*tail = new;
 	}
-	temp = temp->next;
-	return (get_size_part1(head, temp, fd, size));
+	else
+	{
+		(*tail)->next = new;
+		new->prev = *tail;
+		*tail = new;
+	}
+}
+
+void	lstdel(t_list *cur, t_list **phead, t_list **ptail)
+{
+	if (!cur)
+		return ;
+	if (cur->prev)
+		cur->prev->next = cur->next;
+	else
+		*phead = cur->next;
+	if (cur->next)
+		cur->next->prev = cur->prev;
+	else
+		*ptail = cur->prev;
+	cur->prev = 0;
+	cur->next = 0;
+	free(cur->buff);
+	free(cur);
+}
+
+void	lstclear(t_list **head, t_list **tail, ssize_t fd)
+{
+	t_list	*cur;
+	t_list	*temp;
+
+	if (!head)
+		return ;
+	if (!*head)
+		return ;
+	cur = *head;
+	while (cur && fd != cur->fd)
+		cur = cur->next;
+	while (cur)
+	{
+		temp = cur->next;
+		lstdel(cur, head, tail);
+		cur = temp;
+	}
 }

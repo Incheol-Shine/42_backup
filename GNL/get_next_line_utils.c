@@ -12,6 +12,66 @@
 
 #include "get_next_line.h"
 
+t_list	*lstnew(ssize_t fd)
+{
+	t_list	*temp;
+
+	temp = (t_list *)malloc(sizeof(t_list));
+	if (!temp)
+		return (0);
+	temp->next = 0;
+	temp->prev = 0;
+	temp->offset = 0;
+	temp->fd = fd;
+	temp->buff = (char *)malloc(BUFFER_SIZE);
+	if (!temp->buff)
+	{
+		free(temp);
+		return (0);
+	}
+	temp->ret_read = read(fd, temp->buff, BUFFER_SIZE);
+	if (temp->ret_read < 0)
+	{
+		free(temp->buff);
+		free(temp);
+		return (0);
+	}
+	return (temp);
+}
+
+void	lstadd_back(t_list **head, t_list **tail, t_list *new)
+{
+	if (!*head)
+	{
+		*head = new;
+		*tail = new;
+	}
+	else
+	{
+		(*tail)->next = new;
+		new->prev = *tail;
+		*tail = new;
+	}
+}
+
+void	lstdel(t_list *cur, t_list **phead, t_list **ptail)
+{
+	if (!cur)
+		return ;
+	if (cur->prev)
+		cur->prev->next = cur->next;
+	else
+		*phead = cur->next;
+	if (cur->next)
+		cur->next->prev = cur->prev;
+	else
+		*ptail = cur->prev;
+	cur->prev = 0;
+	cur->next = 0;
+	free(cur->buff);
+	free(cur);
+}
+
 void	lstclear(t_list **head, t_list **tail, ssize_t fd)
 {
 	t_list	*cur;
@@ -30,49 +90,4 @@ void	lstclear(t_list **head, t_list **tail, ssize_t fd)
 		lstdel(cur, head, tail);
 		cur = temp;
 	}
-}
-
-ssize_t	get_size(t_list **head, t_list **tail, ssize_t fd)
-{
-	t_list	*temp;
-	ssize_t	size;
-
-	temp = *head;
-	size = 0;
-	while (1)
-	{
-		while (temp && (fd != temp->fd))
-			temp = temp->next;
-		if (!temp)
-		{
-			temp = lstnew(fd);
-			if (!temp)
-				return (-1);
-			if (temp->ret_read == 0)
-			{
-				free(temp->buff);
-				free(temp);
-				return (size);
-			}
-			lstadd_back(head, tail, temp);
-		}
-		if (get_size_find_nl(&temp, &size))
-			return (size);
-	}
-}
-
-ssize_t	get_size_find_nl(t_list **temp, ssize_t *size)
-{
-	ssize_t	i;
-
-	i = (*temp)->offset;
-	while (i < (*temp)->ret_read)
-	{
-		if ((*temp)->buff[i] == '\n')
-			return (++(*size));
-		i++;
-		(*size)++;
-	}
-	*temp = (*temp)->next;
-	return (0);
 }

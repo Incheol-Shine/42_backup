@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = get_next_line.a
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRCS = get_next_line.c get_next_line_utils.c
 SRCS_B = get_next_line_bonus.c get_next_line_utils_bonus.c
