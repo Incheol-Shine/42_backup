@@ -7,13 +7,18 @@ int main(void)
 	ssize_t	fd;
 	char 	*line;
 
-	printf("BUFFER_SIZE : %d\n",BUFFER_SIZE);
+	printf("BUFFER_SIZE : %d\n", BUFFER_SIZE);
 	fd = open( "./42_with_nl", O_RDONLY);
 	if (0 <= fd)
-		line = get_next_line(0);
+		line = get_next_line(fd);
 		printf("%s", line);
 		free(line);
-		// char c = 0; read(fd, &c, 1); printf("check: %d\n",(c == '1'));
+		line = get_next_line(fd);
+		printf("%s", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("%s", line);
+// char c = 0; read(fd, &c, 1); printf("check: %d\n",(c == '1'));
 	close(fd);
 	return (0);
 }

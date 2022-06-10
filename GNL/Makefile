@@ -31,7 +31,7 @@ endif
 all: $(NAME)
 
 clean:
-	$(RM) $(RMFLAGS) -f $(OBJS) $(OBJS_B)
+	$(RM) $(RMFLAGS) $(OBJS) $(OBJS_B)
 
 fclean: clean
 	$(RM) $(RMFLAGS) $(NAME)
