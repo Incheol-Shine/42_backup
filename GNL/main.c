@@ -8,8 +8,9 @@ int main(void)
 	char 	*line;
 
 	printf("BUFFER_SIZE : %d\n", BUFFER_SIZE);
-	fd = open( "./42_with_nl", O_RDONLY);
+	fd = open( "./43_with_nl", O_RDONLY);
 	if (0 <= fd)
+	{
 		line = get_next_line(fd);
 		printf("%s", line);
 		free(line);
@@ -18,6 +19,7 @@ int main(void)
 		free(line);
 		line = get_next_line(fd);
 		printf("%s", line);
+	}
 // char c = 0; read(fd, &c, 1); printf("check: %d\n",(c == '1'));
 	close(fd);
 	return (0);

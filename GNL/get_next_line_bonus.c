@@ -30,7 +30,7 @@ char	*get_next_line(ssize_t fd)
 		lstclear(&head, &tail, fd);
 	else
 	{
-		line = cpy_line(head, tail, size, fd);
+		line = cpy_line(&head, &tail, size, fd);
 		if (!line)
 			lstclear(&head, &tail, fd);
 	}
@@ -84,7 +84,7 @@ ssize_t	get_size_find_nl(t_list **temp, ssize_t *size)
 	return (0);
 }
 
-char	*cpy_line(t_list *head, t_list *tail, ssize_t size, ssize_t fd)
+char	*cpy_line(t_list **head, t_list **tail, ssize_t size, ssize_t fd)
 {
 	char	*line;
 	size_t	i;
@@ -92,7 +92,7 @@ char	*cpy_line(t_list *head, t_list *tail, ssize_t size, ssize_t fd)
 	t_list	*temp;
 
 	i = 0;
-	cur = head;
+	cur = *head;
 	line = (char *)malloc(size + 1);
 	if (!line)
 		return (0);
@@ -108,7 +108,7 @@ char	*cpy_line(t_list *head, t_list *tail, ssize_t size, ssize_t fd)
 				return (line);
 		}
 		temp = cur->next;
-		lstdel(cur, &head, &tail);
+		lstdel(cur, head, tail);
 		cur = temp;
 	}
 }

@@ -37,7 +37,7 @@ typedef struct s_backup
 char	*get_next_line(ssize_t fd);
 ssize_t	get_size(t_list **head, t_list **tail, ssize_t fd);
 ssize_t	get_size_find_nl(t_list **temp, ssize_t *size);
-char	*cpy_line(t_list *head, t_list *tail, ssize_t size, ssize_t fd);
+char	*cpy_line(t_list **head, t_list **tail, ssize_t size, ssize_t fd);
 t_list	*lstnew(ssize_t fd);
 void	lstadd_back(t_list **head, t_list **tail, t_list *new);
 void	lstdel(t_list *node, t_list **phead, t_list **ptail);

@@ -10,18 +10,16 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = get_next_line.a
+NAME = a.out
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = get_next_line.c get_next_line_utils.c
-SRCS_B = get_next_line_bonus.c get_next_line_utils_bonus.c
+SRCS = get_next_line.c get_next_line_utils.c main.c
+SRCS_B = get_next_line_bonus.c get_next_line_utils_bonus.c main.c
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
-AR = ar
-ARFLAGS = -rcs
 RM = rm
 RMFLAGS = -f
-
+buff = 42
 ifdef BONUS
 	TOTAL_OBJS = $(OBJS_B)
 else
@@ -39,12 +37,12 @@ fclean: clean
 re: fclean all
 
 bonus :
-	make BONUS=1
+	make BONUS=0
 
 $(NAME): $(TOTAL_OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+	$(CC) -g $(CFLAGS) -D BUFFER_SIZE=$(buff) -o $@ $^
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -D BUFFER_SIZE=$(buff) -c $<
 
 .PHONY: all clean fclean re bonus
