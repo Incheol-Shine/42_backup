@@ -15,6 +15,11 @@ int	func_s(va_list ap)
 	int		len;
 
 	s = va_arg(ap, char *);
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	len = (int)ft_strlen(s);
 	write(1, s, len);	// ft_putstr_fd(s, 1)
 	return (len);
@@ -28,8 +33,8 @@ int	func_p(va_list ap)
 	addr = va_arg(ap, void *);
 	if (!addr)
 	{
-		write(1, "(nil)", 5);
-		return (5);
+		write(1, "0x0", 3);
+		return (3);
 	}
 	len = 2;
 	write(1, "0x", 2);

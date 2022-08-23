@@ -6,15 +6,15 @@ int	main(void)
 	unsigned int i = 4200000000;
 	unsigned long j = 0;
 	// c
-	j = ft_printf("hello, %corld!\n", 'w');
-	printf("%u\n", j);
 	j = printf("hello, %corld!\n", 'w');
+	printf("%u\n", j);
+	j = ft_printf("hello, %corld!\n", 'w');
 	printf("%u\n", j);
 
 	// s
-	j = ft_printf("hello, %s", "world!\n");
+	j = printf("hello, %s", 0);
 	printf("%u\n", j);
-	j = printf("hello, %s", "world!\n");
+	j = ft_printf("hello, %s", 0);
 	printf("%u\n", j);
 
 	// p
