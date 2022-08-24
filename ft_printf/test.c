@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "ft_printf.h"
 
 int	main(void)
@@ -6,15 +7,15 @@ int	main(void)
 	unsigned int i = 4200000000;
 	unsigned long j = 0;
 	// c
-	j = printf("hello, %corld!\n", 'w');
-	printf("%u\n", j);
 	j = ft_printf("hello, %corld!\n", 'w');
+	printf("%u\n", j);
+	j = printf("hello, %corld!\n", 'w');
 	printf("%u\n", j);
 
 	// s
-	j = printf("hello, %s", 0);
+	j = printf("hello, %s\n", NULL);
 	printf("%u\n", j);
-	j = ft_printf("hello, %s", 0);
+	j = ft_printf("hello, %s\n", NULL);
 	printf("%u\n", j);
 
 	// p
@@ -45,8 +46,8 @@ int	main(void)
 	j = printf("%X\n", 0);
 	printf("%X\n", j);
 
-	ft_printf("hello %%%% hi love %%%%\n");
-	printf("hello %%%% hi love %%%%\n");
+	printf("%%%%hello hi %%\n");
+	ft_printf("%%%%hello hi %%\n");
 	// printf("%x\n%X\n", i, i);
 
 	return (0);

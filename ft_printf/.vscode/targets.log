@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Mon Aug 22 15:19:38 2022
+# Make data base, printed on Wed Aug 24 23:23:49 2022
 
 # Variables
 
@@ -49,7 +50,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:47957
+JOURNAL_STREAM = 8:48428
 # makefile (from 'Makefile', line 4)
 CFLAGS = -Wall -Wextra -Werror
 # environment
@@ -73,7 +74,7 @@ XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/d
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
-MANAGERPID = 1804
+MANAGERPID = 1734
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -89,7 +90,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/incheolshin-XH57:@/tmp/.ICE-unix/2064,unix/incheolshin-XH57:/tmp/.ICE-unix/2064
+SESSION_MANAGER = local/incheolshin-XH57:@/tmp/.ICE-unix/1991,unix/incheolshin-XH57:/tmp/.ICE-unix/1991
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -107,7 +108,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 477e9e246f154e9888f2cf818fbed14c
+INVOCATION_ID = c17618fab3c4401f90d04e1450d1463a
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/105/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -131,7 +132,7 @@ PWD = /home/incheolshin/4242/printf
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2026
+SSH_AGENT_PID = 1953
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -149,7 +150,7 @@ VSCODE_CODE_CACHE_PATH = /home/incheolshin/.config/Code/CachedData/e4503b30fc782
 # environment
 LOGNAME = incheolshin
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -213,7 +214,7 @@ PRINTF_SRCS = ft_printf.c ft_printf_functions_1.c ft_printf_functions_2.c
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/incheolshin
+OLDPWD = /home/incheolshin/4242
 # default
 .VARIABLES := 
 # automatic
@@ -251,11 +252,11 @@ SNAP_NAME = code
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/f85406e4_a66a_47c9_a8a9_7e78808fd42a
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/38708e0d_40c8_423a_b6e5_caaaec46f75d
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.84
+GNOME_TERMINAL_SERVICE = :1.87
 # default
 SUFFIXES := 
 # environment
@@ -277,25 +278,25 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 3916
+VSCODE_PID = 3210
 # variable set hash-table stats:
- 
-# Load=134/1024=13%, Rehash=0, Collisions=21/169=12%
+# Load=134/1024=13%, Rehash=0, Collisions=21/168=12%
 
 # Pattern-specific Variable Values
+ 
 
 # No pattern-specific variable values.
 
 # Directories
 
-# . (device 2055, inode 2902357): 11 files, no impossibilities.
+# . (device 2055, inode 2902357): 12 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 %.o: %.c
-#  recipe to execute (from 'Makefile', line 27):
+#  recipe to execute (from 'Makefile', line 25):
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # 1 implicit rules, 0 (0.0%) terminal.
@@ -310,67 +311,62 @@ all: libftprintf.a
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
 
 .PHONY: all clean fclean re
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-ft_printf.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-.SUFFIXES:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-Makefile:
+ft_printf.o: ft_printf.c
 #  Implicit rule search has been done.
-#  Last modified 2022-08-20 10:37:38.928764522
-#  File has been updated.
-#  Successfully updated.
-
-libft/libft.a:
-#  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
+#  Implicit/static pattern stem: 'ft_printf'
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
-# @ := libft/libft.a
+# @ := ft_printf.o
 # automatic
 # % := 
 # automatic
-# * := 
+# * := ft_printf
 # automatic
-# + := 
+# + := ft_printf.c
 # automatic
 # | := 
 # automatic
-# < := 
+# < := ft_printf.c
 # automatic
-# ^ := 
+# ^ := ft_printf.c
 # automatic
-# ? := 
+# ? := ft_printf.c
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/12=17%
-#  recipe to execute (from 'Makefile', line 24):
-	make -C $(LIBFT_DIR) all
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  recipe to execute (from 'Makefile', line 25):
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-24 22:58:43.954830701
+#  File has been updated.
+#  Successfully updated.
 
 fclean: clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 35):
+#  recipe to execute (from 'Makefile', line 33):
 	make -C $(LIBFT_DIR) fclean
 	$(RM) $(NAME)
+
+# Not a target:
+ft_printf.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-24 22:21:37.936416678
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 .DEFAULT:
@@ -383,7 +379,7 @@ re: fclean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 39):
+#  recipe to execute (from 'Makefile', line 37):
 	make all
 
 clean:
@@ -391,7 +387,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 30):
+#  recipe to execute (from 'Makefile', line 28):
 	make -C $(LIBFT_DIR) clean
 	$(RM) $(PRINTF_OBJS)
 	$(RM) $(PRINTF_OBJS_BONUS)
@@ -402,14 +398,15 @@ ft_printf_functions_1.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-libftprintf.a: libft/libft.a ft_printf.o ft_printf_functions_1.o ft_printf_functions_2.o
+libftprintf.a: ft_printf.o ft_printf_functions_1.o ft_printf_functions_2.o
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
 #  recipe to execute (from 'Makefile', line 20):
+	make -C $(LIBFT_DIR) all
 	cp $(LIBFT) ./$@
 	$(AR) $(ARFLAG) $@ $^
 
@@ -427,12 +424,12 @@ ft_printf_functions_2.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 27 / storage = 288 B / avg = 10 B
-# current buf: size = 8162 B / used = 288 B / count = 27 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 28 / storage = 291 B / avg = 10 B
+# current buf: size = 8162 B / used = 291 B / count = 28 / avg = 10 B
 
-# strcache performance: lookups = 48 / hit rate = 43%
+# strcache performance: lookups = 48 / hit rate = 41%
 # hash-table stats:
-# Load=27/8192=0%, Rehash=0, Collisions=1/48=2%
-# Finished Make data base on Mon Aug 22 15:19:38 2022
+# Load=28/8192=0%, Rehash=0, Collisions=1/48=2%
+# Finished Make data base on Wed Aug 24 23:23:49 2022
 
  

@@ -16,12 +16,10 @@ PRINTF_OBJS = $(PRINTF_SRCS:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(LIBFT) $(PRINTF_OBJS)
+$(NAME) : $(PRINTF_OBJS)
+	make -C $(LIBFT_DIR) all
 	cp $(LIBFT) ./$@
 	$(AR) $(ARFLAG) $@ $^
-
-$(LIBFT) :
-	make -C $(LIBFT_DIR) all
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@

@@ -30,8 +30,11 @@ int	ft_printf(const char *format, ...)
 				return_size += func_x(ap, 1);
 			else if (*(temp + 1) == '%')
 				return_size += func_percent();
-			// else
-			// 	ft_printf("error");
+			else
+			{
+				temp++;
+				continue;
+			}
 			temp++;
 		}
 		else
