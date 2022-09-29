@@ -20,9 +20,9 @@ int	main(void)
 
 	// p
 	printf("%p\n%x\n%X\n", &i, &i, &i);
-	j = ft_printf("???%p\n", 0);
+	j = ft_printf("???%p\n", &i);
 	printf("%u\n", j);
-	j = printf("???%p\n", 0);
+	j = printf("???%p\n", &i);
 	printf("%u\n", j);
 
 	// d
@@ -49,6 +49,11 @@ int	main(void)
 	printf("%%%%hello hi %%\n");
 	ft_printf("%%%%hello hi %%\n");
 	// printf("%x\n%X\n", i, i);
+
+	j = printf("");
+	printf("%d", j);
+	j = ft_printf("");
+	printf("%d", j);
 
 	return (0);
 }

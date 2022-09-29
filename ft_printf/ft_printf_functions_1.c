@@ -31,14 +31,15 @@ int	func_p(va_list ap)
 	int		len;
 
 	addr = va_arg(ap, void *);
-	if (!addr)
-	{
-		write(1, "(nil)", 5);
-		return (5);
-	}
 	len = 2;
 	write(1, "0x", 2);
-	print_hex(&len, (unsigned long)addr, 0);
+	if (!addr)
+	{
+		write(1, "0", 1);
+		len++;
+	}
+	else 
+		print_hex(&len, (unsigned long)addr, 0);
 	return (len);
 }
 

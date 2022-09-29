@@ -14,27 +14,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*temp == '%')
 		{
-			if (*(temp + 1) == 'c')
-				return_size += func_c(ap);
-			else if (*(temp + 1) == 's')
-				return_size += func_s(ap);
-			else if (*(temp + 1) == 'p')
-				return_size += func_p(ap);
-			else if (*(temp + 1) == 'd' || *(temp + 1) == 'i')
-				return_size += func_di(ap);
-			else if (*(temp + 1) == 'u')
-				return_size += func_u(ap);
-			else if (*(temp + 1) == 'x')
-				return_size += func_x(ap, 0);
-			else if (*(temp + 1) == 'X')
-				return_size += func_x(ap, 1);
-			else if (*(temp + 1) == '%')
-				return_size += func_percent();
-			else
-			{
-				temp++;
-				continue;
-			}
+			return_size += ft_format(ap, *(temp + 1));
 			temp++;
 		}
 		else
@@ -45,6 +25,29 @@ int	ft_printf(const char *format, ...)
 		temp++;
 	}
 	va_end(ap);
+	return (return_size);
+}
+
+int	ft_format(va_list ap, char format)
+{
+	int	return_size = 0;
+	
+	if (format == 'c')
+		return_size = func_c(ap);
+	else if (format == 's')
+		return_size = func_s(ap);
+	else if (format == 'p')
+		return_size = func_p(ap);
+	else if (format == 'd' || format == 'i')
+		return_size = func_di(ap);
+	else if (format == 'u')
+		return_size = func_u(ap);
+	else if (format == 'x')
+		return_size = func_x(ap, 0);
+	else if (format == 'X')
+		return_size = func_x(ap, 1);
+	else if (format == '%')
+		return_size = func_percent();
 	return (return_size);
 }
 
