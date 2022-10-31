@@ -1,8 +1,15 @@
 #include "fractol.h"
 
-#define		WIN_WIDTH				1920
-#define		WIN_HEIGHT				1080
-#define		MAX_ITER				50
+#define		WIN_WIDTH				960
+#define		WIN_HEIGHT				540
+#define		MAX_ITER				20
+
+#define		EVENT_MOUSE_MOVE		6
+#define		EVENT_MOUSE_DOWN		4
+#define		EVENT_MOUSE_up			5
+
+
+
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
@@ -28,6 +35,24 @@ void	make_circle(t_img *img, float d, int scale)
 		for (int x = -WIN_WIDTH / 2; x <= WIN_WIDTH / 2; x++)
 			if (x*x + y*y <= (int)(d*d))
 				complex_pixel_put(img, x, y, 0x00FFFFFF);
+}
+
+void	black_img(t_img *img)
+{
+	int x;
+	int	y;
+
+	y = 0;
+	while (y < WIN_HEIGHT)
+	{
+		x = 0;
+		while (x < WIN_WIDTH)
+		{
+			my_mlx_pixel_put(img, x, y, 0x00000000);
+			x++;
+		}
+		y++;
+	}
 }
 
 unsigned int	is_release(double c_re, double c_im)
@@ -60,7 +85,7 @@ unsigned int	set_color(int iter)
 	int 	b;
 	unsigned int	color;
 
-	release_rate = (float)iter / (float)MAX_ITER;
+	release_rate = (float)iter / (float)(MAX_ITER);
 	r = 255 * (1 - release_rate);
 	g = 255 * (1 - release_rate);
 	b = 255 * (1 - release_rate);
@@ -69,7 +94,7 @@ unsigned int	set_color(int iter)
 	// return (color);
 }
 
-void	mandelbrot(t_img *img, int scale)
+void	mandelbrot(t_img *img, double scale)
 {
 	int				c_re;
 	int 			c_im;
@@ -81,7 +106,7 @@ void	mandelbrot(t_img *img, int scale)
 		c_re = -(WIN_WIDTH / 2);
 		while (c_re < WIN_WIDTH / 2)
 		{
-			if (iteration = is_release(c_re / (double)scale, c_im / (double)scale))
+			if ((iteration = is_release(c_re / scale, c_im / scale)))
 			{
 				complex_pixel_put(img, c_re, c_im, set_color(iteration));
 			}
@@ -93,21 +118,18 @@ void	mandelbrot(t_img *img, int scale)
 
 int		main(void)
 {
-	t_img	img;
 	t_win	win;
-	int		scale;
-
-	scale = WIN_WIDTH / 4;
-
+	
+	win.scale = WIN_WIDTH / 4;   // 1920 / 4 = 480
 	win.mlx = mlx_init();
 	win.win = mlx_new_window(win.mlx, WIN_WIDTH, WIN_HEIGHT, "Hello world!");
-	img.img = mlx_new_image(win.mlx, WIN_WIDTH, WIN_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	printf("%d, %d, %d\n", img.bits_per_pixel, img.line_length, img.endian);
-	mandelbrot(&img, scale);
-	mlx_put_image_to_window(win.mlx, win.win, img.img, 0, 0);
-	mlx_hook(win.win, 2, 1L<<0, close, &win);
-	// esc_quit();
+	win.img.img = mlx_new_image(win.mlx, WIN_WIDTH, WIN_HEIGHT);
+	win.img.addr = mlx_get_data_addr(win.img.img, &win.img.bits_per_pixel, &win.img.line_length, &win.img.endian);
+	mandelbrot(&win.img, win.scale);
+	mlx_put_image_to_window(win.mlx, win.win, win.img.img, 0, 0);
+	mlx_key_hook(win.win, &press_key, &win);
+	// mlx_hook(win.win, EVENT_MOUSE_MOVE, 0, &mouse_move, &win);
+	mlx_hook(win.win, EVENT_MOUSE_DOWN, 0, &zoom_in_out, &win);
 	mlx_loop(win.mlx);
 }
 
