@@ -33,9 +33,13 @@ int        main(void)
     mlx = mlx_init();
     win = mlx_new_window(mlx, 640, 480, "title");
     mlx_key_hook(win, &key_hook, &cnt);
-	mlx_hook(win, 6, 0, &mouse_move, &cnt);
-	mlx_hook(win, 4, 0, &mouse_down, &cnt);
-	mlx_hook(win, 5, 0, &mouse_up, &cnt);
+	mlx_mouse_hook(win, &mouse_move, &cnt);
+	mlx_mouse_hook(win, &mouse_down, &cnt);
+	mlx_mouse_hook(win, &mouse_up, &cnt);
+	// mlx_hook(win, 6, 0, &mouse_move, &cnt);
+	// mlx_hook(win, 4, 0, &mouse_down, &cnt);
+	// mlx_hook(win, 5, 0, &mouse_up, &cnt);
+
     mlx_loop(mlx);
     return (0);    
 }
