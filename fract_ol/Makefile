@@ -9,8 +9,11 @@ LIBFTDIR 	= libft
 MLXDIR		= mlx_linux
 
 # src / obj files
-SRC		= main.c \
-		  
+SRC		=	main.c \
+			util.c \
+			event.c \
+			fractal.c 
+
 OBJ		= $(SRC:.c=.o)
 
 # compiler
@@ -21,12 +24,13 @@ all : $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LIBFTDIR) all
-	$(CC) $< -Lmlx_linux -lmlx_Linux -L. -Imlx_linux -lXext -lX11 -lm -lz -o $@
+	@make -C $(MLXDIR) all
+	$(CC) $(OBJ) $(LIBFT) -Lmlx_linux -lmlx_Linux -L. -Imlx_linux -lXext -lX11 -lm -lz -o $@
 
 # $(CC) $(CFLAGS) -L. -lmlx -framework OpenGL -framework AppKit -c $< -o $@
-
+# cc main.c -Lmlx_linux -lmlx_Linux -L. -Imlx_linux -lXext -lX11 -lm -lz
 %.o: %.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -I. -Imlx_linux -O3 -c $< -o $@
 
 clean :
 	@make -C $(LIBFTDIR) clean

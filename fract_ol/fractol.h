@@ -6,27 +6,34 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 11:06:10 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/02 04:26:33 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/02 05:43:17 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
+#ifndef FRACTOL_H
 
-# define MINITALK_H
+# define FRACTOL_H
 
 # include <mlx.h>
 # include <stdio.h>
 # include <math.h>
 # include <stdlib.h>
 # include "./libft/libft.h"
+# define WIN_WIDTH			960
+# define WIN_HEIGHT			540
+# define MAX_ITER			100
+# define KEY_ESC			65307 // mac : 53, linux : 65307
+# define MOUSE_LEFT			1
+# define MOUSE_SCROLL_UP	4
+# define MOUSE_SCROLL_DOWN	5
 
-typedef	struct s_coord
+typedef struct s_coord
 {
 	double	re;
 	double	im;
 }				t_coord;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	void	*black_img;
@@ -45,7 +52,7 @@ typedef struct s_complex
 	unsigned int	(*f)(t_coord a, t_coord b);
 }				t_complex;
 
-typedef struct	s_win
+typedef struct s_win
 {
 	t_img		img;
 	t_complex	cmp;
@@ -63,9 +70,11 @@ unsigned int	ship(t_coord c, t_coord a);
 unsigned int	set_color(int iter);
 void			fractal(t_win *win, unsigned int (*set)(t_coord a, t_coord b));
 int				change_phase(int btn, int x, int y, t_win *win);
-int				phase0(t_win win);
-int				phase1(t_win win);
-int				phase2(t_win win);
+void			phase0(t_win win);
+void			phase1(t_win win);
+void			phase2(t_win win);
 int				choice(char *set, t_win *win);
 void			error_msg(void);
+int				key_hook(int keycode, t_win *win);
+void			init(t_win *win);
 #endif
