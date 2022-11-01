@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 11:06:29 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/01 08:20:55 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/01 09:04:17 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	press_key(int keycode, t_win *vars)
 int	zoom_in_out(int btn, int x, int y, t_win *win)
 {	
 	if (btn == MOUSE_SCROLL_UP)
-		*(win->complex.zoom) *= 1.1;
+		(win->complex.zoom) *= 1.1;
 	else if (btn == MOUSE_SCROLL_DOWN)
-		*(win->complex.zoom) *= 0.9;
-	mlx_put_image_to_window(win->mlx, win->win, win->img.black_img, 0, 0);
+		(win->complex.zoom) *= 0.9;
+	mlx_destroy_image(win->mlx, win->win);
 	mandelbrot(win);
 	mlx_put_image_to_window(win->mlx, win->win, win->img.img, 0, 0);
 	return (0);
