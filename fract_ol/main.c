@@ -12,7 +12,6 @@
 
 int	key_hook(int keycode, t_win *win)
 {
-    printf("key_hook...%d\n", keycode);
 	if (keycode == KEY_ESC)
 	{
 		mlx_destroy_window(win->mlx, win->win);
@@ -28,24 +27,6 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
-}
-
-void	black_img(t_img *img)
-{
-	int x;
-	int	y;
-
-	y = 0;
-	while (y < WIN_HEIGHT)
-	{
-		x = 0;
-		while (x < WIN_WIDTH)
-		{
-			my_mlx_pixel_put(img, x, y, 0x00000000);
-			x++;
-		}
-		y++;
-	}
 }
 
 int	mouse_zoom(int btn, int x, int y, t_win *win)
@@ -64,7 +45,7 @@ int	mouse_zoom(int btn, int x, int y, t_win *win)
 	}
 	mlx_destroy_image(win->mlx, win->img.img);
 	win->img.img = mlx_new_image(win->mlx, WIN_WIDTH, WIN_HEIGHT);
-	fractal(win);
+	fractal(win, win->cmp.f);
 	mlx_put_image_to_window(win->mlx, win->win, win->img.img, 0, 0);
 	c = pixel_to_complex(x, y, &(win->cmp));
 	return (0);
@@ -76,34 +57,10 @@ t_coord	pixel_to_complex(int x, int y, t_complex *cmp)
 
 	c.re = x / cmp->zoom - WIN_WIDTH / (2 * cmp->zoom) + (cmp->c_x);
 	c.im = -y / cmp->zoom + WIN_HEIGHT / (2 * cmp->zoom) + (cmp->c_y);
-	// printf("%lf, %lf\n", c.re, c.im);
 	return (c);
 }
 
-void	make_circle(t_win *win, double d)
-{
-	t_coord c;
-	int		x;
-	int		y;
-
-	y = 0;
-	while (y < WIN_HEIGHT)
-	{
-		x = 0;
-		while (x < WIN_WIDTH)
-		{
-			c = pixel_to_complex(x, y, &(win->cmp));
-			if (c.re*c.re + c.im*c.im <= (d*d))
-			{
-				my_mlx_pixel_put(&(win->img), x, y, 0x00FFFFFF);
-			}
-			x++;
-		}
-		y++;
-	}
-}
-
-unsigned int	mandelbrot(t_coord c)
+unsigned int	mandelbrot(t_coord c, t_coord a)
 {
 	t_coord	z;
 	double	temp;
@@ -124,7 +81,25 @@ unsigned int	mandelbrot(t_coord c)
 	return (0);
 }
 
-unsigned int	mandelbrot(t_coord c)
+unsigned int	julia(t_coord z, t_coord c)
+{
+	double	temp;
+	int		num_iter;
+
+	num_iter = 0;
+	while (num_iter < MAX_ITER)
+	{
+		if (z.re * z.re + z.im * z.im > 4)
+			return (num_iter);
+		temp = z.re * z.re - z.im * z.im + c.re;
+		z.im = 2 * z.re * z.im + c.im;
+		z.re = temp;
+		num_iter++;
+	}
+	return (0);
+}
+
+unsigned int	ship(t_coord c, t_coord a)
 {
 	t_coord	z;
 	double	temp;
@@ -138,7 +113,7 @@ unsigned int	mandelbrot(t_coord c)
 		if (z.re * z.re + z.im * z.im > 4)
 			return (num_iter);
 		temp = z.re * z.re - z.im * z.im + c.re;
-		z.im = 2 * z.re * z.im + c.im;
+		z.im = fabs(2 * z.re * z.im) + c.im;
 		z.re = temp;
 		num_iter++;
 	}
@@ -148,21 +123,12 @@ unsigned int	mandelbrot(t_coord c)
 unsigned int	set_color(int iter)
 {
 	float			release_rate;
-	int 			r;
-	int 			g;
-	int 			b;
-	unsigned int	color;
 
 	release_rate = (float)iter / (float)(MAX_ITER);
-	r = 255 * (1 - release_rate);
-	g = 255 * (1 - release_rate);
-	b = 255 * (1 - release_rate);
-	color = r << 16 | g << 8 | b;
 	return ((1 << 24) * (1-release_rate));
-	// return (color);
 }
 
-void	fractal(t_win *win, int	fractal_set)
+void	fractal(t_win *win, unsigned int (*set)(t_coord a, t_coord b))
 {
 	int	x;
 	int	y;
@@ -174,7 +140,7 @@ void	fractal(t_win *win, int	fractal_set)
 		x = 0;
 		while (x < WIN_WIDTH)
 		{
-			if ((iteration = mandelbrot(pixel_to_complex(x, y, &(win->cmp)))))
+			if ((iteration = set(pixel_to_complex(x, y, &(win->cmp)), win->cmp.c_base)))
 			{
 				my_mlx_pixel_put(&(win->img), x, y, set_color(iteration));
 			}
@@ -195,25 +161,55 @@ void	init(t_win *win)
 	win->cmp.zoom = WIN_WIDTH / 4;
 }
 
+int	mouse_move(int x, int y, t_win *win)
+{
+	t_coord c;
+
+	if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGHT)
+	{
+		c = pixel_to_complex(x, y, &(win->cmp));
+		win->cmp.c_base.re = c.re;
+		win->cmp.c_base.re = c.im;
+		mlx_destroy_image(win->mlx, win->img.img);
+		win->img.img = mlx_new_image(win->mlx, WIN_WIDTH, WIN_HEIGHT);
+		mlx_put_image_to_window(win->mlx, win->win, win->img.img, 0, 0);
+		fractal(win, win->cmp.f);
+	}
+	return (0);
+}
+
+int	change_phase(int btn, int x, int y, t_win *win)
+{
+	t_coord c;
+
+	if (btn == MOUSE_LEFT)
+	{
+		c = pixel_to_complex(x, y, &(win->cmp));
+		win->cmp.c_base.re = c.re;
+		win->cmp.c_base.re = c.im;
+		phase2(*win);
+	}
+	return (0);
+}
+
 void	error_msg(void)
 {
-	printf("usage : fractol [mandelbrot julia]");
+	printf("usage : fractol [mandelbrot julia ship]\n");
 	exit(0);
 }
 
-int	choice(char *set, unsigned int (*f)(t_coord a, t_win *b))
+int	choice(char *set, t_win *win)
 {
-	char *mandel;
-	char *julia;
-
-	mandel = "mandelbrot";
-	julia = "julia";
-	if (ft_strncmp(set, "mandelbrot", 10))
-		f = &mandelbrot;
-	else if (ft_strncmp(set, "julia", 5))
-		f = &julia;
-	else if (ft_strncmp(set, "ship", 4))
-		f = &ship;
+	if (!(ft_strncmp(set, "mandelbrot", 9)))
+		win->cmp.f = &mandelbrot;
+	
+	else if (!(ft_strncmp(set, "ship", 3)))
+		win->cmp.f = &ship;
+	else if (!(ft_strncmp(set, "julia", 4)))
+	{
+		win->cmp.f = &julia;
+		return (1);
+	}
 	else
 		error_msg();
 	return (0);
@@ -222,18 +218,42 @@ int	choice(char *set, unsigned int (*f)(t_coord a, t_win *b))
 int	main(int argc, char *argv[])
 {
     t_win	win;
-	int		fractal_set;
-	
+	int		is_julia;
+
 	if (argc != 2)
 		error_msg();
-	choice(argv[1], win.cmp.f);
+	is_julia = choice(argv[1], &win);
 	init(&win);
-	
-	fractal(&win, fractal_set);
-	
+	fractal(&win, win.cmp.f);
 	mlx_put_image_to_window(win.mlx, win.win, win.img.img, 0, 0);
+	if (is_julia)
+		phase1(win);
+	else
+		phase0(win);
+    return (0);
+}
+
+int phase0(t_win win)
+{
 	mlx_mouse_hook(win.win, &mouse_zoom, &win);
 	mlx_key_hook(win.win, &key_hook, &win);
     mlx_loop(win.mlx);
-    return (0);
+}
+
+int phase1(t_win win)
+{
+	mlx_mouse_hook(win.win, &mouse_move, &win);
+	mlx_mouse_hook(win.win, &change_phase, &win);
+    mlx_loop(win.mlx);
+}
+
+int	phase2(t_win win)
+{
+	mlx_destroy_image(win.mlx, win.img.img);
+	win.img.img = mlx_new_image(win.mlx, WIN_WIDTH, WIN_HEIGHT);
+	fractal(&win, win.cmp.f);
+	mlx_put_image_to_window(win.mlx, win.win, win.img.img, 0, 0);
+	mlx_mouse_hook(win.win, &mouse_zoom, &win);
+	mlx_key_hook(win.win, &key_hook, &win);
+	mlx_loop(win.mlx);
 }

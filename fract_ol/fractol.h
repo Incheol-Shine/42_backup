@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 11:06:10 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/02 00:16:11 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/02 04:26:33 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ int				change_phase(int btn, int x, int y, t_win *win);
 int				phase0(t_win win);
 int				phase1(t_win win);
 int				phase2(t_win win);
-int				choice(char *set, unsigned int (*f)(t_coord a, t_win *b));
+int				choice(char *set, t_win *win);
 void			error_msg(void);
 #endif

@@ -230,19 +230,20 @@ int	change_phase(int btn, int x, int y, t_win *win)
 
 void	error_msg(void)
 {
-	printf("usage : fractol [mandelbrot julia]");
+	printf("usage : fractol [mandelbrot julia ship]\n");
 	exit(0);
 }
 
-int	choice(char *set, unsigned int (*f)(t_coord a, t_win *b))
+int	choice(char *set, t_win *win)
 {
-	if (ft_strncmp(set, "mandelbrot", 10))
-		f = &mandelbrot;
-	else if (ft_strncmp(set, "ship", 4))
-		f = &ship;
-	else if (ft_strncmp(set, "julia", 5))
+	if (!(ft_strncmp(set, "mandelbrot", 9)))
+		win->cmp.f = &mandelbrot;
+	
+	else if (!(ft_strncmp(set, "ship", 3)))
+		win->cmp.f = &ship;
+	else if (!(ft_strncmp(set, "julia", 4)))
 	{
-		f = &julia;
+		win->cmp.f = &julia;
 		return (1);
 	}
 	else
@@ -250,6 +251,7 @@ int	choice(char *set, unsigned int (*f)(t_coord a, t_win *b))
 	return (0);
 }
 
+// int	main(void)
 int	main(int argc, char *argv[])
 {
     t_win	win;
@@ -257,7 +259,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 		error_msg();
-	is_julia = choice(argv[1], win.cmp.f);
+	is_julia = choice(argv[1], &win);
 	init(&win);
 	fractal(&win, win.cmp.f);
 	mlx_put_image_to_window(win.mlx, win.win, win.img.img, 0, 0);
@@ -287,6 +289,7 @@ int	phase2(t_win win)
 	printf("phase2\n");
 	mlx_destroy_image(win.mlx, win.img.img);
 	win.img.img = mlx_new_image(win.mlx, WIN_WIDTH, WIN_HEIGHT);
+	fractal(&win, win.cmp.f);
 	mlx_put_image_to_window(win.mlx, win.win, win.img.img, 0, 0);
 	mlx_mouse_hook(win.win, &mouse_zoom, &win);
 	mlx_key_hook(win.win, &key_hook, &win);
