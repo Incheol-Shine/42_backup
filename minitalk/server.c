@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_server.c                                  :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:20:54 by incshin           #+#    #+#             */
-/*   Updated: 2022/10/06 22:55:38 by incshin          ###   ########.fr       */
+/*   Updated: 2022/10/07 12:35:05 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	handler(int sig, siginfo_t *info, void *other)
 	static char	letter = 0;
 	static int	cnt = 0;
 
+	(void)other;
 	if (sig == SIGUSR1)
 	{
 		letter <<= 1;

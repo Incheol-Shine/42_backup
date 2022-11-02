@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 05:19:28 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/02 05:43:21 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/02 13:58:50 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,21 @@ int	main(int argc, char *argv[])
 
 void	phase0(t_win win)
 {
-	mlx_mouse_hook(win.win, &mouse_zoom, &win);
+	mlx_hook(win.win, 4, 0, &mouse_zoom, &win);
 	mlx_key_hook(win.win, &key_hook, &win);
 	mlx_loop(win.mlx);
 }
 
 void	phase1(t_win win)
 {
-	mlx_mouse_hook(win.win, &mouse_move, &win);
-	mlx_mouse_hook(win.win, &change_phase, &win);
+	mlx_hook(win.win, 6, 0, &mouse_move, &win);
+	mlx_hook(win.win, 4, 0, &change_phase, &win);
+	mlx_key_hook(win.win, &key_hook, &win);
 	mlx_loop(win.mlx);
 }
 
 void	phase2(t_win win)
 {
-	mlx_destroy_image(win.mlx, win.img.img);
-	win.img.img = mlx_new_image(win.mlx, WIN_WIDTH, WIN_HEIGHT);
-	fractal(&win, win.cmp.f);
-	mlx_put_image_to_window(win.mlx, win.win, win.img.img, 0, 0);
 	mlx_mouse_hook(win.win, &mouse_zoom, &win);
 	mlx_key_hook(win.win, &key_hook, &win);
 	mlx_loop(win.mlx);

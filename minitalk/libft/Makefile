@@ -6,7 +6,7 @@
 #    By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 17:48:33 by incshin           #+#    #+#              #
-#    Updated: 2022/09/29 14:52:39 by incshin          ###   ########.fr        #
+#    Updated: 2022/10/07 12:54:27 by incshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,21 +40,21 @@ endif
 all: $(NAME)
 
 clean:
-	$(RM) $(RMFLAGS) -f $(OBJS) $(OBJS_B)
+	@$(RM) $(RMFLAGS) -f $(OBJS) $(OBJS_B)
 
 fclean: clean
-	$(RM) $(RMFLAGS) $(NAME)
+	@$(RM) $(RMFLAGS) $(NAME)
 
 re: fclean all
 
 bonus :
-	sleep 1
-	make WITH_BONUS=1
+	@sleep 1
+	@make WITH_BONUS=1
 
 $(NAME): $(TOTAL_OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+	@$(AR) $(ARFLAGS) $@ $^
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $<
+	@$(CC) $(CFLAGS) -c $<
 
 .PHONY: all clean fclean re bonus

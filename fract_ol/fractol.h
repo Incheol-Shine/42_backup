@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 11:06:10 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/02 05:43:17 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/02 14:01:24 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 # include <math.h>
 # include <stdlib.h>
 # include "./libft/libft.h"
-# define WIN_WIDTH			960
-# define WIN_HEIGHT			540
-# define MAX_ITER			100
-# define KEY_ESC			65307 // mac : 53, linux : 65307
+# define WIN_WIDTH			1920
+# define WIN_HEIGHT			1080
+# define MAX_ITER			50
+# define KEY_ESC			53
 # define MOUSE_LEFT			1
 # define MOUSE_SCROLL_UP	4
 # define MOUSE_SCROLL_DOWN	5
@@ -58,6 +58,7 @@ typedef struct s_win
 	t_complex	cmp;
 	void		*mlx;
 	void		*win;
+	int			flag;
 }				t_win;
 
 void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
@@ -77,4 +78,5 @@ int				choice(char *set, t_win *win);
 void			error_msg(void);
 int				key_hook(int keycode, t_win *win);
 void			init(t_win *win);
+void			black_img(t_img *img);
 #endif
