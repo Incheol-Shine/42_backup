@@ -5,9 +5,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Wed Aug 24 23:23:49 2022
+# Make data base, printed on Wed Nov  9 15:06:06 2022
 
 # Variables
 
@@ -24,8 +23,6 @@ DESKTOP_SESSION = ubuntu
 # environment
 XDG_SESSION_CLASS = user
 # environment
-SNAP_COMMON = /var/snap/code/common
-# environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
@@ -38,27 +35,21 @@ GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /home/incheolshin/4242/printf
+CURDIR := /home/incheolshin/4242/ft_printf
 # makefile
 SHELL = /bin/sh
 # makefile (from 'Makefile', line 5)
 RM = rm -f
 # environment
-SNAP_DATA = /var/snap/code/105
-# environment
 VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:48428
+JOURNAL_STREAM = 8:46865
 # makefile (from 'Makefile', line 4)
 CFLAGS = -Wall -Wextra -Werror
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
-# environment
-SNAP_INSTANCE_NAME = code
-# environment
-SNAP_ARCH = amd64
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # automatic
@@ -74,15 +65,15 @@ XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/d
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
-MANAGERPID = 1734
+_ = /usr/bin/code
+# environment
+MANAGERPID = 1645
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 LC_NAME = ko_KR.UTF-8
 # environment
-VSCODE_CWD = /home/incheolshin/4242/printf
-# environment
-GSETTINGS_SCHEMA_DIR = /snap/code/105/usr/share/glib-2.0/schemas
+VSCODE_CWD = /home/incheolshin/4242/ft_printf
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -90,27 +81,17 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/incheolshin-XH57:@/tmp/.ICE-unix/1991,unix/incheolshin-XH57:/tmp/.ICE-unix/1991
+SESSION_MANAGER = local/incheolshin-XH57:@/tmp/.ICE-unix/1902,unix/incheolshin-XH57:/tmp/.ICE-unix/1902
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
-# environment
-GDK_PIXBUF_MODULE_FILE = /home/incheolshin/snap/code/common/.cache/gdk-pixbuf-loaders.cache
-# environment
-SNAP = /snap/code/105
-# environment
-SNAP_VERSION = e4503b30
 # makefile (from 'Makefile', line 6)
 AR = ar
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
-DISABLE_WAYLAND = 1
-# environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = c17618fab3c4401f90d04e1450d1463a
-# environment
-GDK_PIXBUF_MODULEDIR = /snap/code/105/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+INVOCATION_ID = 2806848777dd4ce39645e24a57620366
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # makefile (from 'Makefile', line 8)
@@ -126,13 +107,11 @@ SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
 DISPLAY = :1
 # environment
-SNAP_INSTANCE_KEY = 
-# environment
-PWD = /home/incheolshin/4242/printf
+PWD = /home/incheolshin/4242/ft_printf
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1953
+SSH_AGENT_PID = 1867
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -146,21 +125,15 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/incheolshin/.config/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
+VSCODE_CODE_CACHE_PATH = /home/incheolshin/.config/Code/CachedData/8fa188b2b301d36553cbc9ce1b0a146ccb93351f
 # environment
 LOGNAME = incheolshin
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# environment
-SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
-# environment
-SNAP_CONTEXT = TZt4o9Rytd7mTIzsMX3EJC2c8-8PG9MoVPB1NJ2aveCbtRF-NPlL
 # automatic
 +F = $(notdir $+)
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
-# environment
-SNAP_USER_COMMON = /home/incheolshin/snap/code/common
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -172,8 +145,6 @@ ARFLAG = crs
 # environment
 LC_TIME = ko_KR.UTF-8
 # environment
-SNAP_REAL_HOME = /home/incheolshin
-# environment
 COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
@@ -181,8 +152,6 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
-# environment
-SNAP_USER_DATA = /home/incheolshin/snap/code/105
 # environment
 SHLVL = 1
 # makefile (from 'Makefile', line 2)
@@ -195,8 +164,6 @@ GNOME_SHELL_SESSION_MODE = ubuntu
 MAKE_VERSION := 4.2.1
 # environment
 USER = incheolshin
-# environment
-SNAP_REVISION = 105
 # environment
 LC_MONETARY = ko_KR.UTF-8
 # makefile
@@ -214,13 +181,13 @@ PRINTF_SRCS = ft_printf.c ft_printf_functions_1.c ft_printf_functions_2.c
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/incheolshin/4242
+OLDPWD = /home/incheolshin/4242/push_swap
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-6fba69bb-1.70.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-6fba69bb-1.73.0-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -236,11 +203,11 @@ PRINTF_OBJS = $(PRINTF_SRCS:.c=.o)
 # environment
 LC_PAPER = ko_KR.UTF-8
 # environment
+NO_AT_BRIDGE = 1
+# environment
 QT_ACCESSIBILITY = 1
 # default
 MAKEFILES := 
-# environment
-SNAP_COOKIE = TZt4o9Rytd7mTIzsMX3EJC2c8-8PG9MoVPB1NJ2aveCbtRF-NPlL
 # environment
 LC_NUMERIC = ko_KR.UTF-8
 # automatic
@@ -248,19 +215,15 @@ LC_NUMERIC = ko_KR.UTF-8
 # environment
 LC_MEASUREMENT = ko_KR.UTF-8
 # environment
-SNAP_NAME = code
-# environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/38708e0d_40c8_423a_b6e5_caaaec46f75d
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/841e3b5e_7363_42aa_8352_90964cb3496c
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.87
+GNOME_TERMINAL_SERVICE = :1.93
 # default
 SUFFIXES := 
-# environment
-SNAP_REEXEC = 
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
@@ -278,20 +241,19 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 3210
+VSCODE_PID = 4195
 # variable set hash-table stats:
-# Load=134/1024=13%, Rehash=0, Collisions=21/168=12%
+# Load=116/1024=11%, Rehash=0, Collisions=20/150=13%
 
 # Pattern-specific Variable Values
- 
 
 # No pattern-specific variable values.
 
 # Directories
 
-# . (device 2055, inode 2902357): 12 files, no impossibilities.
+# . (device 2055, inode 541862): 13 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -315,6 +277,7 @@ all: libftprintf.a
 
 .PHONY: all clean fclean re
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -348,7 +311,7 @@ ft_printf.o: ft_printf.c
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-24 22:58:43.954830701
+#  Last modified 2022-08-24 23:30:20.230328343
 #  File has been updated.
 #  Successfully updated.
 
@@ -364,7 +327,7 @@ fclean: clean
 # Not a target:
 ft_printf.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-24 22:21:37.936416678
+#  Last modified 2022-10-05 13:38:25.214670124
 #  File has been updated.
 #  Successfully updated.
 
@@ -424,12 +387,12 @@ ft_printf_functions_2.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 28 / storage = 291 B / avg = 10 B
-# current buf: size = 8162 B / used = 291 B / count = 28 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 29 / storage = 301 B / avg = 10 B
+# current buf: size = 8162 B / used = 301 B / count = 29 / avg = 10 B
 
-# strcache performance: lookups = 48 / hit rate = 41%
+# strcache performance: lookups = 49 / hit rate = 40%
 # hash-table stats:
-# Load=28/8192=0%, Rehash=0, Collisions=1/48=2%
-# Finished Make data base on Wed Aug 24 23:23:49 2022
+# Load=29/8192=0%, Rehash=0, Collisions=1/49=2%
+# Finished Make data base on Wed Nov  9 15:06:06 2022
 
  
