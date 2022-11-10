@@ -22,6 +22,7 @@ void	stack_add(t_stack *stack, t_node *new)
 	}
 	else
 	{
+		stack->head->prev = new;
 		new->next = stack->head;
 		stack->head = new;
 	}
@@ -36,6 +37,7 @@ int	stack_pop(t_stack *stack)
 		exit(0);
 	val = stack->head->val;
 	temp = stack->head;
+	stack->head->next->prev = NULL;
 	stack->head = stack->head->next;
 	stack->size--;
 	free(temp);
@@ -51,7 +53,7 @@ t_stack	*fill_stack(int	size, char *num_arr_str[])
 
 	stack = init_stack();
 	stack->size = size - 1;
-	while (size-- != 1)
+	while (size-- > 1)
 	{
 		node = new_node(ft_atoi(num_arr_str[size]));
 		stack_add(stack, node);
@@ -80,7 +82,7 @@ void	show_stack(t_stack *stack)
 	temp = stack->head;
 	while (temp)
 	{
-		printf("val : %d, next: %p\n", temp->val, temp->next);
+		printf("val : %d, prev: %p, now: %p, next: %p\n", temp->val, temp->prev, temp, temp->next);
 		temp = temp->next;
 	}
 	printf("stack's size = %d\n", stack->size);
