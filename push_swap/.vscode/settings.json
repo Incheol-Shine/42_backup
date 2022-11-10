@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"*.a": "c",
+		"push_swap.h": "c"
+	}
+}
