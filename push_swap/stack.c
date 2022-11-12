@@ -6,7 +6,10 @@ t_node	*new_node(int num)
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
-		exit (0);
+	{
+		printf("new_node : malloc error\n");
+		exit(0);
+	}
 	node->next = NULL;
 	node->prev = NULL;
 	node->val = num;
@@ -26,6 +29,7 @@ void	stack_add(t_stack *stack, t_node *new)
 		new->next = stack->head;
 		stack->head = new;
 	}
+	stack->size++;
 }
 
 int	stack_pop(t_stack *stack)
@@ -34,7 +38,10 @@ int	stack_pop(t_stack *stack)
 	t_node	*temp;
 
 	if (!stack->head)
+	{
+		printf("stack_pop : empty\n");
 		exit(0);
+	}
 	val = stack->head->val;
 	temp = stack->head;
 	stack->head->next->prev = NULL;
@@ -45,6 +52,29 @@ int	stack_pop(t_stack *stack)
 	return (val);
 }
 
+int	push_swap_atoi(const char *str)
+{
+	int	i;
+	int	sign;
+	int	answer;
+
+	i = 0;
+	sign = (str[i] != '-') * 2 - 1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	answer = 0;
+	while (ft_isdigit(str[i]))
+	{
+		answer = answer * 10 + (str[i] - '0');
+		i++;
+	}
+	if (str[i] && (!ft_isdigit(str[i])))
+	{
+		printf("atoi : not digit number :%d.%s\n", str[i], str);
+		exit(0);
+	}
+	return (sign * answer);
+}
 
 t_stack	*fill_stack(int	size, char *num_arr_str[])
 {
@@ -52,10 +82,9 @@ t_stack	*fill_stack(int	size, char *num_arr_str[])
 	t_node	*node;
 
 	stack = init_stack();
-	stack->size = size - 1;
 	while (size-- > 1)
 	{
-		node = new_node(ft_atoi(num_arr_str[size]));
+		node = new_node(push_swap_atoi(num_arr_str[size]));
 		stack_add(stack, node);
 	}
 	return stack;
@@ -68,7 +97,10 @@ t_stack	*init_stack()
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (!stack)
+	{
+		printf("init_stack : malloc error\n");
 		exit (0);
+	}
 	stack->head = NULL;
 	stack->tail = NULL;
 	stack->size = 0;

@@ -6,14 +6,14 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 17:06:41 by incshin           #+#    #+#             */
-/*   Updated: 2022/04/29 11:27:23 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/12 11:52:35 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 
 # define LIBFT_H
-# include <stddef.h>
+# include <stdlib.h>
 
 typedef struct s_list
 {

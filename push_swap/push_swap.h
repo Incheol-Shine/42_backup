@@ -25,5 +25,10 @@ void	stack_add(t_stack *stack, t_node *new);
 t_node	*new_node(int num);
 void	show_stack(t_stack *stack);
 int		stack_pop(t_stack *stack);
+int		push_swap_atoi(const char *str);
+void	swap(t_stack *x);
+void	push_x_to_y(t_stack *x, t_stack *y);
+void	rotate(t_stack *x);
+void	reverse_rotate(t_stack *x);
 
 #endif
