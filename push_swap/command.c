@@ -13,6 +13,8 @@ void	swap(t_stack *x)
 	temp->next = x->head;
 	x->head->prev = temp;
 	temp->prev = NULL;
+	if (x->size == 2)
+		x->tail = x->head;
 	x->head = temp;
 }
 

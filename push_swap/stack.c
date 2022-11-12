@@ -44,11 +44,11 @@ int	stack_pop(t_stack *stack)
 	}
 	val = stack->head->val;
 	temp = stack->head;
-	stack->head->next->prev = NULL;
+	if (stack->head->next)
+		stack->head->next->prev = NULL;
 	stack->head = stack->head->next;
 	stack->size--;
 	free(temp);
-
 	return (val);
 }
 
