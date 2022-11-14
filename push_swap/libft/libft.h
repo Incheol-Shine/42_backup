@@ -6,13 +6,15 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 17:06:41 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/12 11:52:35 by incshin          ###   ########.fr       */
+/*   Updated: 2022/09/29 14:45:57 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 
 # define LIBFT_H
+# include <stdarg.h>
+# include <unistd.h>
 # include <stdlib.h>
 
 typedef struct s_list
@@ -63,5 +65,16 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+int		ft_printf(const char *format, ...);
+int		ft_format(va_list ap, char format);
+int		func_c(va_list ap);
+int		func_s(va_list ap);
+int		func_p(va_list ap);
+void	print_hex(int *cnt, unsigned long addr, int isupper);
+int		func_di(va_list ap);
+int		func_u(va_list ap);
+void	print_dec(int *cnt, unsigned int num);
+int		func_x(va_list ap, int isupper);
+int		func_percent(void);
 
 #endif
