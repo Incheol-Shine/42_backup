@@ -6,38 +6,39 @@ int	main(int argc, char *argv[])
 
 	t_stack	*aa;
 	t_stack *bb;
+	t_pivot	pivot;
 	int		*numbers;
 
 	if (argc < 2)
 		print_error_exit(ARG_ERR);
-	numbers = check_overlap(argc - 1, argv);
+	numbers = str_to_int_arr(argc - 1, argv);
+	check_overlap_pivot(argc - 1, numbers, &pivot);
 	aa = fill_stack(argc - 1, numbers);
 	bb = init_stack();
-	wheel_sort(aa, bb);
+	ft_printf("%d, %d, %d ", pivot.one_third, pivot.a_half, pivot.two_third);
+	// wheel_sort(aa, bb, pivot);
 	return (0);
 }
 
-
-
 	// show_stack(aa);
 	// show_stack(bb);
-	// printf("head: %p\n", aa->head);
-	// printf("tail: %p\n", aa->tail);
+	// printf("top: %p\n", aa->top);
+	// printf("bottom: %p\n", aa->bottom);
 	// swap(aa);
 	// show_stack(aa);
-	// printf("head: %p\n", aa->head);
-	// printf("tail: %p\n", aa->tail);
+	// printf("top: %p\n", aa->top);
+	// printf("bottom: %p\n", aa->bottom);
 	// rotate(aa);
 	// rotate(aa);
 	// show_stack(aa);
-	// printf("head: %p\n", aa->head);
-	// printf("tail: %p\n", aa->tail);
+	// printf("top: %p\n", aa->top);
+	// printf("bottom: %p\n", aa->bottom);
 	// reverse_rotate(aa);
 	// reverse_rotate(aa);
 	// reverse_rotate(aa);
 	// show_stack(aa);
-	// printf("head: %p\n", aa->head);
-	// printf("tail: %p\n", aa->tail);
+	// printf("top: %p\n", aa->top);
+	// printf("bottom: %p\n", aa->bottom);
 
 	// show_stack(b);
 	// show_stack(a);
@@ -51,8 +52,8 @@ int	main(int argc, char *argv[])
 	// reverse_rotate(b);
 	// show_stack(b);
 	// clear_stack(aa);
-	// printf("head: %p\n", aa->head);
-	// printf("tail: %p\n", aa->tail);
+	// printf("top: %p\n", aa->top);
+	// printf("bottom: %p\n", aa->bottom);
 	// show_stack(aa);
 	// clear_stack(bb);
 	// show_stack(bb);

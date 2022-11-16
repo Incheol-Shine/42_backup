@@ -6,16 +6,16 @@ void	swap(t_stack *x)
 
 	if (x->size < 2)
 		return ;
-	temp = x->head->next;
-	x->head->next = temp->next;
-	if (x->head->next)
-		x->head->next->prev = x->head;
-	temp->next = x->head;
-	x->head->prev = temp;
+	temp = x->top->next;
+	x->top->next = temp->next;
+	if (x->top->next)
+		x->top->next->prev = x->top;
+	temp->next = x->top;
+	x->top->prev = temp;
 	temp->prev = NULL;
 	if (x->size == 2)
-		x->tail = x->head;
-	x->head = temp;
+		x->bottom = x->top;
+	x->top = temp;
 }
 
 void	push_x_to_y(t_stack *x, t_stack *y)
@@ -34,13 +34,13 @@ void	rotate(t_stack *x)
 
 	if (x->size < 2)
 		return ;
-	temp = x->head->next;
-	x->head->prev = x->tail;
-	x->tail->next = x->head;
-	x->head->next = NULL;
-	x->tail = x->head;
+	temp = x->top->next;
+	x->top->prev = x->bottom;
+	x->bottom->next = x->top;
+	x->top->next = NULL;
+	x->bottom = x->top;
 	temp->prev = NULL;
-	x->head = temp;
+	x->top = temp;
 }
 
 void	reverse_rotate(t_stack *x)
@@ -49,13 +49,13 @@ void	reverse_rotate(t_stack *x)
 
 	if (x->size < 2)
 		return ;
-	temp = x->tail->prev;
-	x->tail->next = x->head;
-	x->head->prev = x->tail;
-	x->tail->prev = NULL;
-	x->head = x->tail;
+	temp = x->bottom->prev;
+	x->bottom->next = x->top;
+	x->top->prev = x->bottom;
+	x->bottom->prev = NULL;
+	x->top = x->bottom;
 	temp->next = NULL;
-	x->tail = temp;
+	x->bottom = temp;
 }
 
 void	sa(t_stack *a)

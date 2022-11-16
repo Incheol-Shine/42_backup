@@ -27,17 +27,19 @@ int	push_swap_atoi(const char *str)
 void	print_error_exit(int err_no)
 {
 	if (err_no == ARG_ERR)
-		ft_printf("main : arg error\n");	
-	else if(err_no == MALLOC_ERR)
+		ft_printf("main : arg error\n");
+	else if (err_no == MALLOC_ERR)
 		ft_printf("init_stack / new_node : malloc error\n");
 	else if (err_no == ATOI_ERR)
 		ft_printf("atoi : not int type\n");
-	// else if (err_no == ALREADY_SORTED)
-	// 	ft_printf("already sorted\n");
 	exit(0);
 }
+/*
+	else if (err_no == ALREADY_SORTED)
+		ft_printf("already sorted\n");
+*/
 
-int *str_to_int_arr(int size, char *argv[])
+int	*str_to_int_arr(int size, char *argv[])
 {
 	int	*numbers;
 	int	i;
@@ -54,30 +56,49 @@ int *str_to_int_arr(int size, char *argv[])
 	return (numbers);
 }
 
-int	*check_overlap(int size, char *argv[])
+void	set_pivot(t_pivot *pivot, int a, int b, int c)
 {
-	int	*numbers;
-	int	i;
-	int	j;
-	int	flag;
+	pivot->one_third = a;
+	pivot->a_half = b;
+	pivot->two_third = c;
+}
 
-	numbers = str_to_int_arr(size, argv);
+void	ft_swap(int *a, int *b)
+{
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void	check_overlap_pivot(int size, int *numbers, t_pivot *pivot)
+{
+	int	num_cpy[size];
+	int	i;
+	int	flag;
+	int	temp;
+
+	temp = size;
+	ft_memcpy(num_cpy, numbers, sizeof(int) * size);
 	flag = 0;
-	i = 0;
-	while (i < size)
+	while (size > 1)
 	{
-		j = i + 1;
-		while (j < size)
+		i = 0;
+		while (i < size - 1)
 		{
-			if (numbers[i] == numbers[j])
+			if (num_cpy[i] == num_cpy[i + 1])
 				print_error_exit(ARG_ERR);
-			else if (numbers[i] > numbers[j])
+			else if (num_cpy[i] > num_cpy[i + 1])
+			{
+				ft_swap(num_cpy + i, num_cpy + i + 1);
 				flag = 1;
-			j++;
+			}
+			i++;
 		}
-		i++;
+		size--;
 	}
+	set_pivot(pivot, num_cpy[temp / 3], num_cpy[temp / 2], num_cpy[2 * temp / 3]);
 	if (!flag)
 		print_error_exit(ALREADY_SORTED);
-	return (numbers);
 }

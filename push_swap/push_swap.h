@@ -18,12 +18,19 @@ typedef struct s_node
 
 typedef struct s_stack
 {
-	struct s_node	*head;
-	struct s_node	*tail;
+	struct s_node	*top;
+	struct s_node	*bottom;
 	unsigned int	size;
 }				t_stack;
 
-int		*check_overlap(int size, char *argv[]);
+typedef struct s_pivot
+{
+	int	one_third;
+	int	a_half;
+	int	two_third;
+}				t_pivot;
+
+void	check_overlap_pivot(int size, int *numbers, t_pivot *pivot);
 int 	*str_to_int_arr(int size, char *argv[]);
 int		push_swap_atoi(const char *str);
 t_stack	*init_stack();
@@ -49,5 +56,6 @@ void	rr(t_stack *a, t_stack *b);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
-void	wheel_sort(t_stack *a, t_stack *b);
+void	ft_swap(int *a, int *b);
+// void	wheel_sort(t_stack *a, t_stack *b, t_pivot pivot);
 #endif

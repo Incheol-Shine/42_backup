@@ -16,16 +16,16 @@ t_node	*new_node(int num)
 
 void	stack_add(t_stack *stack, t_node *new)
 {
-	if (!stack->head)
+	if (!stack->top)
 	{
-		stack->head = new;
-		stack->tail = new;
+		stack->top = new;
+		stack->bottom = new;
 	}
 	else
 	{
-		stack->head->prev = new;
-		new->next = stack->head;
-		stack->head = new;
+		stack->top->prev = new;
+		new->next = stack->top;
+		stack->top = new;
 	}
 	stack->size++;
 }
@@ -35,22 +35,22 @@ int	stack_pop(t_stack *stack)
 	int		val;
 	t_node	*temp;
 
-	// if (!stack->head)
+	// if (!stack->top)
 	// {
 	// 	printf("stack_pop : empty, this message should not pop\n");
 	// 	exit(0);
 	// }
-	val = stack->head->val;
-	temp = stack->head;
-	if (stack->head->next)
-		stack->head->next->prev = NULL;
-	stack->head = stack->head->next;
+	val = stack->top->val;
+	temp = stack->top;
+	if (stack->top->next)
+		stack->top->next->prev = NULL;
+	stack->top = stack->top->next;
 	stack->size--;
 	free(temp);
 	if (!stack->size)
 	{
-		stack->head = NULL;
-		stack->tail = NULL;
+		stack->top = NULL;
+		stack->bottom = NULL;
 	}
 	return (val);
 }
@@ -62,8 +62,8 @@ t_stack	*init_stack()
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (!stack)
 		print_error_exit(MALLOC_ERR);
-	stack->head = NULL;
-	stack->tail = NULL;
+	stack->top = NULL;
+	stack->bottom = NULL;
 	stack->size = 0;
 	return (stack);
 }
@@ -85,10 +85,10 @@ t_stack	*fill_stack(int	size, int *numbers)
 
 void	clear_stack(t_stack *stack)
 {
-	while (stack->head)
+	while (stack->top)
 		stack_pop(stack);
-	stack->head = NULL;
-	stack->tail = NULL;
+	stack->top = NULL;
+	stack->bottom = NULL;
 	// free(stack);
 }
 
@@ -96,7 +96,7 @@ void	show_stack(t_stack *stack)
 {
 	t_node	*temp;
 
-	temp = stack->head;
+	temp = stack->top;
 	while (temp)
 	{
 		printf("val : %d, prev: %p, now: %p, next: %p\n", temp->val, temp->prev, temp, temp->next);
