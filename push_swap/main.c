@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/16 17:18:39 by incshin           #+#    #+#             */
+/*   Updated: 2022/11/16 19:12:17 by incshin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include	<stdio.h>
 #include	"push_swap.h"
 
@@ -15,8 +27,9 @@ int	main(int argc, char *argv[])
 	check_overlap_pivot(argc - 1, numbers, &pivot);
 	aa = fill_stack(argc - 1, numbers);
 	bb = init_stack();
-	ft_printf("%d, %d, %d ", pivot.one_third, pivot.a_half, pivot.two_third);
-	// wheel_sort(aa, bb, pivot);
+	// ft_printf("%d, %d, %d ", pivot.one_third, pivot.a_half, pivot.two_third);
+	wheel_sort(aa, bb, pivot);
+	// show_stack(aa);
 	return (0);
 }
 

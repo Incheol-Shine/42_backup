@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/16 17:19:06 by incshin           #+#    #+#             */
+/*   Updated: 2022/11/16 17:51:27 by incshin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef	PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -57,5 +69,7 @@ void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 void	ft_swap(int *a, int *b);
-// void	wheel_sort(t_stack *a, t_stack *b, t_pivot pivot);
+void	wheel_sort(t_stack *a, t_stack *b, t_pivot pivot);
+void	three_elem_sort(t_stack *a);
+void	many_elem_sort(t_stack *a, t_stack *b, t_pivot pivot);
 #endif
