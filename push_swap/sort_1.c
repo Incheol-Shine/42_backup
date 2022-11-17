@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:47 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/17 13:36:55 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/17 20:20:25 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	wheel_sort(t_stack *a, t_stack *b, t_pivot pivot)
 void	three_elem_sort(t_stack *a)
 {
 	int	top;
-	int mid;
-	int bot;
+	int	mid;
+	int	bot;
 
 	top = a->top->val;
 	mid = a->top->next->val;
@@ -51,10 +51,23 @@ void	three_elem_sort(t_stack *a)
 	}
 }
 
-void stack_divide_three(t_stack *a, t_stack *b, t_pivot pivot)
+void	many_elem_sort(t_stack *a, t_stack *b, t_pivot pivot)
+{
+	stack_divide_three(a, b, pivot);
+	three_elem_sort(a);
+	while (b->size)
+	{
+		optimized_rotation(a, find_place_b_top(a, b));
+		pa(a, b);
+	}
+	optimized_rotation(a, find_min_idx(a));
+	return ;
+}
+
+void	stack_divide_three(t_stack *a, t_stack *b, t_pivot pivot)
 {
 	int	temp;
-	int count;
+	int	count;
 
 	temp = a->size;
 	count = 0;
@@ -74,81 +87,3 @@ void stack_divide_three(t_stack *a, t_stack *b, t_pivot pivot)
 	while (a->size > 3)
 		pb(a, b);
 }
-
-int	find_place_b_top(t_stack *a, t_stack *b)
-{
-	t_node	*l;
-	t_node	*r;
-	int		count;
-
-	l = a->bottom;
-	r = a->top;
-	count = 0;
-	while (r)
-	{
-		if (l->val > r->val)
-		{
-			if (b->top->val < r->val)
-				break ;
-			else if (l->val < b->top->val)
-				break ;
-		}
-		if(l->val < b->top->val && b->top->val < r->val)
-			break ;
-		l = r;
-		r = r->next;
-		count++;
-	}
-	return (count);
-}
-
-int	find_min_idx(t_stack *a)
-{
-	t_node	*l;
-	t_node	*r;
-	int		count;
-
-	l = a->bottom;
-	r = a->top;
-	count = 0;
-	while (r && !(l->val > r->val))
-	{
-		l = r;
-		r = r->next;
-		count++;
-	}
-	return (count);
-}
-
-void	many_elem_sort(t_stack *a, t_stack *b, t_pivot pivot)
-{
-	int	index;
-
-	stack_divide_three(a, b, pivot);
-	three_elem_sort(a);
-	while (b->size)
-	{
-		index = find_place_b_top(a, b);
-		// ft_printf("idx : %d or %d \n", index, a->size - index);
-		if (index < a->size / 2)
-			while (index-- > 0)
-				ra(a);
-		else
-			index = a->size - index;
-			while (index-- > 0)
-				rra(a);
-		pa(a, b);
-	}
-	index = find_min_idx(a);
-	// ft_printf("idx2 : %d or %d \n", index, a->size - index);
-	if (index <= a->size / 2)
-			while (index-- > 0)
-				ra(a);
-		else
-			index = a->size - index;
-			while (index-- > 0)
-				rra(a);
-	return ;
-}
-
-
