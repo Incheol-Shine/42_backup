@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:47 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/17 13:06:14 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/17 13:36:55 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void stack_divide_three(t_stack *a, t_stack *b, t_pivot pivot)
 			ra(a);
 		else
 			pb(a, b);
+		count++;
 	}
 	while (a->size > 3)
 		pb(a, b);

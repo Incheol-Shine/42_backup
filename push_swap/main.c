@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:39 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/17 12:05:03 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/17 13:38:31 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	main(int argc, char *argv[])
 	check_overlap_pivot(argc - 1, numbers, &pivot);
 	aa = fill_stack(argc - 1, numbers);
 	bb = init_stack();
-	ft_printf("%d, %d, %d\n", pivot.one_third, pivot.a_half, pivot.two_third);
+	// ft_printf("%d, %d, %d\n", pivot.one_third, pivot.a_half, pivot.two_third);
 	wheel_sort(aa, bb, pivot);
-	show_stack(aa);
-	show_stack(bb);
+	// show_stack(aa);
+	// show_stack(bb);
 	return (0);
 }
 
