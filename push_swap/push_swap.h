@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:19:06 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/16 17:51:27 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/17 13:01:38 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,8 @@ void	ft_swap(int *a, int *b);
 void	wheel_sort(t_stack *a, t_stack *b, t_pivot pivot);
 void	three_elem_sort(t_stack *a);
 void	many_elem_sort(t_stack *a, t_stack *b, t_pivot pivot);
+void 	stack_divide_three(t_stack *a, t_stack *b, t_pivot pivot);
+int		find_place_b_top(t_stack *a, t_stack *b);
+int		find_min_idx(t_stack *a);
+
 #endif
