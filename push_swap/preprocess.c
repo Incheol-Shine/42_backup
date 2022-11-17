@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:43 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/17 20:30:16 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 01:07:36 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void	check_already_sort(int size, int *numbers)
 		i++;
 	}
 	if (already_sorted)
+	{
+		free(numbers);
 		exit(0);
+	}
 }
 
 int	*bubble_sort(int size, int *numbers)
