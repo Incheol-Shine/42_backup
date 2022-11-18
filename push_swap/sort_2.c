@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:09:57 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/19 00:25:47 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/19 00:43:34 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,13 +123,13 @@ int	find_min_idx(t_stack *a)
 
 void	rotate_same(t_stack *a, t_stack *b)
 {
-	while (b->idx > 0)
+	while (a->idx > 0 && b->idx > 0)
 	{
 		rr(a, b);
 		a->idx--;
 		b->idx--;
 	}
-	while (b->idx < 0)
+	while (a->idx < 0 && b->idx < 0)
 	{
 		rrr(a, b);
 		a->idx++;
@@ -150,6 +150,23 @@ void	rotate_a(t_stack *a)
 		{
 			rra(a);
 			a->idx++;
+		}
+	}
+}
+
+void	rotate_b(t_stack *b)
+{
+	while (b->idx)
+	{
+		if (b->idx > 0)
+		{
+			ra(b);
+			b->idx--;
+		}
+		else
+		{
+			rra(b);
+			b->idx++;
 		}
 	}
 }

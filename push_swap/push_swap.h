@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:19:06 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 23:53:37 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/19 00:44:48 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ void	min_operate(t_stack *a, t_stack *b, t_min *min);
 void	get_min_rotate(t_stack *a, t_stack *b);
 void	rotate_same(t_stack *a, t_stack *b);
 void	rotate_a(t_stack *a);
+void	rotate_b(t_stack *b);
 #endif
