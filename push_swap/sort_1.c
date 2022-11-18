@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:47 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 19:02:09 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 22:41:56 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,17 @@ void	many_elem_sort(t_stack *a, t_stack *b, t_pivot pivot)
 {
 	stack_divide_three(a, b, pivot);
 	three_elem_sort(a);
+	// show_stack(a);
+	// show_stack(b);
 	while (b->size)
 	{
 		get_min_rotate(a, b);
+		// ft_printf("a_idx: %d, b_idx: %d\n", a->idx, b->idx);
 		optimized_rotation(a, b);
+		
 		pa(a, b);
+		// show_stack(a);
+		// show_stack(b);
 	}
 	a->idx = find_min_idx(a);
 	rotate_a(a);

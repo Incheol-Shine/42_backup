@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:19:06 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 19:11:32 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 22:00:12 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,17 @@ int		*str_to_int_arr(int size, char *argv[]);
 int		push_swap_atoi(const char *str);
 t_stack	*init_stack(void);
 t_stack	*fill_stack(int size, int num_arr_str[]);
-void	stack_add(t_stack *stack, t_node *new);
+void	stack_add_top(t_stack *stack, t_node *new);
+void	stack_add_bottom(t_stack *stack, t_node *new);
 t_node	*new_node(int num);
 void	show_stack(t_stack *stack);
-int		stack_pop(t_stack *stack);
+int		stack_pop_top(t_stack *stack);
+int		stack_pop_bottom(t_stack *stack);
 void	clear_stack(t_stack *stack);
 void	swap(t_stack *x);
 void	push_x_to_y(t_stack *x, t_stack *y);
-void	rotate(t_stack *x);
-void	reverse_rotate(t_stack *x);
+void	revolve(t_stack *x);
+void	reverse_revolve(t_stack *x);
 void	print_error_exit(int err_no);
 void	sa(t_stack *a);
 void	sb(t_stack *b);
@@ -86,5 +88,5 @@ void	min_operate(t_stack *a, t_stack *b, int a_idx, int b_idx, int *min);
 void	get_min_rotate(t_stack *a, t_stack *b);
 void	rotate_same(t_stack *a, t_stack *b);
 void	rotate_a(t_stack *a);
-
+void	show_stack(t_stack *stack);
 #endif

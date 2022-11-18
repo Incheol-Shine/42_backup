@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:54 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/16 17:18:55 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 22:26:48 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void	ss(t_stack *a, t_stack *b)
 
 void	pa(t_stack *a, t_stack *b)
 {
-	push_x_to_y(b, a);
 	write(1, "pa\n", 3);
+	push_x_to_y(b, a);
+	
 }
 
 void	pb(t_stack *a, t_stack *b)
@@ -39,6 +40,6 @@ void	pb(t_stack *a, t_stack *b)
 
 void	ra(t_stack *a)
 {
-	rotate(a);
+	revolve(a);
 	write(1, "ra\n", 3);
 }

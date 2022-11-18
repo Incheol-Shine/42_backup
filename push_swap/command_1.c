@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:50 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 12:37:49 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 22:02:07 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,38 +29,28 @@ void	push_x_to_y(t_stack *x, t_stack *y)
 
 	if (!x->size)
 		return ;
-	x_top_node = new_node(stack_pop(x));
-	stack_add(y, x_top_node);
+	x_top_node = new_node(stack_pop_top(x));
+	stack_add_top(y, x_top_node);
 }
 
-void	rotate(t_stack *x)
+void	revolve(t_stack *x)
 {
-	t_node	*temp;
+	t_node	*x_bottom_node;
 
 	if (x->size < 2)
 		return ;
-	temp = x->top->next;
-	x->top->prev = x->bottom;
-	x->bottom->next = x->top;
-	x->top->next = NULL;
-	x->bottom = x->top;
-	temp->prev = NULL;
-	x->top = temp;
+	x_bottom_node = new_node(stack_pop_top(x));
+	stack_add_bottom(x, x_bottom_node);
 }
 
-void	reverse_rotate(t_stack *x)
+void	reverse_revolve(t_stack *x)
 {
-	t_node	*temp;
+	t_node	*x_top_node;
 
 	if (x->size < 2)
 		return ;
-	temp = x->bottom->prev;
-	x->bottom->next = x->top;
-	x->top->prev = x->bottom;
-	x->bottom->prev = NULL;
-	x->top = x->bottom;
-	temp->next = NULL;
-	x->bottom = temp;
+	x_top_node = new_node(stack_pop_bottom(x));
+	stack_add_top(x, x_top_node);
 }
 
 void	sa(t_stack *a)
