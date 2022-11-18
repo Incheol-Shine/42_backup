@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:19:06 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 22:00:12 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 23:53:37 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,13 @@ typedef struct s_pivot
 	int	two_third;
 }				t_pivot;
 
+typedef struct s_min
+{
+	int	min;
+	int	a_idx;
+	int	b_idx;
+}				t_min;
+
 void	check_overlap_pivot(int size, int *numbers, t_pivot *pivot);
 int		*str_to_int_arr(int size, char *argv[]);
 int		push_swap_atoi(const char *str);
@@ -82,11 +89,9 @@ void	stack_divide_three(t_stack *a, t_stack *b, t_pivot pivot);
 int		get_a_idx(t_stack *a, t_node *b_node);
 int		find_min_idx(t_stack *a);
 void	check_already_sort(int size, int *numbers);
-void	optimized_rotation(t_stack *a, t_stack *b);
 int		ft_max(int a, int b);
-void	min_operate(t_stack *a, t_stack *b, int a_idx, int b_idx, int *min);
+void	min_operate(t_stack *a, t_stack *b, t_min *min);
 void	get_min_rotate(t_stack *a, t_stack *b);
 void	rotate_same(t_stack *a, t_stack *b);
 void	rotate_a(t_stack *a);
-void	show_stack(t_stack *stack);
 #endif

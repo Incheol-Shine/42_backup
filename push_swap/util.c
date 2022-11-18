@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:33:21 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 12:10:40 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 23:28:41 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,6 @@ void	print_error_exit(int err_no)
 	exit(1);
 }
 
-t_node	*new_node(int num)
-{
-	t_node	*node;
-
-	node = (t_node *)malloc(sizeof(t_node));
-	if (!node)
-		print_error_exit(MALLOC_ERR);
-	node->next = NULL;
-	node->prev = NULL;
-	node->val = num;
-	return (node);
-}
-
 void	ft_swap(int *a, int *b)
 {
 	int	temp;
@@ -39,4 +26,14 @@ void	ft_swap(int *a, int *b)
 	temp = *a;
 	*a = *b;
 	*b = temp;
+}
+
+int	ft_max(int a, int b)
+{
+	int	max;
+
+	max = a;
+	if (a < b)
+		max = b;
+	return (max);
 }

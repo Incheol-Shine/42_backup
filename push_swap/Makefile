@@ -6,7 +6,7 @@
 #    By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 19:23:20 by incshin           #+#    #+#              #
-#    Updated: 2022/11/17 20:37:10 by incshin          ###   ########.fr        #
+#    Updated: 2022/11/18 23:07:17 by incshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ MLXDIR		= mlx
 SRC		=	main.c \
 			preprocess.c \
 			util.c \
-			stack.c \
+			stack_1.c \
+			stack_2.c \
 			command_1.c \
 			command_2.c \
 			command_3.c \
