@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:50 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/16 17:18:51 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 12:37:49 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,13 @@
 
 void	swap(t_stack *x)
 {
-	t_node	*temp;
+	int	temp;
 
 	if (x->size < 2)
 		return ;
-	temp = x->top->next;
-	x->top->next = temp->next;
-	if (x->top->next)
-		x->top->next->prev = x->top;
-	temp->next = x->top;
-	x->top->prev = temp;
-	temp->prev = NULL;
-	if (x->size == 2)
-		x->bottom = x->top;
-	x->top = temp;
+	temp = x->top->val;
+	x->top->val = x->top->next->val;
+	x->top->next->val = temp;
 }
 
 void	push_x_to_y(t_stack *x, t_stack *y)

@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:43 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 01:07:36 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 12:10:27 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,7 @@ int	*bubble_sort(int size, int *numbers)
 		i = 0;
 		while (i < size - 1)
 		{
-			if (sorted_nbr[i] == sorted_nbr[i + 1])
-				print_error_exit(ARG_ERR);
-			else if (sorted_nbr[i] > sorted_nbr[i + 1])
+			if (sorted_nbr[i] > sorted_nbr[i + 1])
 				ft_swap(sorted_nbr + i, sorted_nbr + i + 1);
 			i++;
 		}
@@ -111,16 +109,10 @@ void	check_overlap_pivot(int size, int *numbers, t_pivot *pivot)
 	while (i < size - 1)
 	{
 		if (sorted_nbr[i] == sorted_nbr[i + 1])
-			print_error_exit(ARG_ERR);
+			print_error_exit(DUP_ERR);
 		i++;
 	}
 	pivot->one_third = sorted_nbr[size / 3];
 	pivot->two_third = sorted_nbr[2 * size / 3];
 	free(sorted_nbr);
 }
-
-/*
-	for (int j=0; j<size; j++)
-		ft_printf("%d ", sorted_nbr[j]);
-	ft_printf("\n");
-*/

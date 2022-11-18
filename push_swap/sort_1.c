@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:47 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/17 20:20:25 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 14:27:07 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	many_elem_sort(t_stack *a, t_stack *b, t_pivot pivot)
 	three_elem_sort(a);
 	while (b->size)
 	{
-		optimized_rotation(a, find_place_b_top(a, b));
+		get_min_rotate(a, b);
+		optimized_rotation(a, b);
 		pa(a, b);
 	}
 	optimized_rotation(a, find_min_idx(a));
@@ -76,7 +77,7 @@ void	stack_divide_three(t_stack *a, t_stack *b, t_pivot pivot)
 		if (a->top->val < pivot.one_third)
 		{
 			pb(a, b);
-			ra(a);
+			rb(b);
 		}
 		else if (pivot.two_third < a->top->val)
 			ra(a);

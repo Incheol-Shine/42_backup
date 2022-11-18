@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:45 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/17 20:35:38 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 14:26:23 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ t_stack	*init_stack(void)
 	stack->top = NULL;
 	stack->bottom = NULL;
 	stack->size = 0;
+	stack->idx = 0;
 	return (stack);
 }
 
