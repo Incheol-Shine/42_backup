@@ -6,7 +6,7 @@
 #    By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 19:23:20 by incshin           #+#    #+#              #
-#    Updated: 2022/11/18 23:07:17 by incshin          ###   ########.fr        #
+#    Updated: 2022/11/19 00:51:55 by incshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC		=	main.c \
 			command_2.c \
 			command_3.c \
 			sort_1.c \
-			sort_2.c
+			sort_2.c \
+			sort_3.c
 
 OBJ		= $(SRC:.c=.o)
 
