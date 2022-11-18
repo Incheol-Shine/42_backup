@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:09:57 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 14:30:18 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 19:26:18 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,78 @@ int	get_a_idx(t_stack *a, t_node *b_node)
 	return (count);
 }
 
-void	min_operate(t_stack *a, t_stack *b, int *min)
+int	ft_max(int a, int b)
 {
-	int			a_idx;
-	int			b_idx;
+	int	max;
 
+	max = a;
+	if (a < b)
+		max = b;
+	return (max);
+}
+
+void	min_operate(t_stack *a, t_stack *b, int a_idx, int b_idx, int *min)
+{
 	if (a_idx < a->size / 2 && b_idx < b->size / 2)
 	{
-		min = 
+		if (*min > ft_max(a_idx, b_idx))
+		{
+			*min = ft_max(a_idx, b_idx);
+			a->idx = a_idx;
+			b->idx = b_idx;
+		}
 	}
+	else if (a_idx >= a->size / 2 && b_idx >= b->size / 2)
+	{
+		if (*min > ft_max(a->size - a_idx, b->size - b_idx))
+		{
+			*min = ft_max(a->size - a_idx, b->size - b_idx);
+			a->idx = (a->size - a_idx) * -1;
+			b->idx = (b->size - b_idx) * -1;
+		}
+	}
+// 	else if (a_idx >= a->size / 2 && b_idx < b->size / 2)
+// 	{
+// 		if (*min > ft_max(a_idx, b_idx))
+// 		{
+// 			*min = ft_max(a_idx, b_idx);
+// 			a->idx = a_idx;
+// 			b->idx = b_idx;
+// 		}
+// 		if (*min > ft_max(a->size - a_idx, b->size - b_idx))
+// 		{
+// 			*min = ft_max(a->size - a_idx, b->size - b_idx);
+// 			a->idx = (a->size - a_idx) * -1;
+// 			b->idx = (b->size - b_idx) * -1;
+// 		}
+// 		if (*min > (a->size - a_idx + b_idx))
+// 		{
+// 			*min = a->size - a_idx + b_idx;
+// 			a->idx = (a->size - a_idx) * -1;
+// 			b->idx = b_idx;
+// 		}
+// 	}
+// 	else if (a_idx < a->size / 2 && b_idx >= b->size / 2)
+// 	{
+// 		if (*min > ft_max(a_idx, b_idx))
+// 		{
+// 			*min = ft_max(a_idx, b_idx);
+// 			a->idx = a_idx;
+// 			b->idx = b_idx;
+// 		}
+// 		if (*min > ft_max(a->size - a_idx, b->size - b_idx))
+// 		{
+// 			*min = ft_max(a->size - a_idx, b->size - b_idx);
+// 			a->idx = (a->size - a_idx) * -1;
+// 			b->idx = (b->size - b_idx) * -1;
+// 		}
+// 		if (*min > (a_idx + b->size - b_idx))
+// 		{
+// 			*min = a_idx + b->size - b_idx;
+// 			a->idx = a_idx;
+// 			b->idx = (b->size - b_idx) * -1;
+// 		}
+// 	}
 }
 
 void	get_min_rotate(t_stack *a, t_stack *b)
@@ -59,11 +122,11 @@ void	get_min_rotate(t_stack *a, t_stack *b)
 	
 	b_node = b->top;
 	b_idx = 0;
-	min = 99999;
+	min = MAX_INT;
 	while (b_node)
 	{
 		a_idx = get_a_idx(a, b_node);
-		min_operate(a, b, min);
+		min_operate(a, b, a_idx, b_idx, &min);
 		b_node = b_node->next;
 		b_idx++;
 	}
@@ -87,15 +150,41 @@ int	find_min_idx(t_stack *a)
 	return (count);
 }
 
-void	optimized_rotation(t_stack *a, int index)
+void	rotate_same(t_stack *a, t_stack *b)
 {
-	if (index < a->size / 2)
-		while (index-- > 0)
-			ra(a);
-	else
+	while (b->idx > 0)
 	{
-		index = a->size - index;
-		while (index-- > 0)
-			rra(a);
+		rr(a, b);
+		a->idx--;
+		b->idx--;
 	}
+	while (b->idx < 0)
+	{
+		rrr(a, b);
+		a->idx++;
+		b->idx++;
+	}
+}
+
+void	rotate_a(t_stack *a)
+{
+	while (a->idx)
+	{
+		if (a->idx > 0)
+		{
+			ra(a);
+			a--;
+		}
+		else
+		{
+			rra(a);
+			a++;
+		}
+	}
+}
+
+void	optimized_rotation(t_stack *a, t_stack *b)
+{
+	rotate_same(a, b);
+	rotate(a);
 }

@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:45 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 14:26:23 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:50:08 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	stack_pop(t_stack *stack)
 	free(temp);
 	if (!stack->size)
 	{
-		stack->top = NULL;
+		stack->top = NULL; // 이거 빼도 됨?
 		stack->bottom = NULL;
 	}
 	return (val);
@@ -81,7 +81,7 @@ void	clear_stack(t_stack *stack)
 {
 	while (stack->top)
 		stack_pop(stack);
-	stack->top = NULL;
-	stack->bottom = NULL;
+	stack->top = NULL;    // 이거 두개도 빼도 됨?
+	stack->bottom = NULL; //
 	free(stack);
 }

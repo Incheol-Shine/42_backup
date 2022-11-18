@@ -6,11 +6,10 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:39 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 12:08:27 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 19:10:52 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<stdio.h>
 #include	"push_swap.h"
 
 int	main(int argc, char *argv[])

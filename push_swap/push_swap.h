@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:19:06 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 14:26:38 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/18 19:11:32 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define MALLOC_ERR		1
 # define ATOI_ERR		2
 # define ALREADY_SORTED	3
+# define MAX_INT		2147483647
 
 typedef struct s_node
 {
@@ -79,6 +80,11 @@ void	stack_divide_three(t_stack *a, t_stack *b, t_pivot pivot);
 int		get_a_idx(t_stack *a, t_node *b_node);
 int		find_min_idx(t_stack *a);
 void	check_already_sort(int size, int *numbers);
-void	optimized_rotation(t_stack *a, int index);
+void	optimized_rotation(t_stack *a, t_stack *b);
+int		ft_max(int a, int b);
+void	min_operate(t_stack *a, t_stack *b, int a_idx, int b_idx, int *min);
+void	get_min_rotate(t_stack *a, t_stack *b);
+void	rotate_same(t_stack *a, t_stack *b);
+void	rotate_a(t_stack *a);
 
 #endif
