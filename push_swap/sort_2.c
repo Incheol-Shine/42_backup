@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:09:57 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 23:54:47 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/19 00:13:00 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 
 void	min_operate(t_stack *a, t_stack *b, t_min *min)
 {
-	if (min->a_idx >= a->size / 2 && min->b_idx >= b->size / 2)
+	if (min->a_idx < a->size / 2 && min->b_idx < b->size / 2)
+	{
+		if (min->min > ft_max(min->a_idx, min->b_idx))
+		{
+			min->min = ft_max(min->a_idx, min->b_idx);
+			a->idx = min->a_idx;
+			b->idx = min->b_idx;
+		}
+	}
+	else if (min->a_idx >= a->size / 2 && min->b_idx >= b->size / 2)
 	{
 		if (min->min > ft_max(a->size - min->a_idx, b->size - min->b_idx))
 		{
@@ -23,13 +32,34 @@ void	min_operate(t_stack *a, t_stack *b, t_min *min)
 			b->idx = (b->size - min->b_idx) * -1;
 		}
 	}
-	else
+	else if (min->a_idx >= a->size / 2 && min->b_idx < b->size / 2)
 	{
 		if (min->min > ft_max(min->a_idx, min->b_idx))
 		{
 			min->min = ft_max(min->a_idx, min->b_idx);
 			a->idx = min->a_idx;
 			b->idx = min->b_idx;
+		}
+		if (min->min > ft_max(a->size - min->a_idx, b->size - min->b_idx))
+		{
+			min->min = ft_max(a->size - min->a_idx, b->size - min->b_idx);
+			a->idx = (a->size - min->a_idx) * -1;
+			b->idx = (b->size - min->b_idx) * -1;
+		}
+	}
+	else if (min->a_idx < a->size / 2 && min->b_idx >= b->size / 2)
+	{
+		if (min->min > ft_max(min->a_idx, min->b_idx))
+		{
+			min->min = ft_max(min->a_idx, min->b_idx);
+			a->idx = min->a_idx;
+			b->idx = min->b_idx;
+		}
+		if (min->min > ft_max(a->size - min->a_idx, b->size - min->b_idx))
+		{
+			min->min = ft_max(a->size - min->a_idx, b->size - min->b_idx);
+			a->idx = (a->size - min->a_idx) * -1;
+			b->idx = (b->size - min->b_idx) * -1;
 		}
 	}
 }
