@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:39 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 22:58:59 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/19 08:31:45 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(int argc, char *argv[])
 	if (argc < 2)
 		print_error_exit(ARG_ERR);
 	numbers = str_to_int_arr(argc - 1, argv);
-	check_already_sort(argc - 1, numbers);
 	check_overlap_pivot(argc - 1, numbers, &pivot);
+	check_already_sort(argc - 1, numbers);
 	a = fill_stack(argc - 1, numbers);
 	b = init_stack();
 	wheel_sort(a, b, pivot);
