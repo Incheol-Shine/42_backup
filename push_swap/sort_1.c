@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:47 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 23:55:02 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/19 00:31:02 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	many_elem_sort(t_stack *a, t_stack *b, t_pivot pivot)
 		pa(a, b);
 	}
 	a->idx = find_min_idx(a);
+	if (a->idx >= a->size / 2)
+		a->idx = (a->size - a->idx) * -1;
 	rotate_a(a);
 }
 
