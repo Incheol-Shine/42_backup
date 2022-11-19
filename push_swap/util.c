@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:33:21 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/18 23:28:41 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/19 12:21:26 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_error_exit(int err_no)
 {
 	if (err_no >= 0)
-		ft_printf("error\n");
+		ft_printf("Error\n");
 	exit(1);
 }
 

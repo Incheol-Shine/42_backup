@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:09:57 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/19 00:51:21 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/19 11:52:45 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,34 +75,28 @@ void	rotate_same(t_stack *a, t_stack *b)
 
 void	rotate_a(t_stack *a)
 {
-	while (a->idx)
+	while (a->idx > 0)
 	{
-		if (a->idx > 0)
-		{
-			ra(a);
-			a->idx--;
-		}
-		else
-		{
-			rra(a);
-			a->idx++;
-		}
+		ra(a);
+		a->idx--;
+	}
+	while (a->idx < 0)
+	{
+		rra(a);
+		a->idx++;
 	}
 }
 
 void	rotate_b(t_stack *b)
 {
-	while (b->idx)
+	while (b->idx > 0)
 	{
-		if (b->idx > 0)
-		{
-			rb(b);
-			b->idx--;
-		}
-		else
-		{
-			rrb(b);
-			b->idx++;
-		}
+		rb(b);
+		b->idx--;
+	}
+	while (b->idx < 0)
+	{
+		rrb(b);
+		b->idx++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: incshin <incshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:18:43 by incshin           #+#    #+#             */
-/*   Updated: 2022/11/19 08:32:00 by incshin          ###   ########.fr       */
+/*   Updated: 2022/11/19 13:04:11 by incshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	push_swap_atoi(const char *str)
 		answer = answer * 10 + (str[i] - '0');
 		i++;
 	}
-	if (str[i] && (!ft_isdigit(str[i])))
+	if ((!ft_isdigit(str[i])))
 		print_error_exit(ATOI_ERR);
 	answer *= sign;
 	if (answer > 2147483647 || answer < -2147483648)
